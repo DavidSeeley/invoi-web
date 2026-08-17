@@ -1,0 +1,231 @@
+{
+  "project": "Netsirv SOP & Document Management Website",
+  "purpose": "Source-of-truth content and asset manifest for an AI-assisted website build.",
+  "design_direction": {
+    "theme": "dark enterprise / operational intelligence",
+    "visual_language": [
+      "deep navy/black backgrounds",
+      "cyan and magenta neon accents",
+      "thin glowing borders",
+      "modular cards",
+      "connected-system diagrams",
+      "clean enterprise typography"
+    ],
+    "instruction": "Use the supplied section images as visual references/assets. Do not regenerate them unless explicitly requested."
+  },
+  "routing": {
+    "type": "5-tab single-page or 5-route website",
+    "tabs": [
+      {
+        "id": "overview",
+        "label": "Overview",
+        "sections": [
+          {
+            "order": 1,
+            "title": "Netsirv SOP & Document Management Ecosystem",
+            "image": {
+              "src": "assets/01-sop-document-management-ecosystem.png",
+              "alt": "Netsirv SOP & Document Management Ecosystem",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 2,
+            "title": "The narrative shift",
+            "image": {
+              "src": "assets/02-narrative-shift.png",
+              "alt": "The narrative shift",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Why this matters now",
+            "image": {
+              "src": "assets/03-why-this-matters-now.png",
+              "alt": "Why this matters now",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Why traditional document management falls short",
+            "image": {
+              "src": "assets/04-traditional-document-management-falls-short.png",
+              "alt": "Why traditional document management falls short",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ecosystem",
+        "label": "Ecosystem",
+        "sections": [
+          {
+            "order": 1,
+            "title": "The Netsirv ecosystem model",
+            "image": {
+              "src": "assets/05-netsirv-ecosystem-model.png",
+              "alt": "The Netsirv ecosystem model",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 2,
+            "title": "Universal document intelligence",
+            "image": {
+              "src": "assets/06-universal-document-intelligence.png",
+              "alt": "Universal document intelligence",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Documents become relationship-aware business objects",
+            "image": {
+              "src": "assets/09-relationship-aware-business-objects.png",
+              "alt": "Documents become relationship-aware business objects",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Audit & evidence chain",
+            "image": {
+              "src": "assets/10-audit-evidence-chain.png",
+              "alt": "Audit & evidence chain",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "operations",
+        "label": "Operations",
+        "sections": [
+          {
+            "order": 1,
+            "title": "Mobile turns field work into governed records",
+            "image": {
+              "src": "assets/07-mobile-governed-records.png",
+              "alt": "Mobile turns field work into governed records",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 2,
+            "title": "SOP + Academy creates a governance differentiator",
+            "image": {
+              "src": "assets/08-sop-academy-governance.png",
+              "alt": "SOP + Academy creates a governance differentiator",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Accounting is not an afterthought",
+            "image": {
+              "src": "assets/11-accounting-context.png",
+              "alt": "Accounting is not an afterthought",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Exception management keeps work moving",
+            "image": {
+              "src": "assets/12-exception-management.png",
+              "alt": "Exception management keeps work moving",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "platform",
+        "label": "Platform",
+        "sections": [
+          {
+            "order": 1,
+            "title": "Dashboards that drive behavior",
+            "image": {
+              "src": "assets/13-behavior-driving-dashboards.png",
+              "alt": "Dashboards that drive behavior",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 2,
+            "title": "Platform architecture at a glance",
+            "image": {
+              "src": "assets/14-platform-architecture.png",
+              "alt": "Platform architecture at a glance",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Integration without disruption",
+            "image": {
+              "src": "assets/15-integration-without-disruption.png",
+              "alt": "Integration without disruption",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Who benefits",
+            "image": {
+              "src": "assets/19-who-benefits.png",
+              "alt": "Who benefits",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "deployment",
+        "label": "Deployment",
+        "sections": [
+          {
+            "order": 1,
+            "title": "Implementation roadmap",
+            "image": {
+              "src": "assets/16-implementation-roadmap.png",
+              "alt": "Implementation roadmap",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 2,
+            "title": "Pilot program blueprint",
+            "image": {
+              "src": "assets/17-pilot-program-blueprint.png",
+              "alt": "Pilot program blueprint",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Expected outcomes",
+            "image": {
+              "src": "assets/18-expected-outcomes.png",
+              "alt": "Expected outcomes",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Let's build what's next",
+            "image": {
+              "src": "assets/20-build-whats-next.png",
+              "alt": "Let's build what's next",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "project": "Netsirv SOP & Document Management Website",
+  "purpose": "Source-of-truth content and asset manifest for an AI-assisted website build.",
+  "design_direction": {
+    "theme": "dark enterprise / operational intelligence",
+    "visual_language": [
+      "deep navy/black backgrounds",
+      "cyan and magenta neon accents",
+      "thin glowing borders",
+      "modular cards",
+      "connected-system diagrams",
+      "clean enterprise typography"
+    ],
+    "instruction": "Use the supplied section images as visual references/assets. Do not regenerate them unless explicitly requested."
+  },
+  "routing": {
+    "type": "5-tab single-page or 5-route website",
+    "tabs": [
+      {
+        "id": "overview",
+        "label": "Overview",
+        "sections": [
+          {
+            "order": 1,
+            "title": "Netsirv SOP & Document Management Ecosystem",
+            "image": {
+              "src": "assets/01-sop-document-management-ecosystem.png",
+              "alt": "Netsirv SOP & Document Management Ecosystem",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Operational Intelligence",
+              "headline": "Turn every document, workflow, and SOP into an intelligent business system.",
+              "body": "Netsirv connects SOPs, documents, field activity, accounting context, governance, and automation into one operational layer.",
+              "cta": "Explore the ecosystem"
+            }
+          },
+          {
+            "order": 2,
+            "title": "The narrative shift",
+            "image": {
+              "src": "assets/02-narrative-shift.png",
+              "alt": "The narrative shift",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "From storage to intelligence",
+              "headline": "Documents should drive work, not just record it.",
+              "body": "Move beyond static folders and disconnected PDFs. Netsirv treats business content as live operational data connected to people, processes, customers, and outcomes.",
+              "cta": "See the shift"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Why this matters now",
+            "image": {
+              "src": "assets/03-why-this-matters-now.png",
+              "alt": "Why this matters now",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Why now",
+              "headline": "Back-office complexity is growing faster than headcount should.",
+              "body": "Teams need systems that reduce repetitive coordination, preserve institutional knowledge, and make every process easier to execute consistently.",
+              "cta": "See the opportunity"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Why traditional document management falls short",
+            "image": {
+              "src": "assets/04-traditional-document-management-falls-short.png",
+              "alt": "Why traditional document management falls short",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "The old model breaks",
+              "headline": "Folders organize files. They do not run operations.",
+              "body": "Traditional document systems isolate information from the workflow, relationships, approvals, accounting context, and evidence needed to actually operate the business.",
+              "cta": "Compare the models"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ecosystem",
+        "label": "Ecosystem",
+        "sections": [
+          {
+            "order": 1,
+            "title": "The Netsirv ecosystem model",
+            "image": {
+              "src": "assets/05-netsirv-ecosystem-model.png",
+              "alt": "The Netsirv ecosystem model",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "One connected operating layer",
+              "headline": "A unified ecosystem for SOPs, documents, people, and workflow.",
+              "body": "Netsirv links content to the rest of the enterprise stack so information moves with the work instead of sitting outside it.",
+              "cta": "View the ecosystem"
+            }
+          },
+          {
+            "order": 2,
+            "title": "Universal document intelligence",
+            "image": {
+              "src": "assets/06-universal-document-intelligence.png",
+              "alt": "Universal document intelligence",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "AI-ready by design",
+              "headline": "Make every business document understandable, searchable, and actionable.",
+              "body": "Capture, classify, connect, and use information across documents while preserving the operational context around each record.",
+              "cta": "Explore document intelligence"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Documents become relationship-aware business objects",
+            "image": {
+              "src": "assets/09-relationship-aware-business-objects.png",
+              "alt": "Documents become relationship-aware business objects",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Context everywhere",
+              "headline": "A document should know what it belongs to.",
+              "body": "Associate content with customers, jobs, vendors, employees, assets, transactions, and workflows so users never have to hunt for context.",
+              "cta": "See connected records"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Audit & evidence chain",
+            "image": {
+              "src": "assets/10-audit-evidence-chain.png",
+              "alt": "Audit & evidence chain",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Defensible operations",
+              "headline": "Preserve the evidence behind every critical action.",
+              "body": "Maintain the chain of approvals, acknowledgements, uploads, changes, and supporting records needed for compliance, claims, disputes, and internal review.",
+              "cta": "See the evidence chain"
+            }
+          }
+        ]
+      },
+      {
+        "id": "operations",
+        "label": "Operations",
+        "sections": [
+          {
+            "order": 1,
+            "title": "Mobile turns field work into governed records",
+            "image": {
+              "src": "assets/07-mobile-governed-records.png",
+              "alt": "Mobile turns field work into governed records",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Field-to-office continuity",
+              "headline": "Turn mobile activity into governed business records in real time.",
+              "body": "Photos, signatures, notes, exceptions, approvals, and job evidence can flow directly into the system of record from the field.",
+              "cta": "See mobile workflows"
+            }
+          },
+          {
+            "order": 2,
+            "title": "SOP + Academy creates a governance differentiator",
+            "image": {
+              "src": "assets/08-sop-academy-governance.png",
+              "alt": "SOP + Academy creates a governance differentiator",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Train and govern",
+              "headline": "Connect what people should do with proof that they know how to do it.",
+              "body": "Pair SOPs with training, certification, role requirements, and acknowledgements so policy becomes an operational control instead of a static document.",
+              "cta": "Explore governance"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Accounting is not an afterthought",
+            "image": {
+              "src": "assets/11-accounting-context.png",
+              "alt": "Accounting is not an afterthought",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Operational + financial context",
+              "headline": "Connect documents and workflow to the financial event they support.",
+              "body": "Invoices, receipts, approvals, job costs, exceptions, and supporting records become part of one traceable operational story.",
+              "cta": "Explore accounting context"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Exception management keeps work moving",
+            "image": {
+              "src": "assets/12-exception-management.png",
+              "alt": "Exception management keeps work moving",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Manage the exceptions",
+              "headline": "Design the system for what happens when the normal process breaks.",
+              "body": "Route exceptions to the right person, preserve the evidence, trigger approvals, and keep work moving without losing accountability.",
+              "cta": "See exception workflows"
+            }
+          }
+        ]
+      },
+      {
+        "id": "platform",
+        "label": "Platform",
+        "sections": [
+          {
+            "order": 1,
+            "title": "Dashboards that drive behavior",
+            "image": {
+              "src": "assets/13-behavior-driving-dashboards.png",
+              "alt": "Dashboards that drive behavior",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Operational visibility",
+              "headline": "Give every role a dashboard that tells them what needs attention now.",
+              "body": "Surface missing records, overdue acknowledgements, exceptions, approvals, risk signals, and performance measures in one actionable view.",
+              "cta": "See the dashboards"
+            }
+          },
+          {
+            "order": 2,
+            "title": "Platform architecture at a glance",
+            "image": {
+              "src": "assets/14-platform-architecture.png",
+              "alt": "Platform architecture at a glance",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Enterprise architecture",
+              "headline": "Built as a connected platform, not another isolated app.",
+              "body": "Use a common data, identity, workflow, and integration layer so new capabilities compound instead of creating new silos.",
+              "cta": "View the architecture"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Integration without disruption",
+            "image": {
+              "src": "assets/15-integration-without-disruption.png",
+              "alt": "Integration without disruption",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Meet the business where it is",
+              "headline": "Integrate with existing systems while modernizing the operating layer.",
+              "body": "Netsirv can connect to current tools and data sources so companies can phase in modernization without forcing a disruptive all-at-once replacement.",
+              "cta": "Explore integrations"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Who benefits",
+            "image": {
+              "src": "assets/19-who-benefits.png",
+              "alt": "Who benefits",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Designed for the whole organization",
+              "headline": "One operating model, different value for every role.",
+              "body": "Executives gain visibility, managers gain control, office teams reduce coordination work, and field teams get clearer processes with less administrative burden.",
+              "cta": "See who benefits"
+            }
+          }
+        ]
+      },
+      {
+        "id": "deployment",
+        "label": "Deployment",
+        "sections": [
+          {
+            "order": 1,
+            "title": "Implementation roadmap",
+            "image": {
+              "src": "assets/16-implementation-roadmap.png",
+              "alt": "Implementation roadmap",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Practical deployment",
+              "headline": "Start with high-value workflows and expand from proven wins.",
+              "body": "Sequence implementation around business value, data readiness, governance, and user adoption so each phase creates a foundation for the next.",
+              "cta": "View the roadmap"
+            }
+          },
+          {
+            "order": 2,
+            "title": "Pilot program blueprint",
+            "image": {
+              "src": "assets/17-pilot-program-blueprint.png",
+              "alt": "Pilot program blueprint",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Prove it quickly",
+              "headline": "Choose one workflow, one team, and one measurable outcome.",
+              "body": "A focused pilot can validate the operating model, integrations, governance, AI assistance, and adoption plan before broader rollout.",
+              "cta": "Plan a pilot"
+            }
+          },
+          {
+            "order": 3,
+            "title": "Expected outcomes",
+            "image": {
+              "src": "assets/18-expected-outcomes.png",
+              "alt": "Expected outcomes",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Business impact",
+              "headline": "Reduce friction, improve control, and create leverage across the back office.",
+              "body": "The goal is not simply digitization. It is fewer manual handoffs, faster access to context, stronger compliance, better decisions, and more scalable operations.",
+              "cta": "See expected outcomes"
+            }
+          },
+          {
+            "order": 4,
+            "title": "Let's build what's next",
+            "image": {
+              "src": "assets/20-build-whats-next.png",
+              "alt": "Let's build what's next",
+              "source": "cropped from the original Netsirv composite supplied in this conversation"
+            },
+            "content": {
+              "eyebrow": "Netsirv",
+              "headline": "Build an operating system that gets smarter as the business runs.",
+              "body": "Connect the workflows, records, training, evidence, financial context, and automation needed to run a modern service business.",
+              "cta": "Start the conversation"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "build_guidance": {
+    "framework": "React + TypeScript",
+    "recommended_structure": {
+      "navigation": "5 top-level tabs/routes",
+      "page_sections": "4 sections per tab",
+      "content_source": "Render copy and image references from this JSON where practical",
+      "asset_behavior": "Use local PNG assets as section visuals; do not replace them with stock imagery"
+    },
+    "responsive_behavior": [
+      "Desktop: alternate copy/visual layouts with generous whitespace and full-width feature sections",
+      "Tablet: preserve two-column layouts where readable",
+      "Mobile: stack copy above visual and keep all diagrams fully visible without horizontal clipping"
+    ],
+    "motion": [
+      "Use subtle fade/slide reveals only",
+      "Use restrained glow and hover states",
+      "Avoid excessive parallax, particle effects, or motion that competes with the diagrams"
+    ],
+    "seo": {
+      "site_title": "Netsirv | SOP, Document Intelligence & Operational Automation",
+      "meta_description": "Netsirv connects SOPs, document intelligence, workflow, governance, accounting context, mobile operations, and automation into one enterprise operating layer."
+    }
+  }
+}
