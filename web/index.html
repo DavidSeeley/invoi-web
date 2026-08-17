@@ -272,9 +272,13 @@
       .visual {
         position: relative;
         overflow: hidden;
+        min-height: 360px;
+        display: grid;
+        align-content: center;
+        gap: 14px;
         border: 1px solid var(--line-strong);
         border-radius: 20px;
-        padding: 12px;
+        padding: 22px;
         background:
           linear-gradient(145deg, rgba(61, 231, 255, 0.09), rgba(209, 92, 255, 0.06)),
           rgba(255, 255, 255, 0.03);
@@ -293,19 +297,247 @@
         mask-image: radial-gradient(circle at 78% 42%, black, transparent 68%);
       }
 
-      .visual img {
+      .visual > * {
         position: relative;
         z-index: 1;
+      }
+
+      .viz-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .viz-grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .viz-grid.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .viz-grid.four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .viz-grid.five {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .viz-card,
+      .viz-table,
+      .viz-step {
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        background: rgba(5, 8, 20, 0.58);
+      }
+
+      .viz-card {
+        min-height: 112px;
+        padding: 14px;
+      }
+
+      .viz-card strong {
         display: block;
-        width: 100%;
-        height: auto;
-        border-radius: 14px;
+        color: var(--text);
+        font-size: 15px;
+        line-height: 1.25;
+      }
+
+      .viz-card span,
+      .viz-row span,
+      .viz-step {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.42;
+      }
+
+      .viz-card span {
+        display: block;
+        margin-top: 7px;
+      }
+
+      .viz-icon {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 10px;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        color: var(--cyan);
+        font-size: 18px;
+        font-weight: 900;
+        box-shadow: 0 0 24px color-mix(in srgb, currentColor 22%, transparent);
+      }
+
+      .viz-hub {
+        width: 178px;
+        height: 178px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto;
+        border: 1px solid var(--cyan);
+        border-radius: 999px;
+        color: var(--text);
+        text-align: center;
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 1.25;
+        background:
+          radial-gradient(circle, rgba(61, 231, 255, 0.18), transparent 62%),
+          rgba(255, 255, 255, 0.035);
+        box-shadow: 0 0 42px rgba(61, 231, 255, 0.25);
+      }
+
+      .viz-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .viz-arrow {
+        color: var(--cyan);
+        font-weight: 900;
+      }
+
+      .viz-table {
+        overflow: hidden;
+      }
+
+      .viz-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(83, 210, 255, 0.16);
+      }
+
+      .viz-row:last-child {
+        border-bottom: 0;
+      }
+
+      .viz-row b {
+        color: var(--text);
+        font-size: 12px;
+      }
+
+      .viz-steps {
+        display: grid;
+        gap: 9px;
+      }
+
+      .viz-step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        align-items: center;
+        min-height: 40px;
+        padding: 8px 10px;
+      }
+
+      .viz-badge {
+        width: 26px;
+        height: 26px;
+        display: grid;
+        place-items: center;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        color: var(--cyan);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .viz-callout {
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        padding: 14px;
+        color: var(--cyan);
+        font-size: 14px;
+        font-weight: 850;
+        line-height: 1.45;
+        background: rgba(61, 231, 255, 0.055);
+      }
+
+      .viz-bars {
+        height: 130px;
+        display: flex;
+        align-items: end;
+        gap: 10px;
+        padding-top: 18px;
+      }
+
+      .viz-bar {
+        flex: 1;
+        border-radius: 999px 999px 0 0;
+        background: linear-gradient(180deg, var(--cyan), var(--blue));
+      }
+
+      .viz-ring {
+        width: 122px;
+        height: 122px;
+        display: grid;
+        place-items: center;
+        margin: 12px auto 0;
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at center, var(--panel) 54%, transparent 55%),
+          conic-gradient(var(--cyan) 0 92%, rgba(255, 255, 255, 0.08) 92% 100%);
+        color: var(--cyan);
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .viz-spark {
+        height: 122px;
+        margin-top: 16px;
+        border-bottom: 1px solid var(--line);
+        background:
+          linear-gradient(140deg, transparent 0 12%, var(--magenta) 12% 14%, transparent 14% 29%, var(--cyan) 29% 31%, transparent 31% 48%, var(--blue) 48% 50%, transparent 50% 68%, #13e6a3 68% 70%, transparent 70%),
+          linear-gradient(180deg, transparent 80%, rgba(61, 231, 255, 0.14));
+      }
+
+      .viz-road {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+        align-items: stretch;
+      }
+
+      .viz-road .viz-card {
+        min-height: 170px;
+      }
+
+      .viz-target {
+        width: 118px;
+        height: 118px;
+        display: grid;
+        place-items: center;
+        margin: 10px auto 0;
+        border-radius: 999px;
+        border: 1px solid var(--magenta);
+        color: var(--magenta);
+        font-size: 42px;
+        box-shadow: 0 0 34px rgba(209, 92, 255, 0.25);
       }
 
       @media (max-width: 900px) {
         .page-header,
         .section {
           grid-template-columns: 1fr;
+        }
+
+        .viz-grid.two,
+        .viz-grid.three,
+        .viz-grid.four,
+        .viz-grid.five,
+        .viz-road {
+          grid-template-columns: 1fr;
+        }
+
+        .viz-flow {
+          align-items: stretch;
+          flex-direction: column;
         }
 
         .section:nth-of-type(even) .copy,
@@ -417,8 +649,86 @@
         },
       ];
 
+      function icon(label, color = "var(--cyan)") {
+        return `<div class="viz-icon" style="color:${color}">${label}</div>`;
+      }
+
+      function card(title, text, label = "□", color = "var(--cyan)") {
+        return `<div class="viz-card">${icon(label, color)}<strong>${title}</strong><span>${text}</span></div>`;
+      }
+
+      function grid(columns, cards) {
+        return `<div class="viz-grid ${columns}">${cards.join("")}</div>`;
+      }
+
+      function table(rows) {
+        return `<div class="viz-table">${rows.map(([label, value]) => `<div class="viz-row"><span>${label}</span><b>${value}</b></div>`).join("")}</div>`;
+      }
+
+      function steps(items) {
+        return `<div class="viz-steps">${items.map((item, index) => `<div class="viz-step"><span class="viz-badge">${index + 1}</span><span>${item}</span></div>`).join("")}</div>`;
+      }
+
+      function visualFor(image) {
+        switch (image) {
+          case "01-sop-document-management-ecosystem.png":
+            return `<div class="viz-hub">SOP + DOCUMENT<br>CONTROL CENTER</div><div class="viz-grid four">${["SOP-first", "AI-assisted", "Audit-ready", "Accounting aware"].map((item) => card(item, "Executive control signal", "✓")).join("")}</div><div class="viz-callout">The front door is document management. The strategic outcome is operational control.</div>`;
+          case "02-narrative-shift.png":
+            return grid("two", [
+              card("Old model", "Documents are stored, searched, exported and forgotten. The system cannot prove work was governed.", "▣"),
+              card("Netsirv model", "SOPs connect to training, mobile action, evidence, approvals, transactions and financial output.", "◎", "var(--magenta)"),
+            ]);
+          case "03-why-this-matters-now.png":
+            return grid("four", [
+              card("SOP drift", "Outdated versions and informal workarounds.", "1"),
+              card("Evidence gaps", "Invoices, photos and BOLs separated from the work they support.", "2"),
+              card("Manual re-keying", "Financial data typed from disconnected documents.", "3"),
+              card("Audit fragility", "Hard to prove procedure, training and evidence in one chain.", "4"),
+            ]) + `<div class="viz-callout">The cost is weak control over how work is performed, documented, approved and reported.</div>`;
+          case "04-traditional-document-management-falls-short.png":
+            return grid("two", [
+              `<div class="viz-card"><strong>Traditional DMS</strong>${table([["SOP_Receiving_Final_v3.pdf", "file"], ["Receiving_SOP_2024.docx", "file"], ["BOL Scan 8921.pdf", "file"], ["Invoice HVAC photo.jpg", "file"]])}</div>`,
+              `<div class="viz-card"><strong>Netsirv Context Graph</strong>${table([["Active SOP", "v2.1"], ["Trained Users", "42"], ["BOL Evidence", "18"], ["Open Exceptions", "3"], ["GL Impact", "$12.4k"]])}</div>`,
+            ]);
+          case "05-netsirv-ecosystem-model.png":
+            return `<div class="viz-flow"><div>${grid("two", [card("Academy", "Training", "A", "var(--magenta)"), card("Mobile", "Capture", "M"), card("AI documents", "Repository & search", "AI", "var(--magenta)")])}</div><span class="viz-arrow">→</span><div class="viz-hub">SOP + DOCUMENT<br>CONTROL CENTER</div><span class="viz-arrow">→</span><div>${grid("two", [card("Procurement", "Workflow", "$", "#f7c948"), card("Vendors", "Contracts", "V"), card("Accounting", "Output", "GL", "#13e6a3"), card("Catalog", "Master data", "C")])}</div></div>`;
+          case "06-universal-document-intelligence.png":
+            return grid("two", [`<div>${steps(["Capture original", "Classify document type", "Extract key data", "Score confidence", "Review human-in-loop", "Route to workflow"])}</div>`, `<div class="viz-card"><strong>AI Extraction Review</strong>${table([["Vendor", "ABC HVAC"], ["Date", "08/16/26"], ["Work", "RTU repair"], ["Materials", "$140.20"], ["Total", "$725.00"]])}</div>`]);
+          case "07-mobile-governed-records.png":
+            return grid("five", ["Procurement", "View SOP", "Scan invoice", "Verify", "Submit"].map((item, i) => card(item, "Simple field step", i + 1))) + `<div class="viz-callout">SOP, invoice, item, truck, service and GL classification are linked.</div>`;
+          case "08-sop-academy-governance.png":
+            return grid("two", [`<div>${steps(["SOP fulfilled", "Training assigned", "Assessment passed", "Button active"])}</div>`, `<div class="viz-card"><strong>Access status</strong>${table([["Scheduling", "ACTIVE"], ["Orders", "ACTIVE"], ["Procurement", "ACTIVE"], ["HazMat", "TRAINING"]])}</div>`]);
+          case "09-relationship-aware-business-objects.png":
+            return grid("two", [`<div class="viz-card"><strong>Vendor Service Invoice</strong>${table([["Vendor", "ABC HVAC"], ["Location", "Main Office"], ["Asset", "RTU-006"], ["SOP", "Maintenance SOP"], ["Contract", "2026 MSA"]])}</div>`, `<div class="viz-flow"><div class="viz-hub">Document</div><span class="viz-arrow">↔</span>${steps(["Vendor", "Asset", "SOP", "GL", "Approval"])}</div>`]);
+          case "10-audit-evidence-chain.png":
+            return grid("five", [card("SOP", "Governing procedure", "S"), card("Training", "Readiness proof", "T", "var(--magenta)"), card("Device", "Source capture", "D"), card("Document", "Evidence", "E"), card("GL", "Financial output", "GL", "#f7c948")]) + `<div class="viz-callout">Evidence is captured at the source, not bolted on after the fact.</div>`;
+          case "11-accounting-context.png":
+            return grid("two", [`<div class="viz-card"><strong>Operational Event</strong>${steps(["Service invoice approved", "SOP followed", "User trained", "Evidence captured", "Approval obtained"])}</div>`, `<div class="viz-card"><strong>Accounting Impact</strong>${table([["GL Account", "6300"], ["Service Expense", "$725"], ["Location", "Main Office"], ["Asset", "RTU-006"], ["Vendor", "ABC HVAC"]])}</div>`]);
+          case "12-exception-management.png":
+            return grid("two", [grid("two", [card("Price mismatch", "Invoice + contract", "!", "var(--magenta)"), card("Item not found", "Not in master data", "?", "var(--blue)"), card("Damaged goods", "Container exception", "!", "#fb923c"), card("Policy exception", "Requires approval", "P", "#13e6a3")]), `<div>${steps(["Route to right approver", "Decision recorded", "Continue or adjust", "Evidence retained"])}</div>`]);
+          case "13-behavior-driving-dashboards.png":
+            return grid("three", [`<div class="viz-card"><strong>Operations</strong><div class="viz-bars">${[35, 48, 28, 66, 54, 82].map((h) => `<span class="viz-bar" style="height:${h}%"></span>`).join("")}</div></div>`, `<div class="viz-card"><strong>Compliance</strong><div class="viz-ring">92%</div></div>`, `<div class="viz-card"><strong>Finance</strong><div class="viz-spark"></div></div>`]);
+          case "14-platform-architecture.png":
+            return grid("three", [card("Web Portal", "User interface", "W"), card("Mobile Apps", "Field capture", "M"), card("API Gateway", "Secure access", "API"), card("AI Services", "Extraction & review", "AI", "var(--magenta)"), card("Workflow Engine", "Approvals", "WF"), card("Integration Layer", "Connectors", "I")]) + `<div class="viz-callout">Data layers: metadata, relationships, audit and transactions.</div>`;
+          case "15-integration-without-disruption.png":
+            return `<div class="viz-flow"><div class="viz-card"><strong>Existing systems</strong>${steps(["ERP / Accounting", "Purchasing / P2P", "HR / LMS", "Asset Management"])}</div><span class="viz-arrow">→</span><div class="viz-hub">NETSIRV<br>Integration<br>Layer</div><span class="viz-arrow">→</span><div class="viz-card"><strong>APIs</strong>${steps(["Webhooks", "SFTP / File", "Standard connectors", "Secure by design"])}</div></div>`;
+          case "16-implementation-roadmap.png":
+            return `<div class="viz-road">${["Foundation", "Mobile & AI", "Accounting", "Optimization", "Scale"].map((item, index) => card(`Phase ${index + 1}`, item, index + 1, ["var(--cyan)", "var(--magenta)", "#13e6a3", "#f7c948", "#fb7185"][index])).join("")}</div><div class="viz-callout">Each phase is useful on day one and builds toward a fully connected operational platform.</div>`;
+          case "17-pilot-program-blueprint.png":
+            return grid("two", [`<div class="viz-card"><strong>Pilot Scope</strong>${table([["Scope", "One process, one location"], ["Duration", "8 - 12 weeks"], ["Participants", "10 - 12 users"], ["Success", "Adoption, accuracy, time savings"]])}</div>`, `<div class="viz-card"><strong>Pilot Outcomes</strong>${steps(["Validated process", "Trained users", "Connected data", "Measurable results", "Plan to scale"])}<div class="viz-target">◎</div></div>`]);
+          case "18-expected-outcomes.png":
+            return grid("five", [card("30 - 50%", "Less manual data entry", "%"), card("20 - 40%", "Faster invoice processing", "⏱"), card("25 - 60%", "Fewer exceptions", "↓"), card("100%", "Audit-ready evidence chain", "✓"), card("Stronger", "Compliance and governance", "◎")]);
+          case "19-who-benefits.png":
+            return grid("five", ["Employees", "Managers", "Finance", "IT", "Executives"].map((role) => card(role, "Connected work, clear evidence and better outcomes.", "○")));
+          case "20-build-whats-next.png":
+            return grid("two", [`<div>${steps(["Start with a conversation", "Define your pilot", "Deliver quick wins", "Scale with confidence"])}</div>`, `<div class="viz-hub">Letivi + invoi<br>AI INFUSED SOP</div>`]) + `<div class="viz-callout">Work governed. Evidence connected. Outcomes delivered.</div>`;
+          default:
+            return `<div class="viz-callout">Native section visual pending.</div>`;
+        }
+      }
+
       function sectionMarkup(section) {
-        const [eyebrow, headline, body, cta, image, alt] = section;
+        const [eyebrow, headline, body, cta, image] = section;
         return `<section class="section">
           <div class="copy">
             <div class="eyebrow">${eyebrow}</div>
@@ -427,7 +737,7 @@
             <a class="cta" href="#">${cta}</a>
           </div>
           <div class="visual">
-            <img loading="lazy" src="./assets/${image}" alt="${alt}">
+            ${visualFor(image)}
           </div>
         </section>`;
       }
