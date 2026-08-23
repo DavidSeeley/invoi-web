@@ -756,16 +756,20 @@
           </div>
           <div class="grid grid-3" style="margin-top:.25in">${["AI assists|It classifies documents, flags exceptions and extracts data.","People control|Operators verify data before it becomes trusted.","Evidence remains|Original files, metadata, approvals and relationships are retained."].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card num-card"><div class="num">${i+1}</div><div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}</div>`, 5, "document intelligence"),
 
-        frame(`<h2>Mobile turns field work into governed records</h2><p class="subtitle" style="margin-top:.08in">The employee experience stays simple: open task, see SOP, scan evidence, verify and submit.</p>
-          <div class="flow" style="margin-top:.45in">
-            ${["Procurement","View SOP","Scan Invoice","Scan Product","Receive Shipment","Capture Document"].map((x,i)=>`<div class="card center" style="width:1.75in;height:1.9in;color:${["var(--yellow)","var(--cyan)","var(--purple)","var(--purple)","var(--blue)","var(--cyan)"][i]}">${icon(["audit","document","phone","folder","shield","phone"][i])}<h3 style="margin-top:.14in">${x}</h3></div>${i<5?'<div class="arrow">→</div>':''}`).join("")}
+        frame(`<h2>Mobile turns field work into governed records</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">The employee experience stays simple: open task, see SOP, scan evidence, verify and submit.</p>
+          <div class="grid grid-2" style="margin-top:.34in">
+            ${["Procurement|Start controlled request","View SOP|Current procedure in hand","Scan invoice|Capture original evidence","Scan product|Confirm item and shipment","Receive shipment|Record operational event","Capture document|Attach proof to workflow"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card num-card"><div class="num">${i+1}</div><div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}
+          </div>
+          <div class="brief-grid" style="margin-top:.3in">
+            <div class="brief-item"><h3>Field simplicity</h3><p>Operators follow a guided sequence instead of interpreting policy from memory.</p></div>
+            <div class="brief-item"><h3>Back-office control</h3><p>Every scan, classification and exception enters the business record with context.</p></div>
           </div>
           <div class="callout" style="max-width:8.5in;margin-left:auto;margin-right:auto">SOP, invoice, item, truck, service and GL classification are linked.</div>`, 6, "user experience"),
 
-        frame(`<h2>SOP + Academy creates a governance differentiator</h2><p class="subtitle" style="margin-top:.08in">Access can be based on demonstrated competency, not just a permissions checkbox.</p>
-          <div class="grid" style="grid-template-columns:1.2fr .8fr;margin-top:.28in">
+        frame(`<h2>SOP + Academy creates a governance differentiator</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Access can be based on demonstrated competency, not just a permissions checkbox.</p>
+          <div class="grid grid-2" style="margin-top:.32in;align-items:start">
             <div class="panel">
-              <div class="flow" style="justify-content:space-between">${["SOP fulfilled","Training assigned","Assessment passed","Button active"].map((x,i)=>`<div class="center"><div class="num">${i+1}</div><p style="margin-top:.08in;text-align:center;color:var(--text);font-weight:800">${x}</p></div>${i<3?'<div class="arrow">→</div>':''}`).join("")}</div>
+              <div class="grid grid-2">${["SOP met","Training","Assessment","Access"].map((x,i)=>`<div class="card num-card"><div class="num">${i+1}</div><div><h3>${x}</h3><p>${["Procedure accepted","Role readiness started","Competency verified","Workflow permission granted"][i]}</p></div></div>`).join("")}</div>
               <table class="table" style="margin-top:.25in"><tr><td>Scheduling</td><td class="status">ACTIVE</td></tr><tr><td>Orders</td><td class="status">ACTIVE</td></tr><tr><td>Procurement</td><td class="status">ACTIVE</td></tr><tr><td>HazMat</td><td class="warn">TRAINING</td></tr></table>
             </div>
             <div class="panel accent-cyan"><h3>Governance story for executives</h3><ul class="list"><li>The same SOP that governs the work can determine who is allowed to perform a business module.</li><li>The system can prove the user was trained before the workflow became available.</li><li>This creates a clear control narrative for operations, HR, compliance and audit.</li></ul></div>
@@ -785,41 +789,55 @@
           <div class="callout">Evidence is captured at the source — not bolted on after the fact.</div>
           <div class="grid grid-4" style="margin-top:.25in">${["Who|User role, training, approval","What|SOP, service, document, transaction","Where|Location, device, department","Proof|Original document, AI score, correction, audit log"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card"><h3 style="color:${["var(--blue)","var(--purple)","var(--yellow)","var(--green)"][i]}">${a}</h3><p>${b}</p></div>`}).join("")}</div>`, 9, "document intelligence"),
 
-        frame(`<h2>Accounting is not an afterthought</h2><p class="subtitle" style="margin-top:.08in">Operational events flow to accounting with full context, not as orphan entries.</p>
+        frame(`<h2>Accounting is not an afterthought</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Operational events flow to accounting with full context, not as orphan entries.</p>
           <div class="grid grid-2" style="margin-top:.32in">
             <div class="panel"><h3>Operational Event</h3><p style="margin-top:.14in;color:var(--text)">Service invoice approved<br/>ABC HVAC<br/>$725</p><ul class="list"><li>SOP followed</li><li>User trained</li><li>Evidence captured</li><li>Approval obtained</li></ul></div>
             <div class="panel accent-cyan"><h3>Accounting Impact</h3><table class="table"><tr><td>GL Account</td><td>6300</td></tr><tr><td>Service Expense</td><td>$725</td></tr><tr><td>Amount</td><td>$725</td></tr><tr><td>Location</td><td>Main Office</td></tr><tr><td>Asset</td><td>RTU-006</td></tr><tr><td>Vendor</td><td>ABC HVAC</td></tr></table></div>
           </div>
+          <div class="brief-grid" style="margin-top:.3in">
+            <div class="brief-item"><h3>Finance sees why</h3><p>The GL event is supported by source record, SOP, approval and vendor context.</p></div>
+            <div class="brief-item"><h3>Audit follows one chain</h3><p>Reviewers can reconstruct the event without chasing files across systems.</p></div>
+          </div>
           <div class="callout">Clean data in. Clean books out. Audit confidence all the way through.</div>`, 10, "financial integrity"),
 
-        frame(`<h2>Exception management keeps work moving</h2><p class="subtitle" style="margin-top:.08in">Exceptions are captured, routed, resolved and retained.</p>
+        frame(`<h2>Exception management keeps work moving</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Exceptions are captured, routed, resolved and retained.</p>
           <div class="grid grid-2" style="margin-top:.32in">
             <div class="stack">${["Price mismatch|Invoice + Contract","Item not found|Not in master data","Damaged goods|Container exception","Policy exception|Requires approval"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card row" style="border-color:${["var(--magenta)","var(--blue)","var(--orange)","var(--green)"][i]}">${icon(["invoice","folder","shield","audit"][i],["var(--magenta)","var(--blue)","var(--orange)","var(--green)"][i])}<div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}</div>
             <div class="panel"><h3>Exception Workflow</h3><ul class="list"><li>Route to right approver</li><li>Decision recorded</li><li>Continue or adjust</li><li>Evidence retained</li></ul></div>
           </div>
+          <div class="brief-grid" style="margin-top:.3in">
+            <div class="brief-item"><h3>Operational continuity</h3><p>Work can continue with transparent decisions instead of informal workarounds.</p></div>
+            <div class="brief-item"><h3>Control preservation</h3><p>The reason, approver and supporting evidence remain attached to the record.</p></div>
+          </div>
           <div class="callout">Exceptions are visible, not hidden.</div>`, 11, "financial integrity"),
 
-        frame(`<h2>Dashboards that drive behavior</h2><p class="subtitle" style="margin-top:.08in">Real-time visibility across operations, compliance and finance.</p>
-          <div class="grid grid-3" style="margin-top:.35in">
-            <div class="panel"><h3>Operations</h3><ul class="list"><li>Tasks completed</li><li>On-time performance</li><li>Exceptions</li><li>Backlog</li></ul><div class="chart-bars">${[35,48,28,66,54,82].map(h=>`<span class="bar" style="height:${h}%"></span>`).join("")}</div></div>
-            <div class="panel"><h3>Compliance</h3><ul class="list"><li>SOP adherence</li><li>Training status</li><li>Audit readiness</li><li>Evidence completeness</li></ul><div class="center"><div class="orb" style="width:1.25in;height:1.25in;font-size:.24in">92%</div></div></div>
-            <div class="panel"><h3>Finance</h3><ul class="list"><li>Spend by category</li><li>GL impact</li><li>Vendor spend</li><li>Cost savings</li></ul><div class="spark"></div></div>
+        frame(`<h2>Dashboards that drive behavior</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Real-time visibility across operations, compliance and finance.</p>
+          <div class="brief-grid">
+            <div class="brief-item"><h3>Operations</h3><p>Tasks completed, on-time performance, exceptions and backlog.</p><div class="chart-bars">${[35,48,28,66,54,82].map(h=>`<span class="bar" style="height:${h}%"></span>`).join("")}</div></div>
+            <div class="brief-item"><h3>Compliance</h3><p>SOP adherence, training status, audit readiness and evidence completeness.</p><div class="center" style="margin-top:.14in"><div class="orb" style="width:1.12in;height:1.12in;font-size:.22in">92%</div></div></div>
+            <div class="brief-item"><h3>Finance</h3><p>Spend by category, GL impact, vendor spend and cost savings.</p><table class="table" style="margin-top:.12in"><tr><td>GL impact</td><td>$12.4k</td></tr><tr><td>Vendor spend</td><td>Tracked</td></tr><tr><td>Cost savings</td><td>Measured</td></tr></table></div>
+            <div class="brief-item"><h3>Executive use</h3><p>Leadership gets one view of whether the operating model is performing, controlled and improving.</p></div>
           </div>
           <div class="callout">Metrics drive improvements when the data is connected and trusted.</div>`, 12, "financial return"),
 
-        frame(`<h2>Platform architecture at a glance</h2><p class="subtitle" style="margin-top:.08in">Secure, scalable and built for integration.</p>
-          <div class="grid grid-6" style="margin-top:.32in;display:grid;grid-template-columns:repeat(6,1fr);gap:.14in">${["Web Portal","Mobile Apps","API Gateway","AI/ML Services","Workflow Engine","Integration Layer"].map((x,i)=>`<div class="card center">${icon(["building","phone","bolt","brain","graph","shield"][i])}<h3 style="margin-top:.1in;text-align:center">${x}</h3></div>`).join("")}</div>
-          <div class="panel" style="margin-top:.35in"><div class="flow" style="justify-content:space-around"><p>Data Layers</p><p>Metadata</p><p>Relationships</p><p>Audit</p><p>Transactions</p></div></div>
-          <div class="panel" style="margin-top:.18in"><div class="flow" style="justify-content:space-around"><p>Security</p><p>Identity</p><p>Encryption</p><p>Compliance</p><p>Monitoring</p></div></div>
+        frame(`<h2>Platform architecture at a glance</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Secure, scalable and built for integration.</p>
+          <div class="grid grid-2" style="margin-top:.32in">
+            ${["Web Portal|Executive and operational command surface","Mobile Apps|Field evidence capture and workflow execution","API Gateway|Controlled connection to enterprise systems","AI/ML Services|Classification, extraction and confidence scoring","Workflow Engine|Approvals, routing and exception handling","Integration Layer|Accounting, HR, procurement and data platforms"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card row">${icon(["building","phone","bolt","brain","graph","shield"][i])}<div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}
+          </div>
+          <div class="mini-map">${["Metadata","Relationships","Audit","Security","Transactions"].map((x)=>`<div class="card center"><p style="color:var(--cyan);font-weight:900">${x}</p></div>`).join("")}</div>
           <div class="callout">Built for government, enterprise and highly regulated industries.</div>`, 13, "platform"),
 
-        frame(`<h2>Integration without disruption</h2><p class="subtitle" style="margin-top:.08in">Connects with the systems you have today.</p>
-          <div class="flow" style="margin-top:.55in;justify-content:center">
-            <div class="panel" style="width:3.25in"><h3>Existing Systems</h3><ul class="list"><li>ERP / Accounting</li><li>Purchasing / P2P</li><li>HR / LMS</li><li>Asset Management</li><li>Custom Systems</li></ul></div>
-            <div class="arrow">→</div><div class="orb">NETSIRV<br/>Integration<br/>Layer</div><div class="arrow">→</div>
-            <div class="panel" style="width:3.25in"><h3>APIs</h3><ul class="list"><li>Webhooks</li><li>SFTP / File</li><li>Standard connectors</li><li>Secure by design</li></ul></div>
+        frame(`<h2>Integration without disruption</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Connects with the systems you have today.</p>
+          <div class="grid grid-3" style="margin-top:.36in">
+            <div class="panel"><h3>Existing Systems</h3><ul class="list"><li>ERP / Accounting</li><li>Purchasing / P2P</li><li>HR / LMS</li><li>Asset Management</li><li>Custom Systems</li></ul></div>
+            <div class="center"><div class="orb" style="width:1.62in;height:1.62in">NETSIRV<br/>Integration<br/>Layer</div></div>
+            <div class="panel"><h3>APIs</h3><ul class="list"><li>Webhooks</li><li>SFTP / File</li><li>Standard connectors</li><li>Secure by design</li></ul></div>
           </div>
-          <div class="caption" style="margin-top:.4in">Open standards. Secure connections. Real operational value.</div>`, 14, "platform"),
+          <div class="brief-grid" style="margin-top:.32in">
+            <div class="brief-item"><h3>Adoption advantage</h3><p>Teams do not have to abandon core systems to gain operational control.</p></div>
+            <div class="brief-item"><h3>Scale advantage</h3><p>The same integration pattern can expand process by process.</p></div>
+          </div>
+          <div class="callout">Open standards. Secure connections. Real operational value.</div>`, 14, "platform"),
 
         frame(`<h2>Implementation roadmap</h2><p class="subtitle" style="margin-top:.08in">A phased approach that delivers value early and scales confidently.</p>
           <div class="timeline" style="margin-top:.42in">${[
