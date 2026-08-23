@@ -1044,6 +1044,7 @@
         </div>
         <nav class="tabs" aria-label="Website tabs">
           <button class="tab" type="button" data-page="front" aria-selected="true">Front Pages</button>
+          <button class="tab" type="button" data-page="white-pages" aria-selected="false">White Pages</button>
           <button class="tab" type="button" data-page="operations" aria-selected="false">Operations</button>
           <button class="tab" type="button" data-page="platform" aria-selected="false">Platform</button>
           <button class="tab" type="button" data-page="roadmap" aria-selected="false">Roadmap</button>
@@ -1095,6 +1096,19 @@
             ["Why now", "Back-office complexity is growing faster than headcount should.", "Teams need systems that reduce repetitive coordination, preserve institutional knowledge, and make every process easier to execute consistently.", "See the opportunity", "03-why-this-matters-now.png", "Why this matters now"],
             ["The old model breaks", "Folders organize files. They do not run operations.", "Traditional document systems isolate information from workflow, relationships, approvals, accounting context and evidence.", "Compare the models", "04-traditional-document-management-falls-short.png", "Why traditional document management falls short"],
             ["One connected operating layer", "A unified ecosystem for SOPs, documents, people and workflow.", "Netsirv links content to the enterprise stack so information moves with work instead of sitting outside it.", "View the ecosystem", "05-netsirv-ecosystem-model.png", "The Netsirv ecosystem model"],
+          ],
+        },
+        {
+          id: "white-pages",
+          label: "White Pages",
+          title: "White papers for the operating layer.",
+          summary: "Executive-ready briefs that turn the visual story into decision material for leadership, operations, finance, IT and implementation teams.",
+          sections: [
+            ["Executive white paper", "The business case for SOP + document intelligence.", "Position the platform as an operating layer that reduces coordination waste, improves governance, preserves evidence and turns business records into usable decision context.", "Read the executive case", "whitepaper-executive.png", "Executive white paper"],
+            ["Governance brief", "Turn procedures into provable operational controls.", "Translate SOPs, training, approvals and field evidence into a defensible control model that shows who did what, under which procedure, with what supporting record.", "Review the governance model", "whitepaper-governance.png", "Governance white paper"],
+            ["AI document intelligence brief", "Make unstructured documents useful without surrendering control.", "Define how AI classification, extraction, confidence scoring and human review can accelerate document workflows while keeping operators accountable for trusted data.", "Explore AI document intelligence", "whitepaper-ai-documents.png", "AI document intelligence white paper"],
+            ["Finance and audit brief", "Connect operational evidence to the financial event.", "Show how invoices, service records, approvals, vendors, jobs, assets and GL context become one reviewable trail for accounting, audit, exception management and close discipline.", "See finance context", "whitepaper-finance-audit.png", "Finance and audit white paper"],
+            ["Pilot blueprint", "Validate the operating model before scaling it.", "Outline a focused pilot with one workflow, one team, measurable outcomes, integration checkpoints and a clear path from quick win to enterprise rollout.", "Plan the pilot", "whitepaper-pilot-blueprint.png", "Pilot blueprint white paper"],
           ],
         },
         {
@@ -1218,6 +1232,37 @@
                 <span><strong>Master</strong><span>Catalog / PIM</span></span>
               </div>
             </div>`;
+          case "whitepaper-executive.png":
+            return grid("two", [
+              `<div class="viz-card"><strong>Decision Thesis</strong>${steps(["Documents become operational data", "SOPs become enforceable controls", "Evidence stays attached to work", "Dashboards surface business risk"])}</div>`,
+              `<div class="viz-card"><strong>Leadership Outcomes</strong>${table([["Waste", "Less rework"], ["Control", "Clear ownership"], ["Audit", "Source evidence"], ["Scale", "Repeatable rollout"]])}</div>`,
+            ]) + `<div class="viz-callout">The white paper frames invoi as the system that connects how work is supposed to happen with proof that it did.</div>`;
+          case "whitepaper-governance.png":
+            return grid("five", [
+              card("Procedure", "Approved SOP", "S"),
+              card("Readiness", "Training + role proof", "T", "var(--magenta)"),
+              card("Action", "Task performed", "A", "var(--blue)"),
+              card("Evidence", "Record retained", "E"),
+              card("Review", "Audit trail", "R", "#13e6a3"),
+            ]) + `<div class="viz-callout">A governance model only works when the procedure, person, action and evidence are connected.</div>`;
+          case "whitepaper-ai-documents.png":
+            return grid("two", [
+              `<div>${steps(["Capture original record", "Classify document type", "Extract structured fields", "Score confidence", "Route human review"])}</div>`,
+              `<div class="viz-card"><strong>Trust Boundary</strong>${table([["AI", "Suggests"], ["Operator", "Verifies"], ["Workflow", "Routes"], ["Audit log", "Retains"]])}</div>`,
+            ]);
+          case "whitepaper-finance-audit.png":
+            return grid("two", [
+              `<div class="viz-card"><strong>Operational Evidence</strong>${table([["Invoice", "ABC HVAC"], ["Asset", "RTU-006"], ["SOP", "Maintenance"], ["Approval", "Manager"]])}</div>`,
+              `<div class="viz-card"><strong>Financial Context</strong>${table([["GL", "6300"], ["Expense", "$725"], ["Location", "Main Office"], ["Exception", "None"]])}</div>`,
+            ]) + `<div class="viz-callout">Finance gets the context behind the number, not just another detached document.</div>`;
+          case "whitepaper-pilot-blueprint.png":
+            return `<div class="viz-road">${[
+              ["Define", "One workflow", "1"],
+              ["Instrument", "Data + evidence", "2"],
+              ["Train", "Users + controls", "3"],
+              ["Measure", "Cycle time + accuracy", "4"],
+              ["Scale", "Repeatable pattern", "5"],
+            ].map(([title, text, label], index) => card(title, text, label, ["var(--cyan)", "var(--magenta)", "var(--blue)", "#f7c948", "#13e6a3"][index])).join("")}</div><div class="viz-callout">The pilot white page converts the platform story into a concrete implementation path.</div>`;
           case "06-universal-document-intelligence.png":
             return grid("two", [`<div>${steps(["Capture original", "Classify document type", "Extract key data", "Score confidence", "Review human-in-loop", "Route to workflow"])}</div>`, `<div class="viz-card"><strong>AI Extraction Review</strong>${table([["Vendor", "ABC HVAC"], ["Date", "08/16/26"], ["Work", "RTU repair"], ["Materials", "$140.20"], ["Total", "$725.00"]])}</div>`]);
           case "07-mobile-governed-records.png":
