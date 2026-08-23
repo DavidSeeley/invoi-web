@@ -441,6 +441,73 @@
         border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
       }
 
+      .relation-stage {
+        display: grid;
+        grid-template-columns: 1.7in minmax(0, 1fr);
+        gap: 0.34in;
+        align-items: center;
+        margin-top: 0.26in;
+      }
+
+      .relation-hub {
+        width: 1.5in;
+        height: 1.5in;
+        border: 0.04in solid var(--cyan);
+        border-radius: 999px;
+        background: #f4ebff;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: var(--text);
+        font-weight: 950;
+        line-height: 1.15;
+      }
+
+      body:not(.theme-light) .relation-hub {
+        background: #07172a;
+      }
+
+      .relationship-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.18in 0.26in;
+      }
+
+      .relationship-item {
+        padding-top: 0.12in;
+        border-top: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+      }
+
+      .relationship-item h3 {
+        color: var(--cyan);
+        font-size: 0.16in;
+      }
+
+      .relationship-item p {
+        margin-top: 0.04in;
+      }
+
+      .evidence-chain {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.16in 0.34in;
+        margin-top: 0.32in;
+      }
+
+      .evidence-step {
+        display: grid;
+        grid-template-columns: 0.54in minmax(0, 1fr);
+        gap: 0.16in;
+        align-items: center;
+        min-height: 0.72in;
+        padding-bottom: 0.12in;
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+      }
+
+      .evidence-step h3 {
+        color: currentColor;
+      }
+
       .list {
         margin: 0.13in 0 0;
         padding: 0;
@@ -594,6 +661,7 @@
         height: 1.15in;
         display: flex;
         align-items: end;
+        justify-content: center;
         gap: 0.08in;
         padding-top: 0.2in;
       }
@@ -780,14 +848,35 @@
             <div class="panel"><h3>Vendor Service Invoice</h3><table class="table"><tr><td>Vendor</td><td>ABC HVAC</td></tr><tr><td>Location</td><td>Main Office</td></tr><tr><td>Asset</td><td>RTU-006</td></tr><tr><td>SOP</td><td>Maintenance SOP</td></tr><tr><td>Purchase</td><td>Service expense</td></tr><tr><td>Contract</td><td>2026 MSA</td></tr></table></div>
             <div class="panel accent-cyan"><h3>What changes</h3><ul class="list"><li>Every file has business identity.</li><li>Every approval retains source context.</li><li>Every finance event can be traced back to work.</li></ul></div>
           </div>
-          <div class="center" style="margin-top:.36in"><div class="orb" style="width:1.35in;height:1.35in">${icon("document")}<br/>Document</div></div>
-          <div class="mini-map">${["Vendor","Asset","SOP","GL","Approval"].map((x)=>`<div class="card center"><p style="color:var(--cyan);font-weight:900">${x}</p></div>`).join("")}</div>
+          <div class="relation-stage">
+            <div class="relation-hub">${icon("document")}<span>Document</span></div>
+            <div class="relationship-grid">
+              ${[
+                ["Vendor","ABC HVAC and contract terms"],
+                ["Asset","RTU-006 service history"],
+                ["SOP","Maintenance procedure v2.1"],
+                ["GL","Expense category and location"],
+                ["Approval","Manager decision and timestamp"],
+                ["Evidence","Original file and metadata"]
+              ].map(([a,b])=>`<div class="relationship-item"><h3>${a}</h3><p>${b}</p></div>`).join("")}
+            </div>
+          </div>
           <div class="callout">This is the difference between storing a file and creating an operational knowledge graph.</div>`, 8, "document intelligence"),
 
-        frame(`<h2>Audit & evidence chain</h2><p class="subtitle" style="margin-top:.08in">Every meaningful event can be reconstructed from governing SOP through financial output.</p>
-          <div class="flow" style="margin-top:.42in;justify-content:center">${["SOP","Training","User","Device","Document","Purchase","Product","Approval","GL"].map((x,i)=>`<div class="center" style="color:${["var(--blue)","var(--purple)","var(--cyan)","var(--blue)","var(--cyan)","var(--yellow)","var(--orange)","var(--yellow)","var(--magenta)"][i]}">${icon(["document","user","user","phone","folder","invoice","folder","shield","invoice"][i],"currentColor")}<p style="margin-top:.05in;color:currentColor;font-weight:900">${x}</p></div>${i<8?'<div class="arrow">→</div>':''}`).join("")}</div>
+        frame(`<h2>Audit & evidence chain</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Every meaningful event can be reconstructed from governing SOP through financial output.</p>
+          <div class="evidence-chain">${[
+            ["SOP","Current procedure governs the action","var(--blue)","document"],
+            ["Training","User readiness is verified","var(--purple)","user"],
+            ["User","Actor and role are retained","var(--cyan)","user"],
+            ["Device","Source capture is known","var(--blue)","phone"],
+            ["Document","Original record is preserved","var(--cyan)","folder"],
+            ["Purchase","Commercial event is classified","var(--yellow)","invoice"],
+            ["Product","Item, asset or service is linked","var(--orange)","folder"],
+            ["Approval","Decision is recorded","var(--yellow)","shield"],
+            ["GL","Financial impact is traceable","var(--magenta)","invoice"]
+          ].map(([a,b,color,ic])=>`<div class="evidence-step" style="color:${color}">${icon(ic,"currentColor")}<div><h3>${a}</h3><p>${b}</p></div></div>`).join("")}</div>
           <div class="callout">Evidence is captured at the source — not bolted on after the fact.</div>
-          <div class="grid grid-4" style="margin-top:.25in">${["Who|User role, training, approval","What|SOP, service, document, transaction","Where|Location, device, department","Proof|Original document, AI score, correction, audit log"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card"><h3 style="color:${["var(--blue)","var(--purple)","var(--yellow)","var(--green)"][i]}">${a}</h3><p>${b}</p></div>`}).join("")}</div>`, 9, "document intelligence"),
+          <div class="brief-grid" style="margin-top:.25in">${["Who|User role, training, approval","What|SOP, service, document, transaction","Where|Location, device, department","Proof|Original document, AI score, correction, audit log"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="brief-item"><h3 style="color:${["var(--blue)","var(--purple)","var(--yellow)","var(--green)"][i]}">${a}</h3><p>${b}</p></div>`}).join("")}</div>`, 9, "document intelligence"),
 
         frame(`<h2>Accounting is not an afterthought</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Operational events flow to accounting with full context, not as orphan entries.</p>
           <div class="grid grid-2" style="margin-top:.32in">
@@ -814,7 +903,7 @@
         frame(`<h2>Dashboards that drive behavior</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Real-time visibility across operations, compliance and finance.</p>
           <div class="brief-grid">
             <div class="brief-item"><h3>Operations</h3><p>Tasks completed, on-time performance, exceptions and backlog.</p><div class="chart-bars">${[35,48,28,66,54,82].map(h=>`<span class="bar" style="height:${h}%"></span>`).join("")}</div></div>
-            <div class="brief-item"><h3>Compliance</h3><p>SOP adherence, training status, audit readiness and evidence completeness.</p><div class="center" style="margin-top:.14in"><div class="orb" style="width:1.12in;height:1.12in;font-size:.22in">92%</div></div></div>
+            <div class="brief-item"><h3>Compliance</h3><p>SOP adherence, training status, audit readiness and evidence completeness.</p><div class="center" style="margin-top:.14in;min-height:1.3in;justify-items:center"><div class="orb" style="width:1.12in;height:1.12in;font-size:.22in">92%</div></div></div>
             <div class="brief-item"><h3>Finance</h3><p>Spend by category, GL impact, vendor spend and cost savings.</p><table class="table" style="margin-top:.12in"><tr><td>GL impact</td><td>$12.4k</td></tr><tr><td>Vendor spend</td><td>Tracked</td></tr><tr><td>Cost savings</td><td>Measured</td></tr></table></div>
             <div class="brief-item"><h3>Executive use</h3><p>Leadership gets one view of whether the operating model is performing, controlled and improving.</p></div>
           </div>
