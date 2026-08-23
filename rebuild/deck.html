@@ -208,38 +208,15 @@
       }
 
       .logo {
-        display: inline-flex;
-        align-items: flex-end;
-        gap: 0.03in;
-        color: var(--text);
-        font-size: 0.46in;
-        font-weight: 500;
-        letter-spacing: -0.04em;
-      }
-
-      .logo-mark {
-        width: 0.62in;
-        height: 0.62in;
-        border: 0.05in solid var(--purple);
-        border-left-color: var(--cyan);
-        border-bottom-color: transparent;
-        border-radius: 999px;
-        display: inline-block;
-        transform: translateY(0.08in);
-      }
-
-      .logo-sub {
-        margin-top: -0.03in;
-        color: var(--muted);
-        font-size: 0.11in;
-        font-weight: 800;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
+        display: block;
+        width: 3.1in;
+        height: auto;
+        filter: drop-shadow(0 0 0.18in color-mix(in srgb, var(--cyan) 24%, transparent));
       }
 
       .grid {
         display: grid;
-        gap: 0.22in;
+        gap: 0.3in;
       }
 
       .grid-2 {
@@ -258,30 +235,27 @@
       .metric,
       .card {
         position: relative;
-        border: 1.5px solid var(--line);
-        border-radius: 0.16in;
-        background: color-mix(in srgb, var(--panel) 88%, transparent);
-        box-shadow: 0 0.16in 0.38in var(--shadow);
+        background: transparent;
       }
 
       .panel {
-        padding: 0.24in;
+        padding: 0.06in 0;
       }
 
       .card {
-        padding: 0.18in;
+        padding: 0.04in 0;
       }
 
       .metric {
-        padding: 0.17in;
+        padding: 0.05in 0;
       }
 
       .panel.accent-cyan {
-        border-color: color-mix(in srgb, var(--cyan) 70%, var(--line));
+        color: inherit;
       }
 
       .panel.accent-purple {
-        border-color: color-mix(in srgb, var(--purple) 70%, var(--line));
+        color: inherit;
       }
 
       .row {
@@ -293,7 +267,7 @@
       .stack {
         display: flex;
         flex-direction: column;
-        gap: 0.18in;
+        gap: 0.24in;
       }
 
       .small {
@@ -349,11 +323,8 @@
         align-items: center;
         gap: 0.08in;
         min-height: 0.38in;
-        padding: 0.08in 0.18in;
-        border: 1.5px solid currentColor;
-        border-radius: 0.12in;
+        padding: 0.05in 0;
         color: var(--cyan);
-        background: color-mix(in srgb, var(--panel) 88%, transparent);
         font-size: 0.12in;
         font-weight: 900;
         letter-spacing: 0.04em;
@@ -374,15 +345,13 @@
 
       .callout {
         margin-top: 0.28in;
-        padding: 0.17in 0.22in;
-        border: 1.5px solid var(--cyan);
-        border-radius: 0.12in;
+        padding: 0.03in 0 0.03in 0.18in;
+        border-left: 0.035in solid var(--cyan);
         color: var(--cyan);
-        background: color-mix(in srgb, var(--panel-2) 72%, transparent);
         font-size: 0.16in;
         font-weight: 850;
         line-height: 1.35;
-        text-align: center;
+        text-align: left;
       }
 
       .list {
@@ -415,21 +384,42 @@
 
       .num-card {
         display: grid;
-        grid-template-columns: 0.46in minmax(0, 1fr);
-        gap: 0.15in;
+        grid-template-columns: 0.58in minmax(0, 1fr);
+        gap: 0.2in;
         align-items: start;
       }
 
       .num {
-        width: 0.36in;
-        height: 0.36in;
+        width: 0.5in;
+        height: 0.5in;
         border: 2px solid var(--cyan);
         border-radius: 999px;
         color: var(--cyan);
         display: grid;
         place-items: center;
-        font-size: 0.18in;
-        font-weight: 900;
+        font-size: 0.23in;
+        font-weight: 950;
+        background:
+          radial-gradient(circle at 35% 28%, color-mix(in srgb, currentColor 24%, transparent), transparent 55%),
+          color-mix(in srgb, currentColor 9%, transparent);
+        box-shadow:
+          0 0 0.2in color-mix(in srgb, currentColor 34%, transparent),
+          inset 0 0 0.16in color-mix(in srgb, currentColor 12%, transparent);
+      }
+
+      .num-card:nth-child(2n) .num {
+        color: var(--blue);
+        border-color: var(--blue);
+      }
+
+      .num-card:nth-child(3n) .num {
+        color: var(--purple);
+        border-color: var(--purple);
+      }
+
+      .num-card:nth-child(5n) .num {
+        color: var(--green);
+        border-color: var(--green);
       }
 
       .flow {
@@ -473,13 +463,12 @@
         width: 100%;
         border-collapse: collapse;
         overflow: hidden;
-        border-radius: 0.12in;
         color: var(--text);
       }
 
       .table th,
       .table td {
-        padding: 0.09in 0.1in;
+        padding: 0.09in 0;
         border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
         font-size: 0.12in;
         text-align: left;
@@ -532,7 +521,7 @@
       .timeline {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 0.12in;
+        gap: 0.24in;
         align-items: stretch;
       }
 
@@ -551,16 +540,12 @@
       }
 
       .closing-logo {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.14in;
+        display: block;
         margin-top: 0.34in;
-        padding: 0.18in 0.28in;
-        border: 1.5px solid var(--line);
-        border-radius: 0.14in;
-        background: color-mix(in srgb, var(--panel) 90%, transparent);
-        font-size: 0.36in;
-        font-weight: 650;
+        padding: 0;
+        width: 4.25in;
+        height: auto;
+        filter: drop-shadow(0 0 0.22in color-mix(in srgb, var(--cyan) 24%, transparent));
       }
     </style>
   </head>
@@ -613,7 +598,7 @@
       }
 
       const slides = [
-        frame(`<div class="logo">invoi<span class="logo-mark"></span></div><div class="logo-sub">AI INFUSED SOP</div>
+        frame(`<img class="logo" src="../web/assets/invoi-logo-ai-infused-sop-cropped-wide.png" alt="invoi AI infused SOP logo" />
           <div style="margin-top:.45in" class="kicker">Expanded Executive Narrative</div>
           <h1>Netsirv SOP &<br/>Document Management<br/>Ecosystem</h1>
           <p class="subtitle">A client decision deck for turning procedures, documents, training, mobile capture, AI and accounting into one connected operating layer.</p>
@@ -771,7 +756,7 @@
 
         frame(`<h2 style="font-size:.48in">Let’s build what’s next</h2><p class="subtitle" style="margin-top:.08in">Turn your SOPs, documents and data into operational excellence.</p>
           <div style="margin-top:.55in;max-width:5in" class="panel"><ul class="list" style="gap:.22in"><li>Start with a conversation</li><li>Define your pilot</li><li>Deliver quick wins</li><li>Scale with confidence</li></ul></div>
-          <div class="closing-logo"><span>Letivi</span><span style="color:var(--cyan)">+</span><span>invoi<span class="logo-mark" style="width:.4in;height:.4in;border-width:.035in"></span></span></div>
+          <img class="closing-logo" src="../web/assets/invoi-logo-ai-infused-sop-cropped-wide.png" alt="invoi AI infused SOP logo" />
           <div class="callout" style="position:absolute;left:.58in;right:.58in;bottom:.66in;margin:0">Work governed. Evidence connected. Outcomes delivered.</div>`, 19, "next steps"),
       ];
 
