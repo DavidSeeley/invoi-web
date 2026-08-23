@@ -422,10 +422,15 @@
         min-height: 1.42in;
         padding: 0.16in 0 0;
         border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+        text-align: center;
       }
 
       .outcome .big-number {
         margin-top: 0.08in;
+      }
+
+      .outcome .icon {
+        margin: 0 auto;
       }
 
       .mini-map {
@@ -485,6 +490,38 @@
 
       .relationship-item p {
         margin-top: 0.04in;
+      }
+
+      .object-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.22in 0.34in;
+        margin-top: 0.32in;
+      }
+
+      .object-tile {
+        min-height: 1.08in;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        text-align: center;
+        padding: 0.1in 0.06in 0.02in;
+        border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      }
+
+      .object-tile .icon {
+        margin-bottom: 0.12in;
+      }
+
+      .object-tile p {
+        margin-top: 0.05in;
+        max-width: 2.45in;
+      }
+
+      .object-tile.span-2 {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(100%, 3.4in);
       }
 
       .evidence-chain {
@@ -798,18 +835,15 @@
 
         frame(`<h2>The Netsirv ecosystem model</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">A reusable operating layer: SOPs guide work, documents prove work, and connected data drives outcomes.</p>
           <div class="center" style="margin-top:.26in"><div class="orb" style="width:1.72in;height:1.72in">SOP + DOCUMENT<br/>CONTROL CENTER</div></div>
-          <div class="grid grid-2" style="margin-top:.34in">
-            <div class="stack">
-              <div class="card row">${icon("user","var(--purple)")}<div><h3>Academy</h3><p>Training and role readiness</p></div></div>
-              <div class="card row">${icon("phone","var(--cyan)")}<div><h3>Mobile</h3><p>Field capture and evidence</p></div></div>
-              <div class="card row">${icon("brain","var(--purple)")}<div><h3>AI document</h3><p>Repository, search and extraction</p></div></div>
-            </div>
-            <div class="stack">
-              <div class="card row">${icon("audit","var(--yellow)")}<div><h3>Procurement</h3><p>Workflow and approvals</p></div></div>
-              <div class="card row">${icon("document","var(--cyan)")}<div><h3>Vendor + contracts</h3><p>Commercial context</p></div></div>
-              <div class="card row">${icon("invoice","var(--green)")}<div><h3>Accounting</h3><p>Financial output</p></div></div>
-              <div class="card row">${icon("folder","var(--blue)")}<div><h3>Master catalog</h3><p>Shared operational data</p></div></div>
-            </div>
+          <div class="object-grid" style="margin-top:.3in">
+            ${[
+              ["Academy","Training and role readiness","user","var(--purple)"],
+              ["Mobile","Field capture and evidence","phone","var(--cyan)"],
+              ["AI document","Repository, search and extraction","brain","var(--purple)"],
+              ["Procurement","Workflow and approvals","audit","var(--yellow)"],
+              ["Vendor + contracts","Commercial context","document","var(--cyan)"],
+              ["Accounting","Financial output","invoice","var(--green)"]
+            ].map(([a,b,ic,color])=>`<div class="object-tile">${icon(ic,color)}<h3>${a}</h3><p>${b}</p></div>`).join("")}
           </div>
           <div class="brief-grid" style="margin-top:.26in">
             <div class="brief-item"><h3>Operating control</h3><p>Procedures, permissions and evidence travel together instead of living in disconnected systems.</p></div>
@@ -819,10 +853,10 @@
 
         frame(`<h2>Universal document intelligence</h2><p class="subtitle" style="margin-top:.08in">One intake pipeline handles SOPs, invoices, contracts, BOLs, receipts, photos and handwritten documents.</p>
           <div class="grid grid-2" style="margin-top:.28in;grid-template-columns:1.05fr .95fr">
-            <div class="panel"><div class="stack">${["Capture|Scanning + Original","Classify|Document Type","Extract|Key Data","Score|Confidence","Review|Human-in-the-Loop","Route|To Workflow"].map((x,i)=>{const [a,b]=x.split("|"); return `<div class="row">${icon(["phone","folder","document","shield","user","bolt"][i])}<div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}</div></div>
+            <div class="panel"><div class="object-grid" style="margin-top:0;gap:.16in .2in">${["Capture|Scanning + Original","Classify|Document Type","Extract|Key Data","Score|Confidence","Review|Human-in-the-Loop","Route|To Workflow"].map((x,i)=>{const [a,b]=x.split("|"); return `<div class="object-tile" style="min-height:.92in">${icon(["phone","folder","document","shield","user","bolt"][i])}<h3>${a}</h3><p>${b}</p></div>`}).join("")}</div></div>
             <div class="panel accent-purple"><h3>AI Extraction Review</h3><table class="table"><tr><th>Invoice</th><th>Service Invoice</th></tr><tr><td>Vendor</td><td>ABC HVAC</td></tr><tr><td>Date</td><td>08/16/26</td></tr><tr><td>Work</td><td>RTU repair</td></tr><tr><td>Materials</td><td>$140.20</td></tr><tr><td>Total</td><td>$725.00</td></tr></table></div>
           </div>
-          <div class="grid grid-3" style="margin-top:.25in">${["AI assists|It classifies documents, flags exceptions and extracts data.","People control|Operators verify data before it becomes trusted.","Evidence remains|Original files, metadata, approvals and relationships are retained."].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card num-card"><div class="num">${i+1}</div><div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}</div>`, 5, "document intelligence"),
+          <div class="object-grid" style="margin-top:.25in">${["AI assists|It classifies documents, flags exceptions and extracts data.","People control|Operators verify data before it becomes trusted.","Evidence remains|Original files, metadata, approvals and relationships are retained."].map((x,i)=>{const[a,b]=x.split("|");return `<div class="object-tile ${i === 2 ? "span-2" : ""}"><div class="num">${i+1}</div><h3 style="margin-top:.1in">${a}</h3><p>${b}</p></div>`}).join("")}</div>`, 5, "document intelligence"),
 
         frame(`<h2>Mobile turns field work into governed records</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">The employee experience stays simple: open task, see SOP, scan evidence, verify and submit.</p>
           <div class="grid grid-2" style="margin-top:.34in">
@@ -910,8 +944,8 @@
           <div class="callout">Metrics drive improvements when the data is connected and trusted.</div>`, 12, "financial return"),
 
         frame(`<h2>Platform architecture at a glance</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Secure, scalable and built for integration.</p>
-          <div class="grid grid-2" style="margin-top:.32in">
-            ${["Web Portal|Executive and operational command surface","Mobile Apps|Field evidence capture and workflow execution","API Gateway|Controlled connection to enterprise systems","AI/ML Services|Classification, extraction and confidence scoring","Workflow Engine|Approvals, routing and exception handling","Integration Layer|Accounting, HR, procurement and data platforms"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card row">${icon(["building","phone","bolt","brain","graph","shield"][i])}<div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}
+          <div class="object-grid">
+            ${["Web Portal|Executive and operational command surface","Mobile Apps|Field evidence capture and workflow execution","API Gateway|Controlled connection to enterprise systems","AI/ML Services|Classification, extraction and confidence scoring","Workflow Engine|Approvals, routing and exception handling","Integration Layer|Accounting, HR, procurement and data platforms"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="object-tile">${icon(["building","phone","bolt","brain","graph","shield"][i])}<h3>${a}</h3><p>${b}</p></div>`}).join("")}
           </div>
           <div class="mini-map">${["Metadata","Relationships","Audit","Security","Transactions"].map((x)=>`<div class="card center"><p style="color:var(--cyan);font-weight:900">${x}</p></div>`).join("")}</div>
           <div class="callout">Built for government, enterprise and highly regulated industries.</div>`, 13, "platform"),
@@ -929,13 +963,13 @@
           <div class="callout">Open standards. Secure connections. Real operational value.</div>`, 14, "platform"),
 
         frame(`<h2>Implementation roadmap</h2><p class="subtitle" style="margin-top:.08in">A phased approach that delivers value early and scales confidently.</p>
-          <div class="timeline" style="margin-top:.42in">${[
+          <div class="object-grid" style="margin-top:.38in">${[
             ["Phase 1","Foundation","SOP intake, OCR setup, core workflow","var(--cyan)","document"],
             ["Phase 2","Mobile & AI","Mobile capture, AI extraction, catalog","var(--purple)","phone"],
             ["Phase 3","Accounting","Integrations, financial workflows","var(--green)","invoice"],
             ["Phase 4","Optimization","Dashboards, exceptions, advanced rules","var(--yellow)","graph"],
             ["Phase 5","Scale","Additional sites, advanced analytics","var(--magenta)","shield"]
-          ].map(([a,b,c,color,ic])=>`<div class="card"><div class="road-dot" style="color:${color}">${icon(ic,"currentColor")}</div><h3>${a}</h3><p style="color:${color};font-weight:900">${b}</p><p style="margin-top:.08in">${c}</p></div>`).join("")}</div>
+          ].map(([a,b,c,color,ic])=>`<div class="object-tile">${icon(ic,color)}<h3>${a}</h3><p style="color:${color};font-weight:900">${b}</p><p>${c}</p></div>`).join("")}</div>
           <div class="callout">Each phase is useful on day one and builds toward a fully connected operational platform.</div>`, 15, "roadmap"),
 
         frame(`<h2>Pilot program blueprint</h2><p class="subtitle" style="margin-top:.08in">Small scope. Clear outcomes. Low risk.</p>
