@@ -6,7 +6,7 @@
     <title>Netsirv SOP & Document Management Ecosystem</title>
     <style>
       @page {
-        size: 16in 9in;
+        size: 8.5in 11in;
         margin: 0;
       }
 
@@ -72,7 +72,7 @@
         }
 
         body.deck-web #deck {
-          width: 16in;
+          width: 8.5in;
           margin: 0 auto;
           zoom: var(--deck-zoom);
         }
@@ -93,7 +93,7 @@
         }
 
         body.single-page #deck {
-          width: 16in;
+          width: 8.5in;
           margin: 0 auto;
           zoom: var(--deck-zoom);
         }
@@ -105,9 +105,10 @@
 
       .slide {
         position: relative;
-        width: 16in;
-        height: 9in;
-        padding: 0.48in 0.58in;
+        isolation: isolate;
+        width: 8.5in;
+        height: 11in;
+        padding: 0.5in 0.46in;
         overflow: hidden;
         page-break-after: always;
         background:
@@ -127,7 +128,9 @@
         content: "";
         position: absolute;
         inset: 0;
+        z-index: 0;
         pointer-events: none;
+        opacity: 0.72;
         background-image:
           linear-gradient(90deg, color-mix(in srgb, var(--cyan) 10%, transparent) 1px, transparent 1px),
           linear-gradient(color-mix(in srgb, var(--cyan) 8%, transparent) 1px, transparent 1px);
@@ -139,11 +142,12 @@
         content: "";
         position: absolute;
         right: -0.25in;
-        top: 0.45in;
-        width: 5.4in;
-        height: 7.9in;
+        top: 0.6in;
+        width: 3.3in;
+        height: 9.4in;
+        z-index: 0;
         pointer-events: none;
-        opacity: 0.82;
+        opacity: 0.42;
         background:
           linear-gradient(135deg, transparent 7%, var(--blue) 7% 8%, transparent 8% 19%, var(--purple) 19% 20%, transparent 20% 31%, var(--cyan) 31% 32%, transparent 32%),
           linear-gradient(45deg, transparent 6%, var(--cyan) 6% 7%, transparent 7% 21%, var(--magenta) 21% 22%, transparent 22% 38%, var(--blue) 38% 39%, transparent 39%);
@@ -151,10 +155,20 @@
         mask-image: radial-gradient(circle at 58% 50%, black, transparent 76%);
       }
 
+      body.theme-light .slide::after {
+        opacity: 0.08;
+      }
+
+      .slide > * {
+        position: relative;
+        z-index: 2;
+      }
+
       .brand {
         position: absolute;
+        z-index: 3;
         top: 0.28in;
-        right: 0.48in;
+        right: 0.38in;
         color: var(--cyan);
         font-size: 0.13in;
         font-weight: 900;
@@ -171,9 +185,9 @@
 
       h1 {
         margin: 0.12in 0 0;
-        max-width: 8.5in;
+        max-width: 7.2in;
         color: var(--text);
-        font-size: 0.54in;
+        font-size: 0.44in;
         line-height: 1.05;
         letter-spacing: -0.02em;
       }
@@ -181,7 +195,7 @@
       h2 {
         margin: 0;
         color: var(--text);
-        font-size: 0.36in;
+        font-size: 0.3in;
         line-height: 1.08;
         letter-spacing: -0.015em;
       }
@@ -189,52 +203,29 @@
       h3 {
         margin: 0;
         color: var(--text);
-        font-size: 0.2in;
+        font-size: 0.17in;
         line-height: 1.2;
       }
 
       p {
         margin: 0;
         color: var(--muted);
-        font-size: 0.15in;
+        font-size: 0.13in;
         line-height: 1.45;
       }
 
       .subtitle {
         margin-top: 0.28in;
-        max-width: 6.1in;
+        max-width: 7.1in;
         color: color-mix(in srgb, var(--text) 84%, var(--muted));
         font-size: 0.18in;
       }
 
       .logo {
-        display: inline-flex;
-        align-items: flex-end;
-        gap: 0.03in;
-        color: var(--text);
-        font-size: 0.46in;
-        font-weight: 500;
-        letter-spacing: -0.04em;
-      }
-
-      .logo-mark {
-        width: 0.62in;
-        height: 0.62in;
-        border: 0.05in solid var(--purple);
-        border-left-color: var(--cyan);
-        border-bottom-color: transparent;
-        border-radius: 999px;
-        display: inline-block;
-        transform: translateY(0.08in);
-      }
-
-      .logo-sub {
-        margin-top: -0.03in;
-        color: var(--muted);
-        font-size: 0.11in;
-        font-weight: 800;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
+        display: block;
+        width: 3.1in;
+        height: auto;
+        filter: drop-shadow(0 0 0.18in color-mix(in srgb, var(--cyan) 24%, transparent));
       }
 
       .grid {
@@ -247,41 +238,43 @@
       }
 
       .grid-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .grid-4 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-5,
+      .grid-6 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       }
 
       .panel,
       .metric,
       .card {
         position: relative;
-        border: 1.5px solid var(--line);
-        border-radius: 0.16in;
-        background: color-mix(in srgb, var(--panel) 88%, transparent);
-        box-shadow: 0 0.16in 0.38in var(--shadow);
+        background: transparent;
       }
 
       .panel {
-        padding: 0.24in;
+        padding: 0.06in 0;
       }
 
       .card {
-        padding: 0.18in;
+        padding: 0.04in 0;
       }
 
       .metric {
-        padding: 0.17in;
+        padding: 0.05in 0;
       }
 
       .panel.accent-cyan {
-        border-color: color-mix(in srgb, var(--cyan) 70%, var(--line));
+        color: inherit;
       }
 
       .panel.accent-purple {
-        border-color: color-mix(in srgb, var(--purple) 70%, var(--line));
+        color: inherit;
       }
 
       .row {
@@ -293,7 +286,7 @@
       .stack {
         display: flex;
         flex-direction: column;
-        gap: 0.18in;
+        gap: 0.24in;
       }
 
       .small {
@@ -309,6 +302,7 @@
 
       .footer {
         position: absolute;
+        z-index: 3;
         left: 0.58in;
         bottom: 0.28in;
         color: var(--cyan);
@@ -320,6 +314,7 @@
 
       .page {
         position: absolute;
+        z-index: 3;
         right: 0.45in;
         bottom: 0.26in;
         color: color-mix(in srgb, var(--text) 92%, var(--muted));
@@ -349,11 +344,8 @@
         align-items: center;
         gap: 0.08in;
         min-height: 0.38in;
-        padding: 0.08in 0.18in;
-        border: 1.5px solid currentColor;
-        border-radius: 0.12in;
+        padding: 0.05in 0;
         color: var(--cyan);
-        background: color-mix(in srgb, var(--panel) 88%, transparent);
         font-size: 0.12in;
         font-weight: 900;
         letter-spacing: 0.04em;
@@ -374,15 +366,183 @@
 
       .callout {
         margin-top: 0.28in;
-        padding: 0.17in 0.22in;
-        border: 1.5px solid var(--cyan);
-        border-radius: 0.12in;
+        padding: 0.03in 0 0.03in 0.18in;
+        border-left: 0.035in solid var(--cyan);
         color: var(--cyan);
-        background: color-mix(in srgb, var(--panel-2) 72%, transparent);
         font-size: 0.16in;
         font-weight: 850;
         line-height: 1.35;
+        text-align: left;
+      }
+
+      .executive-note {
+        margin-top: 0.2in;
+        max-width: 6.7in;
+        color: color-mix(in srgb, var(--text) 90%, var(--muted));
+        font-size: 0.155in;
+        line-height: 1.48;
+      }
+
+      .section-rule {
+        width: 0.72in;
+        height: 0.03in;
+        margin: 0.18in 0 0;
+        background: linear-gradient(90deg, var(--cyan), var(--purple));
+        border-radius: 999px;
+      }
+
+      .brief-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.24in 0.36in;
+        margin-top: 0.3in;
+      }
+
+      .brief-item {
+        padding-top: 0.16in;
+        border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      }
+
+      .brief-item h3 {
+        color: var(--text);
+      }
+
+      .brief-item p {
+        margin-top: 0.05in;
+      }
+
+      .outcome-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.28in;
+        margin-top: 0.36in;
+      }
+
+      .outcome {
+        min-height: 1.42in;
+        padding: 0.16in 0 0;
+        border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
         text-align: center;
+      }
+
+      .outcome .big-number {
+        margin-top: 0.08in;
+      }
+
+      .outcome .icon {
+        margin: 0 auto;
+      }
+
+      .mini-map {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0.14in;
+        margin-top: 0.22in;
+        align-items: stretch;
+      }
+
+      .mini-map .card {
+        min-height: 0.7in;
+        border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      }
+
+      .relation-stage {
+        display: grid;
+        grid-template-columns: 1.7in minmax(0, 1fr);
+        gap: 0.34in;
+        align-items: center;
+        margin-top: 0.26in;
+      }
+
+      .relation-hub {
+        width: 1.5in;
+        height: 1.5in;
+        border: 0.04in solid var(--cyan);
+        border-radius: 999px;
+        background: #f4ebff;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: var(--text);
+        font-weight: 950;
+        line-height: 1.15;
+      }
+
+      body:not(.theme-light) .relation-hub {
+        background: #07172a;
+      }
+
+      .relationship-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.18in 0.26in;
+      }
+
+      .relationship-item {
+        padding-top: 0.12in;
+        border-top: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+      }
+
+      .relationship-item h3 {
+        color: var(--cyan);
+        font-size: 0.16in;
+      }
+
+      .relationship-item p {
+        margin-top: 0.04in;
+      }
+
+      .object-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.22in 0.34in;
+        margin-top: 0.32in;
+      }
+
+      .object-tile {
+        min-height: 1.08in;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        text-align: center;
+        padding: 0.1in 0.06in 0.02in;
+        border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      }
+
+      .object-tile .icon {
+        margin-bottom: 0.12in;
+      }
+
+      .object-tile p {
+        margin-top: 0.05in;
+        max-width: 2.45in;
+      }
+
+      .object-tile.span-2 {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: min(100%, 3.4in);
+      }
+
+      .evidence-chain {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.16in 0.34in;
+        margin-top: 0.32in;
+      }
+
+      .evidence-step {
+        display: grid;
+        grid-template-columns: 0.54in minmax(0, 1fr);
+        gap: 0.16in;
+        align-items: center;
+        min-height: 0.72in;
+        padding-bottom: 0.12in;
+        border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+      }
+
+      .evidence-step h3 {
+        color: currentColor;
       }
 
       .list {
@@ -410,32 +570,60 @@
         height: 0.08in;
         border-radius: 999px;
         background: var(--cyan);
-        box-shadow: 0 0 0.14in var(--cyan);
+        box-shadow: none;
       }
 
       .num-card {
         display: grid;
-        grid-template-columns: 0.46in minmax(0, 1fr);
-        gap: 0.15in;
-        align-items: start;
+        grid-template-columns: 0.58in minmax(0, 1fr);
+        gap: 0.2in;
+        align-items: center;
+        background: transparent !important;
+        box-shadow: none !important;
       }
 
       .num {
-        width: 0.36in;
-        height: 0.36in;
+        width: 0.5in;
+        height: 0.5in;
         border: 2px solid var(--cyan);
         border-radius: 999px;
         color: var(--cyan);
         display: grid;
         place-items: center;
-        font-size: 0.18in;
-        font-weight: 900;
+        font-size: 0.23in;
+        font-weight: 950;
+        background: #e7fbff !important;
+        box-shadow: none !important;
+        text-shadow: none;
+      }
+
+      .num-card:nth-child(2n) .num {
+        color: var(--blue);
+        border-color: var(--blue);
+        background: #edf3ff !important;
+      }
+
+      .num-card:nth-child(3n) .num {
+        color: var(--purple);
+        border-color: var(--purple);
+        background: #f4ebff !important;
+      }
+
+      .num-card:nth-child(5n) .num {
+        color: var(--green);
+        border-color: var(--green);
+        background: #e8fff5 !important;
+      }
+
+      body:not(.theme-light) .num {
+        background: #07172a !important;
       }
 
       .flow {
         display: flex;
         align-items: center;
         gap: 0.16in;
+        flex-wrap: wrap;
       }
 
       .arrow {
@@ -454,12 +642,8 @@
         height: 2.05in;
         border: 0.04in solid var(--cyan);
         border-radius: 999px;
-        background:
-          radial-gradient(circle, color-mix(in srgb, var(--purple) 25%, transparent), transparent 58%),
-          color-mix(in srgb, var(--panel) 82%, transparent);
-        box-shadow:
-          0 0 0.28in color-mix(in srgb, var(--cyan) 50%, transparent),
-          inset 0 0 0.42in color-mix(in srgb, var(--purple) 40%, transparent);
+        background: #f4ebff;
+        box-shadow: none;
         color: var(--text);
         display: grid;
         place-items: center;
@@ -469,17 +653,20 @@
         line-height: 1.2;
       }
 
+      body:not(.theme-light) .orb {
+        background: #07172a;
+      }
+
       .table {
         width: 100%;
         border-collapse: collapse;
         overflow: hidden;
-        border-radius: 0.12in;
         color: var(--text);
       }
 
       .table th,
       .table td {
-        padding: 0.09in 0.1in;
+        padding: 0.09in 0;
         border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
         font-size: 0.12in;
         text-align: left;
@@ -511,6 +698,7 @@
         height: 1.15in;
         display: flex;
         align-items: end;
+        justify-content: center;
         gap: 0.08in;
         padding-top: 0.2in;
       }
@@ -531,8 +719,8 @@
 
       .timeline {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0.12in;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.24in;
         align-items: stretch;
       }
 
@@ -551,16 +739,12 @@
       }
 
       .closing-logo {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.14in;
+        display: block;
         margin-top: 0.34in;
-        padding: 0.18in 0.28in;
-        border: 1.5px solid var(--line);
-        border-radius: 0.14in;
-        background: color-mix(in srgb, var(--panel) 90%, transparent);
-        font-size: 0.36in;
-        font-weight: 650;
+        padding: 0;
+        width: 4.25in;
+        height: auto;
+        filter: drop-shadow(0 0 0.22in color-mix(in srgb, var(--cyan) 24%, transparent));
       }
     </style>
   </head>
@@ -575,7 +759,7 @@
 
       function setDeckScale() {
         if (!document.body.classList.contains("deck-web") && !document.body.classList.contains("single-page")) return;
-        const slideWidth = 1536;
+        const slideWidth = 816;
         const available = Math.max(320, window.innerWidth - 48);
         document.body.style.setProperty("--deck-zoom", String(Math.min(1, available / slideWidth)));
       }
@@ -597,23 +781,24 @@
         building: `<svg class="icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 58V12h25v46M37 25h15v33"/><path d="M20 22h8M20 34h8M20 46h8M44 35h4M44 46h4"/></svg>`,
       };
 
-      const slideNumbers = [1,2,3,5,6,7,8,9,10,12,13,14,15,17,18,19,20,21,22,24];
-
       function icon(name, color = "var(--cyan)") {
         return `<span style="color:${color}">${icons[name] || icons.document}</span>`;
       }
 
+      let renderedPage = 0;
+
       function frame(content, idx, section = "client story") {
+        const pageNumber = ++renderedPage;
         return `<section class="slide">
           <div class="brand">NETSIRV</div>
           ${content}
           <div class="footer">${section}</div>
-          <div class="page">${slideNumbers[idx]}</div>
+          <div class="page">${pageNumber}</div>
         </section>`;
       }
 
       const slides = [
-        frame(`<div class="logo">invoi<span class="logo-mark"></span></div><div class="logo-sub">AI INFUSED SOP</div>
+        frame(`<img class="logo" src="../web/assets/invoi-logo-ai-infused-sop-cropped-wide.png" alt="invoi AI infused SOP logo" />
           <div style="margin-top:.45in" class="kicker">Expanded Executive Narrative</div>
           <h1>Netsirv SOP &<br/>Document Management<br/>Ecosystem</h1>
           <p class="subtitle">A client decision deck for turning procedures, documents, training, mobile capture, AI and accounting into one connected operating layer.</p>
@@ -629,135 +814,163 @@
           <div class="grid grid-2" style="margin-top:.34in">
             <div class="panel accent-cyan"><h3>Old Model</h3><p class="kicker" style="margin-top:.08in">Document repository</p><div style="margin:.18in 0;color:var(--cyan)">${icon("folder")}</div><p>Files are uploaded, named, searched and sometimes forgotten. The system can store the SOP, but it cannot prove that the work was governed.</p><p style="margin-top:.2in;color:var(--cyan);font-weight:800">Common outcome: documents exist, but operations still rely on memory, email, manual entry and tribal knowledge.</p></div>
             <div class="panel accent-purple"><h3>Netsirv Model</h3><p class="kicker" style="margin-top:.08in">Operational intelligence layer</p><div style="margin:.18in 0;color:var(--purple)">${icon("brain")}</div><p>The SOP is connected to training, mobile actions, evidence, approvals, transactions and financial output. The document is no longer passive; it drives the process.</p><p style="margin-top:.2in;color:var(--cyan);font-weight:800">Better outcome: the organization can trace what happened, why it happened, who approved it and what evidence supports it.</p></div>
-          </div>`, 1),
-
-        frame(`<h2>Why this matters now</h2><p class="subtitle" style="margin-top:.08in">Document chaos is not an IT inconvenience. It becomes an operations, compliance and finance problem.</p>
-          <div class="grid grid-2" style="margin-top:.32in">
-            ${["SOP drift|Employees may use outdated versions or informal workarounds.","Evidence gaps|Invoices, receipts, photos and BOLs are separated from the work they support.","Manual re-keying|Financial data is exported, typed and approved as disconnected documents.","Audit fragility|Hard to prove procedure, training, field execution and source evidence in one chain."].map((x,i)=>{const [a,b]=x.split("|"); return `<div class="card num-card"><div class="num">${i+1}</div><div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}
           </div>
+          <div class="brief-grid" style="margin-top:.28in">${["SOP drift|Outdated procedures and informal workarounds.","Evidence gaps|Invoices, photos and BOLs separated from work.","Manual re-keying|Disconnected financial data typed again.","Audit fragility|Hard to prove procedure, training and evidence."].map((x)=>{const[a,b]=x.split("|");return `<div class="brief-item"><h3>${a}</h3><p>${b}</p></div>`}).join("")}</div>
           <div class="callout">The cost is not only lost time. It is weak control over how work is performed, documented, approved and reported.</div>`, 2),
 
-        frame(`<h2>Why traditional document management falls short</h2><p class="subtitle" style="margin-top:.08in">It stores content, but it rarely controls the work that content is supposed to govern.</p>
+        frame(`<h2>Why traditional document management falls short</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">It stores content, but it rarely controls the work that content is supposed to govern.</p>
           <div class="grid grid-2" style="margin-top:.32in">
             <div class="panel"><h3 style="color:var(--cyan)">Traditional DMS</h3><p>Search results</p><ul class="list"><li>SOP_Receiving_Final_v3.pdf</li><li>SOP_Receiving_Final_REVISED.pdf</li><li>Receiving_SOP_2024.docx</li><li>BOL Scan 8921.pdf</li><li>Invoice HVAC photo.jpg</li></ul></div>
             <div class="panel accent-cyan"><h3 style="color:var(--cyan)">Netsirv Context Graph</h3><p>SOP. Cross-document reasoning.</p><table class="table"><tr><td>Active SOP</td><td>v2.1</td></tr><tr><td>Trained Users</td><td>42</td></tr><tr><td>BOL Evidence</td><td>18</td></tr><tr><td>Open Exceptions</td><td>3</td></tr><tr><td>GL Impact</td><td>$12.4k</td></tr></table></div>
           </div>
+          <div class="brief-grid">
+            <div class="brief-item"><h3>Search finds files</h3><p>It does not explain whether a file is current, governing, related to a workflow, or backed by source evidence.</p></div>
+            <div class="brief-item"><h3>Context governs work</h3><p>Relationships make the record operational: SOP, role, approval, vendor, asset, transaction and audit trail.</p></div>
+          </div>
           <div class="callout">The difference is relationship intelligence: documents are linked to SOPs, users, training, transactions and audit evidence.</div>`, 3, "story"),
 
-        frame(`<h2>The Netsirv ecosystem model</h2><p class="subtitle" style="margin-top:.08in">A reusable platform pattern: SOPs guide work, documents prove work, data drives outcomes.</p>
-          <div class="center" style="height:5.5in;margin-top:.18in">
-            <div class="flow">
-              <div class="stack" style="width:3.2in">
-                <div class="card row">${icon("user","var(--purple)")}<div><h3>Academy</h3><p>Training</p></div></div>
-                <div class="card row">${icon("phone","var(--cyan)")}<div><h3>Mobile</h3><p>Capture</p></div></div>
-                <div class="card row">${icon("brain","var(--purple)")}<div><h3>AI document</h3><p>Initial repository & search</p></div></div>
-              </div>
-              <div class="orb">SOP + DOCUMENT<br/>CONTROL CENTER</div>
-              <div class="stack" style="width:3.2in">
-                <div class="card row">${icon("audit","var(--yellow)")}<div><h3>Procurement</h3><p>Workflow</p></div></div>
-                <div class="card row">${icon("document","var(--cyan)")}<div><h3>Vendor + contracts</h3></div></div>
-                <div class="card row">${icon("invoice","var(--green)")}<div><h3>Accounting</h3><p>Output</p></div></div>
-                <div class="card row">${icon("folder","var(--blue)")}<div><h3>Master catalog</h3></div></div>
-              </div>
-            </div>
+        frame(`<h2>The Netsirv ecosystem model</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">A reusable operating layer: SOPs guide work, documents prove work, and connected data drives outcomes.</p>
+          <div class="center" style="margin-top:.26in"><div class="orb" style="width:1.72in;height:1.72in">SOP + DOCUMENT<br/>CONTROL CENTER</div></div>
+          <div class="object-grid" style="margin-top:.3in">
+            ${[
+              ["Academy","Training and role readiness","user","var(--purple)"],
+              ["Mobile","Field capture and evidence","phone","var(--cyan)"],
+              ["AI document","Repository, search and extraction","brain","var(--purple)"],
+              ["Procurement","Workflow and approvals","audit","var(--yellow)"],
+              ["Vendor + contracts","Commercial context","document","var(--cyan)"],
+              ["Accounting","Financial output","invoice","var(--green)"]
+            ].map(([a,b,ic,color])=>`<div class="object-tile">${icon(ic,color)}<h3>${a}</h3><p>${b}</p></div>`).join("")}
           </div>
-          <div class="caption">Each capability can be sold independently, but they compound when connected.</div>`, 4, "ecosystem"),
+          <div class="brief-grid" style="margin-top:.26in">
+            <div class="brief-item"><h3>Operating control</h3><p>Procedures, permissions and evidence travel together instead of living in disconnected systems.</p></div>
+            <div class="brief-item"><h3>Executive visibility</h3><p>Leadership can see process compliance, financial impact and exception posture from one connected model.</p></div>
+          </div>
+          <div class="callout">Each capability is useful independently; the executive value appears when they operate as one controlled system.</div>`, 4, "ecosystem"),
 
         frame(`<h2>Universal document intelligence</h2><p class="subtitle" style="margin-top:.08in">One intake pipeline handles SOPs, invoices, contracts, BOLs, receipts, photos and handwritten documents.</p>
           <div class="grid grid-2" style="margin-top:.28in;grid-template-columns:1.05fr .95fr">
-            <div class="panel"><div class="stack">${["Capture|Scanning + Original","Classify|Document Type","Extract|Key Data","Score|Confidence","Review|Human-in-the-Loop","Route|To Workflow"].map((x,i)=>{const [a,b]=x.split("|"); return `<div class="row">${icon(["phone","folder","document","shield","user","bolt"][i])}<div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}</div></div>
+            <div class="panel"><div class="object-grid" style="margin-top:0;gap:.16in .2in">${["Capture|Scanning + Original","Classify|Document Type","Extract|Key Data","Score|Confidence","Review|Human-in-the-Loop","Route|To Workflow"].map((x,i)=>{const [a,b]=x.split("|"); return `<div class="object-tile" style="min-height:.92in">${icon(["phone","folder","document","shield","user","bolt"][i])}<h3>${a}</h3><p>${b}</p></div>`}).join("")}</div></div>
             <div class="panel accent-purple"><h3>AI Extraction Review</h3><table class="table"><tr><th>Invoice</th><th>Service Invoice</th></tr><tr><td>Vendor</td><td>ABC HVAC</td></tr><tr><td>Date</td><td>08/16/26</td></tr><tr><td>Work</td><td>RTU repair</td></tr><tr><td>Materials</td><td>$140.20</td></tr><tr><td>Total</td><td>$725.00</td></tr></table></div>
           </div>
-          <div class="grid grid-3" style="margin-top:.25in">${["AI assists|It classifies documents, flags exceptions and extracts data.","People control|Operators verify data before it becomes trusted.","Evidence remains|Original files, metadata, approvals and relationships are retained."].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card num-card"><div class="num">${i+1}</div><div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}</div>`, 5, "document intelligence"),
+          <div class="object-grid" style="margin-top:.25in">${["AI assists|It classifies documents, flags exceptions and extracts data.","People control|Operators verify data before it becomes trusted.","Evidence remains|Original files, metadata, approvals and relationships are retained."].map((x,i)=>{const[a,b]=x.split("|");return `<div class="object-tile ${i === 2 ? "span-2" : ""}"><div class="num">${i+1}</div><h3 style="margin-top:.1in">${a}</h3><p>${b}</p></div>`}).join("")}</div>`, 5, "document intelligence"),
 
-        frame(`<h2>Mobile turns field work into governed records</h2><p class="subtitle" style="margin-top:.08in">The employee experience stays simple: open task, see SOP, scan evidence, verify and submit.</p>
-          <div class="flow" style="margin-top:.45in">
-            ${["Procurement","View SOP","Scan Invoice","Scan Product","Receive Shipment","Capture Document"].map((x,i)=>`<div class="card center" style="width:1.75in;height:1.9in;color:${["var(--yellow)","var(--cyan)","var(--purple)","var(--purple)","var(--blue)","var(--cyan)"][i]}">${icon(["audit","document","phone","folder","shield","phone"][i])}<h3 style="margin-top:.14in">${x}</h3></div>${i<5?'<div class="arrow">→</div>':''}`).join("")}
+        frame(`<h2>Mobile turns field work into governed records</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">The employee experience stays simple: open task, see SOP, scan evidence, verify and submit.</p>
+          <div class="grid grid-2" style="margin-top:.34in">
+            ${["Procurement|Start controlled request","View SOP|Current procedure in hand","Scan invoice|Capture original evidence","Scan product|Confirm item and shipment","Receive shipment|Record operational event","Capture document|Attach proof to workflow"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card num-card"><div class="num">${i+1}</div><div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}
           </div>
+          <h3 style="margin-top:.28in;color:var(--cyan)">Governance gate</h3>
+          <div class="brief-grid" style="margin-top:.12in">${["SOP met|Procedure accepted","Training|Role readiness started","Assessment|Competency verified","Access|Workflow permission granted"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="brief-item"><h3>${a}</h3><p>${b}</p></div>`}).join("")}</div>
           <div class="callout" style="max-width:8.5in;margin-left:auto;margin-right:auto">SOP, invoice, item, truck, service and GL classification are linked.</div>`, 6, "user experience"),
 
-        frame(`<h2>SOP + Academy creates a governance differentiator</h2><p class="subtitle" style="margin-top:.08in">Access can be based on demonstrated competency, not just a permissions checkbox.</p>
-          <div class="grid" style="grid-template-columns:1.2fr .8fr;margin-top:.28in">
-            <div class="panel">
-              <div class="flow" style="justify-content:space-between">${["SOP fulfilled","Training assigned","Assessment passed","Button active"].map((x,i)=>`<div class="center"><div class="num">${i+1}</div><p style="margin-top:.08in;text-align:center;color:var(--text);font-weight:800">${x}</p></div>${i<3?'<div class="arrow">→</div>':''}`).join("")}</div>
-              <table class="table" style="margin-top:.25in"><tr><td>Scheduling</td><td class="status">ACTIVE</td></tr><tr><td>Orders</td><td class="status">ACTIVE</td></tr><tr><td>Procurement</td><td class="status">ACTIVE</td></tr><tr><td>HazMat</td><td class="warn">TRAINING</td></tr></table>
-            </div>
-            <div class="panel accent-cyan"><h3>Governance story for executives</h3><ul class="list"><li>The same SOP that governs the work can determine who is allowed to perform a business module.</li><li>The system can prove the user was trained before the workflow became available.</li><li>This creates a clear control narrative for operations, HR, compliance and audit.</li></ul></div>
-          </div>`, 7, "user experience"),
-
-        frame(`<h2>Documents become relationship-aware business objects</h2><p class="subtitle" style="margin-top:.08in">A document is valuable because of what it connects to.</p>
-          <div class="grid" style="grid-template-columns:.9fr 1.1fr;margin-top:.28in">
+        frame(`<h2>Documents become relationship-aware business objects</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">The document becomes more valuable when it carries business context with it.</p>
+          <div class="grid grid-2" style="margin-top:.28in;grid-template-columns:1.15fr .85fr;align-items:start">
             <div class="panel"><h3>Vendor Service Invoice</h3><table class="table"><tr><td>Vendor</td><td>ABC HVAC</td></tr><tr><td>Location</td><td>Main Office</td></tr><tr><td>Asset</td><td>RTU-006</td></tr><tr><td>SOP</td><td>Maintenance SOP</td></tr><tr><td>Purchase</td><td>Service expense</td></tr><tr><td>Contract</td><td>2026 MSA</td></tr></table></div>
-            <div class="center"><div class="orb" style="width:1.65in;height:1.65in">${icon("document")}<br/>Document</div><div class="flow" style="margin-top:.25in">${["Vendor","Asset","SOP","GL","Approval"].map((x)=>`<div class="card center" style="width:1.05in;height:.72in"><p style="color:var(--cyan);font-weight:900">${x}</p></div>`).join('<div class="arrow">↔</div>')}</div></div>
+            <div class="panel accent-cyan"><h3>What changes</h3><ul class="list"><li>Every file has business identity.</li><li>Every approval retains source context.</li><li>Every finance event can be traced back to work.</li></ul></div>
           </div>
-          <div class="caption" style="margin-top:.24in">This is the difference between storing a file and creating an operational knowledge graph.</div>`, 8, "document intelligence"),
+          <div class="relation-stage">
+            <div class="relation-hub">${icon("document")}<span>Document</span></div>
+            <div class="relationship-grid">
+              ${[
+                ["Vendor","ABC HVAC and contract terms"],
+                ["Asset","RTU-006 service history"],
+                ["SOP","Maintenance procedure v2.1"],
+                ["GL","Expense category and location"],
+                ["Approval","Manager decision and timestamp"],
+                ["Evidence","Original file and metadata"]
+              ].map(([a,b])=>`<div class="relationship-item"><h3>${a}</h3><p>${b}</p></div>`).join("")}
+            </div>
+          </div>
+          <div class="callout">This is the difference between storing a file and creating an operational knowledge graph.</div>`, 8, "document intelligence"),
 
-        frame(`<h2>Audit & evidence chain</h2><p class="subtitle" style="margin-top:.08in">Every meaningful event can be reconstructed from governing SOP through financial output.</p>
-          <div class="flow" style="margin-top:.42in;justify-content:center">${["SOP","Training","User","Device","Document","Purchase","Product","Approval","GL"].map((x,i)=>`<div class="center" style="color:${["var(--blue)","var(--purple)","var(--cyan)","var(--blue)","var(--cyan)","var(--yellow)","var(--orange)","var(--yellow)","var(--magenta)"][i]}">${icon(["document","user","user","phone","folder","invoice","folder","shield","invoice"][i],"currentColor")}<p style="margin-top:.05in;color:currentColor;font-weight:900">${x}</p></div>${i<8?'<div class="arrow">→</div>':''}`).join("")}</div>
+        frame(`<h2>Audit & evidence chain</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Every meaningful event can be reconstructed from governing SOP through financial output.</p>
+          <div class="evidence-chain">${[
+            ["SOP","Current procedure governs the action","var(--blue)","document"],
+            ["Training","User readiness is verified","var(--purple)","user"],
+            ["User","Actor and role are retained","var(--cyan)","user"],
+            ["Device","Source capture is known","var(--blue)","phone"],
+            ["Document","Original record is preserved","var(--cyan)","folder"],
+            ["Purchase","Commercial event is classified","var(--yellow)","invoice"],
+            ["Product","Item, asset or service is linked","var(--orange)","folder"],
+            ["Approval","Decision is recorded","var(--yellow)","shield"],
+            ["GL","Financial impact is traceable","var(--magenta)","invoice"]
+          ].map(([a,b,color,ic])=>`<div class="evidence-step" style="color:${color}">${icon(ic,"currentColor")}<div><h3>${a}</h3><p>${b}</p></div></div>`).join("")}</div>
           <div class="callout">Evidence is captured at the source — not bolted on after the fact.</div>
-          <div class="grid grid-4" style="margin-top:.25in">${["Who|User role, training, approval","What|SOP, service, document, transaction","Where|Location, device, department","Proof|Original document, AI score, correction, audit log"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card"><h3 style="color:${["var(--blue)","var(--purple)","var(--yellow)","var(--green)"][i]}">${a}</h3><p>${b}</p></div>`}).join("")}</div>`, 9, "document intelligence"),
+          <div class="brief-grid" style="margin-top:.25in">${["Who|User role, training, approval","What|SOP, service, document, transaction","Where|Location, device, department","Proof|Original document, AI score, correction, audit log"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="brief-item"><h3 style="color:${["var(--blue)","var(--purple)","var(--yellow)","var(--green)"][i]}">${a}</h3><p>${b}</p></div>`}).join("")}</div>`, 9, "document intelligence"),
 
-        frame(`<h2>Accounting is not an afterthought</h2><p class="subtitle" style="margin-top:.08in">Operational events flow to accounting with full context, not as orphan entries.</p>
+        frame(`<h2>Accounting is not an afterthought</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Operational events flow to accounting with full context, not as orphan entries.</p>
           <div class="grid grid-2" style="margin-top:.32in">
             <div class="panel"><h3>Operational Event</h3><p style="margin-top:.14in;color:var(--text)">Service invoice approved<br/>ABC HVAC<br/>$725</p><ul class="list"><li>SOP followed</li><li>User trained</li><li>Evidence captured</li><li>Approval obtained</li></ul></div>
             <div class="panel accent-cyan"><h3>Accounting Impact</h3><table class="table"><tr><td>GL Account</td><td>6300</td></tr><tr><td>Service Expense</td><td>$725</td></tr><tr><td>Amount</td><td>$725</td></tr><tr><td>Location</td><td>Main Office</td></tr><tr><td>Asset</td><td>RTU-006</td></tr><tr><td>Vendor</td><td>ABC HVAC</td></tr></table></div>
           </div>
+          <div class="brief-grid" style="margin-top:.3in">
+            <div class="brief-item"><h3>Finance sees why</h3><p>The GL event is supported by source record, SOP, approval and vendor context.</p></div>
+            <div class="brief-item"><h3>Audit follows one chain</h3><p>Reviewers can reconstruct the event without chasing files across systems.</p></div>
+          </div>
           <div class="callout">Clean data in. Clean books out. Audit confidence all the way through.</div>`, 10, "financial integrity"),
 
-        frame(`<h2>Exception management keeps work moving</h2><p class="subtitle" style="margin-top:.08in">Exceptions are captured, routed, resolved and retained.</p>
+        frame(`<h2>Exception management keeps work moving</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Exceptions are captured, routed, resolved and retained.</p>
           <div class="grid grid-2" style="margin-top:.32in">
             <div class="stack">${["Price mismatch|Invoice + Contract","Item not found|Not in master data","Damaged goods|Container exception","Policy exception|Requires approval"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card row" style="border-color:${["var(--magenta)","var(--blue)","var(--orange)","var(--green)"][i]}">${icon(["invoice","folder","shield","audit"][i],["var(--magenta)","var(--blue)","var(--orange)","var(--green)"][i])}<div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}</div>
             <div class="panel"><h3>Exception Workflow</h3><ul class="list"><li>Route to right approver</li><li>Decision recorded</li><li>Continue or adjust</li><li>Evidence retained</li></ul></div>
           </div>
+          <div class="brief-grid" style="margin-top:.3in">
+            <div class="brief-item"><h3>Operational continuity</h3><p>Work can continue with transparent decisions instead of informal workarounds.</p></div>
+            <div class="brief-item"><h3>Control preservation</h3><p>The reason, approver and supporting evidence remain attached to the record.</p></div>
+          </div>
           <div class="callout">Exceptions are visible, not hidden.</div>`, 11, "financial integrity"),
 
-        frame(`<h2>Dashboards that drive behavior</h2><p class="subtitle" style="margin-top:.08in">Real-time visibility across operations, compliance and finance.</p>
-          <div class="grid grid-3" style="margin-top:.35in">
-            <div class="panel"><h3>Operations</h3><ul class="list"><li>Tasks completed</li><li>On-time performance</li><li>Exceptions</li><li>Backlog</li></ul><div class="chart-bars">${[35,48,28,66,54,82].map(h=>`<span class="bar" style="height:${h}%"></span>`).join("")}</div></div>
-            <div class="panel"><h3>Compliance</h3><ul class="list"><li>SOP adherence</li><li>Training status</li><li>Audit readiness</li><li>Evidence completeness</li></ul><div class="center"><div class="orb" style="width:1.25in;height:1.25in;font-size:.24in">92%</div></div></div>
-            <div class="panel"><h3>Finance</h3><ul class="list"><li>Spend by category</li><li>GL impact</li><li>Vendor spend</li><li>Cost savings</li></ul><div class="spark"></div></div>
+        frame(`<h2>Dashboards that drive behavior</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Real-time visibility across operations, compliance and finance.</p>
+          <div class="brief-grid">
+            <div class="brief-item"><h3>Operations</h3><p>Tasks completed, on-time performance, exceptions and backlog.</p><div class="chart-bars">${[35,48,28,66,54,82].map(h=>`<span class="bar" style="height:${h}%"></span>`).join("")}</div></div>
+            <div class="brief-item"><h3>Compliance</h3><p>SOP adherence, training status, audit readiness and evidence completeness.</p><div class="center" style="margin-top:.14in;min-height:1.3in;justify-items:center"><div class="orb" style="width:1.12in;height:1.12in;font-size:.22in">92%</div></div></div>
+            <div class="brief-item"><h3>Finance</h3><p>Spend by category, GL impact, vendor spend and cost savings.</p><table class="table" style="margin-top:.12in"><tr><td>GL impact</td><td>$12.4k</td></tr><tr><td>Vendor spend</td><td>Tracked</td></tr><tr><td>Cost savings</td><td>Measured</td></tr></table></div>
+            <div class="brief-item"><h3>Executive use</h3><p>Leadership gets one view of whether the operating model is performing, controlled and improving.</p></div>
           </div>
           <div class="callout">Metrics drive improvements when the data is connected and trusted.</div>`, 12, "financial return"),
 
-        frame(`<h2>Platform architecture at a glance</h2><p class="subtitle" style="margin-top:.08in">Secure, scalable and built for integration.</p>
-          <div class="grid grid-6" style="margin-top:.32in;display:grid;grid-template-columns:repeat(6,1fr);gap:.14in">${["Web Portal","Mobile Apps","API Gateway","AI/ML Services","Workflow Engine","Integration Layer"].map((x,i)=>`<div class="card center">${icon(["building","phone","bolt","brain","graph","shield"][i])}<h3 style="margin-top:.1in;text-align:center">${x}</h3></div>`).join("")}</div>
-          <div class="panel" style="margin-top:.35in"><div class="flow" style="justify-content:space-around"><p>Data Layers</p><p>Metadata</p><p>Relationships</p><p>Audit</p><p>Transactions</p></div></div>
-          <div class="panel" style="margin-top:.18in"><div class="flow" style="justify-content:space-around"><p>Security</p><p>Identity</p><p>Encryption</p><p>Compliance</p><p>Monitoring</p></div></div>
+        frame(`<h2>Platform architecture at a glance</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Secure, scalable and built for integration.</p>
+          <div class="object-grid">
+            ${["Web Portal|Executive and operational command surface","Mobile Apps|Field evidence capture and workflow execution","API Gateway|Controlled connection to enterprise systems","AI/ML Services|Classification, extraction and confidence scoring","Workflow Engine|Approvals, routing and exception handling","Integration Layer|Accounting, HR, procurement and data platforms"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="object-tile">${icon(["building","phone","bolt","brain","graph","shield"][i])}<h3>${a}</h3><p>${b}</p></div>`}).join("")}
+          </div>
+          <div class="mini-map">${["Metadata","Relationships","Audit","Security","Transactions"].map((x)=>`<div class="card center"><p style="color:var(--cyan);font-weight:900">${x}</p></div>`).join("")}</div>
           <div class="callout">Built for government, enterprise and highly regulated industries.</div>`, 13, "platform"),
 
-        frame(`<h2>Integration without disruption</h2><p class="subtitle" style="margin-top:.08in">Connects with the systems you have today.</p>
-          <div class="flow" style="margin-top:.55in;justify-content:center">
-            <div class="panel" style="width:3.25in"><h3>Existing Systems</h3><ul class="list"><li>ERP / Accounting</li><li>Purchasing / P2P</li><li>HR / LMS</li><li>Asset Management</li><li>Custom Systems</li></ul></div>
-            <div class="arrow">→</div><div class="orb">NETSIRV<br/>Integration<br/>Layer</div><div class="arrow">→</div>
-            <div class="panel" style="width:3.25in"><h3>APIs</h3><ul class="list"><li>Webhooks</li><li>SFTP / File</li><li>Standard connectors</li><li>Secure by design</li></ul></div>
+        frame(`<h2>Integration without disruption</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Connects with the systems you have today.</p>
+          <div class="grid grid-3" style="margin-top:.36in">
+            <div class="panel"><h3>Existing Systems</h3><ul class="list"><li>ERP / Accounting</li><li>Purchasing / P2P</li><li>HR / LMS</li><li>Asset Management</li><li>Custom Systems</li></ul></div>
+            <div class="center"><div class="orb" style="width:1.62in;height:1.62in">NETSIRV<br/>Integration<br/>Layer</div></div>
+            <div class="panel"><h3>APIs</h3><ul class="list"><li>Webhooks</li><li>SFTP / File</li><li>Standard connectors</li><li>Secure by design</li></ul></div>
           </div>
-          <div class="caption" style="margin-top:.4in">Open standards. Secure connections. Real operational value.</div>`, 14, "platform"),
+          <div class="brief-grid" style="margin-top:.32in">
+            <div class="brief-item"><h3>Adoption advantage</h3><p>Teams do not have to abandon core systems to gain operational control.</p></div>
+            <div class="brief-item"><h3>Scale advantage</h3><p>The same integration pattern can expand process by process.</p></div>
+          </div>
+          <div class="callout">Open standards. Secure connections. Real operational value.</div>`, 14, "platform"),
 
         frame(`<h2>Implementation roadmap</h2><p class="subtitle" style="margin-top:.08in">A phased approach that delivers value early and scales confidently.</p>
-          <div class="timeline" style="margin-top:.42in">${[
+          <div class="object-grid" style="margin-top:.38in">${[
             ["Phase 1","Foundation","SOP intake, OCR setup, core workflow","var(--cyan)","document"],
             ["Phase 2","Mobile & AI","Mobile capture, AI extraction, catalog","var(--purple)","phone"],
             ["Phase 3","Accounting","Integrations, financial workflows","var(--green)","invoice"],
             ["Phase 4","Optimization","Dashboards, exceptions, advanced rules","var(--yellow)","graph"],
             ["Phase 5","Scale","Additional sites, advanced analytics","var(--magenta)","shield"]
-          ].map(([a,b,c,color,ic])=>`<div class="card"><div class="road-dot" style="color:${color}">${icon(ic,"currentColor")}</div><h3>${a}</h3><p style="color:${color};font-weight:900">${b}</p><p style="margin-top:.08in">${c}</p></div>`).join("")}</div>
+          ].map(([a,b,c,color,ic])=>`<div class="object-tile">${icon(ic,color)}<h3>${a}</h3><p style="color:${color};font-weight:900">${b}</p><p>${c}</p></div>`).join("")}</div>
           <div class="callout">Each phase is useful on day one and builds toward a fully connected operational platform.</div>`, 15, "roadmap"),
 
         frame(`<h2>Pilot program blueprint</h2><p class="subtitle" style="margin-top:.08in">Small scope. Clear outcomes. Low risk.</p>
-          <div class="grid grid-2" style="margin-top:.34in">
+          <div class="grid" style="grid-template-columns:1.05fr .82fr .5fr;margin-top:.32in;align-items:start">
             <div class="panel"><table class="table"><tr><td>Scope</td><td>One process, one location</td></tr><tr><td>Duration</td><td>8 - 12 weeks</td></tr><tr><td>Participants</td><td>10 - 12 users</td></tr><tr><td>Deliverables</td><td>Workflow, data, reporting</td></tr><tr><td>Success Criteria</td><td>Adoption, accuracy, time savings</td></tr></table></div>
-            <div class="panel accent-cyan"><h3>Pilot Outcomes</h3><ul class="list"><li>Validated process</li><li>Trained users</li><li>Connected data</li><li>Measurable results</li><li>Plan to scale</li></ul><div style="margin-top:.25in;color:var(--purple)">${icon("target","var(--purple)")}</div></div>
-          </div>`, 16, "roadmap"),
-
-        frame(`<h2>Expected outcomes</h2><p class="subtitle" style="margin-top:.08in">Measurable improvements across the organization.</p>
-          <div class="grid grid-5" style="display:grid;grid-template-columns:repeat(5,1fr);gap:.16in;margin-top:.45in">${[
+            <div class="panel accent-cyan"><h3>Pilot Outcomes</h3><ul class="list"><li>Validated process</li><li>Trained users</li><li>Connected data</li><li>Measurable results</li><li>Plan to scale</li></ul></div>
+            <div style="color:var(--purple);padding-top:.16in;text-align:left;justify-self:start">${icon("target","var(--purple)")}</div>
+          </div>
+          <div class="outcome-grid" style="margin-top:.28in">${[
             ["30 - 50%","Reduction in manual data entry","graph"],
             ["20 - 40%","Faster invoice processing","bolt"],
             ["25 - 60%","Fewer exceptions & rework","shield"],
             ["100%","Audit-ready evidence chain","audit"],
             ["Stronger","Compliance & governance","building"]
-          ].map(([a,b,ic])=>`<div class="card center" style="min-height:2.4in">${icon(ic)}<div class="big-number" style="margin-top:.18in;text-align:center">${a}</div><p style="text-align:center;margin-top:.12in">${b}</p></div>`).join("")}</div>
-          <div class="callout">Better data. Better decisions. Better outcomes.</div>`, 17, "roadmap"),
+          ].map(([a,b,ic])=>`<div class="outcome">${icon(ic)}<div class="big-number">${a}</div><p style="margin-top:.08in">${b}</p></div>`).join("")}</div>
+          <div class="callout">A focused pilot should prove value in cycle time, data quality, exception visibility and audit readiness before scaling.</div>`, 16, "roadmap"),
 
         frame(`<h2>Who benefits</h2><p class="subtitle" style="margin-top:.08in">Every role wins when the system is connected.</p>
           <div class="grid grid-5" style="display:grid;grid-template-columns:repeat(5,1fr);gap:.15in;margin-top:.38in">${[
@@ -769,9 +982,12 @@
           ].map(([a,b,ic])=>`<div class="card center" style="min-height:2.55in">${icon(ic)}<h3 style="margin-top:.16in;text-align:center">${a}</h3><p style="margin-top:.1in;text-align:center">${b}</p></div>`).join("")}</div>
           <div class="callout">One platform. Many benefits. Organization-wide impact.</div>`, 18, "next steps"),
 
-        frame(`<h2 style="font-size:.48in">Let’s build what’s next</h2><p class="subtitle" style="margin-top:.08in">Turn your SOPs, documents and data into operational excellence.</p>
-          <div style="margin-top:.55in;max-width:5in" class="panel"><ul class="list" style="gap:.22in"><li>Start with a conversation</li><li>Define your pilot</li><li>Deliver quick wins</li><li>Scale with confidence</li></ul></div>
-          <div class="closing-logo"><span>Letivi</span><span style="color:var(--cyan)">+</span><span>invoi<span class="logo-mark" style="width:.4in;height:.4in;border-width:.035in"></span></span></div>
+        frame(`<h2 style="font-size:.44in">Let’s build what’s next</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Turn your SOPs, documents and data into operational excellence.</p>
+          <div class="grid grid-2" style="margin-top:.42in;align-items:start">
+            <div class="panel"><h3>Executive next steps</h3><ul class="list" style="gap:.18in"><li>Confirm the first business workflow.</li><li>Define evidence, approval and finance requirements.</li><li>Launch an 8 - 12 week pilot.</li><li>Use measured outcomes to scale with confidence.</li></ul></div>
+            <div class="panel accent-purple"><h3>Decision frame</h3><p class="executive-note" style="margin-top:.1in">Start narrow enough to prove adoption, but connected enough to demonstrate the operating-layer value: procedure, people, evidence, workflow and accounting in one chain.</p></div>
+          </div>
+          <img class="closing-logo" style="margin-top:.44in" src="../web/assets/invoi-logo-ai-infused-sop-cropped-wide.png" alt="invoi AI infused SOP logo" />
           <div class="callout" style="position:absolute;left:.58in;right:.58in;bottom:.66in;margin:0">Work governed. Evidence connected. Outcomes delivered.</div>`, 19, "next steps"),
       ];
 

@@ -104,9 +104,246 @@
         color: var(--cyan);
       }
 
+      .badge-button {
+        border-color: color-mix(in srgb, var(--magenta) 70%, var(--cyan));
+        color: var(--cyan);
+        background:
+          linear-gradient(135deg, rgba(61, 231, 255, 0.1), rgba(209, 92, 255, 0.12)),
+          rgba(255, 255, 255, 0.04);
+        box-shadow: 0 0 24px rgba(61, 231, 255, 0.1);
+      }
+
+      .cover-hero {
+        position: relative;
+        isolation: isolate;
+        min-height: clamp(520px, 72vh, 760px);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        margin-bottom: clamp(34px, 6vw, 72px);
+        padding: clamp(34px, 6vw, 70px);
+        border: 1px solid rgba(83, 210, 255, 0.18);
+        background:
+          radial-gradient(circle at 82% 42%, rgba(47, 124, 255, 0.24), transparent 24rem),
+          radial-gradient(circle at 72% 60%, rgba(209, 92, 255, 0.18), transparent 22rem),
+          linear-gradient(135deg, rgba(7, 13, 31, 0.96), rgba(5, 8, 20, 0.98));
+        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.34);
+      }
+
+      .cover-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background-image:
+          linear-gradient(90deg, rgba(61, 231, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(rgba(61, 231, 255, 0.032) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(90deg, transparent, black 30%, black 88%, transparent);
+      }
+
+      .cover-hero::after {
+        content: "";
+        position: absolute;
+        top: 2%;
+        right: -12%;
+        z-index: -1;
+        width: min(68vw, 860px);
+        height: 96%;
+        opacity: 0.34;
+        background:
+          radial-gradient(circle at 58% 17%, var(--cyan) 0 2px, transparent 3px),
+          radial-gradient(circle at 68% 32%, var(--blue) 0 2px, transparent 3px),
+          radial-gradient(circle at 48% 49%, var(--magenta) 0 2px, transparent 3px),
+          radial-gradient(circle at 74% 66%, var(--cyan) 0 2px, transparent 3px),
+          radial-gradient(circle at 55% 82%, var(--blue) 0 2px, transparent 3px);
+        filter: blur(0.2px) drop-shadow(0 0 20px rgba(61, 231, 255, 0.28));
+      }
+
+      .cover-copy {
+        position: relative;
+        z-index: 2;
+        max-width: 680px;
+      }
+
+      .cover-logo-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: clamp(30px, 5vw, 54px);
+      }
+
+      .invoi-logo {
+        display: block;
+        width: clamp(260px, 34vw, 460px);
+        height: auto;
+        filter: drop-shadow(0 0 22px rgba(61, 231, 255, 0.2));
+      }
+
+      .cover-net {
+        color: color-mix(in srgb, var(--text) 82%, var(--cyan));
+        font-size: 13px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+
+      .cover-kicker {
+        color: var(--cyan);
+        font-size: 13px;
+        font-weight: 950;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .cover-title {
+        max-width: 760px;
+        margin-top: 12px;
+        font-size: clamp(45px, 7.3vw, 96px);
+        line-height: 0.96;
+        letter-spacing: -0.035em;
+      }
+
+      .cover-subtitle {
+        max-width: 660px;
+        margin-top: 24px;
+        color: color-mix(in srgb, var(--text) 72%, var(--muted));
+        font-size: clamp(16px, 1.5vw, 21px);
+        line-height: 1.55;
+      }
+
+      .cover-pills {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 760px;
+        margin-top: 34px;
+      }
+
+      .cover-pill {
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid color-mix(in srgb, currentColor 62%, transparent);
+        color: var(--cyan);
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        background: color-mix(in srgb, currentColor 7%, transparent);
+        box-shadow: inset 0 0 18px color-mix(in srgb, currentColor 8%, transparent);
+      }
+
+      .cover-pill:nth-child(1) {
+        color: var(--magenta);
+      }
+
+      .cover-pill:nth-child(3) {
+        color: #f7c948;
+      }
+
+      .cover-pill:nth-child(4) {
+        color: #13e6a3;
+      }
+
+      .cover-callout {
+        margin-top: 28px;
+        color: var(--cyan);
+        font-size: clamp(15px, 1.7vw, 22px);
+        font-weight: 850;
+        line-height: 1.45;
+        text-align: center;
+      }
+
+      .circuit-field {
+        position: relative;
+        z-index: 1;
+        flex: 1 1 420px;
+        justify-self: center;
+        min-width: min(42vw, 520px);
+        height: clamp(300px, 46vw, 560px);
+        margin-left: min(-4vw, -24px);
+        opacity: 0.96;
+        pointer-events: none;
+      }
+
+      .circuit-field::before {
+        content: "";
+        position: absolute;
+        inset: 4% -4% 0 0;
+        z-index: -1;
+        background:
+          radial-gradient(circle at 52% 24%, rgba(47, 124, 255, 0.18), transparent 28%),
+          radial-gradient(circle at 42% 68%, rgba(209, 92, 255, 0.18), transparent 34%),
+          linear-gradient(100deg, transparent, rgba(61, 231, 255, 0.08), transparent 70%);
+        filter: blur(10px);
+      }
+
+      .circuit-line {
+        position: absolute;
+        right: var(--right);
+        top: var(--top);
+        width: var(--width);
+        height: var(--height);
+        border-top: 2px solid currentColor;
+        border-right: 2px solid currentColor;
+        color: var(--color, var(--cyan));
+        opacity: var(--alpha, 0.8);
+        filter: drop-shadow(0 0 10px currentColor);
+      }
+
+      .circuit-line::before,
+      .circuit-line::after {
+        content: "";
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 16px currentColor;
+      }
+
+      .circuit-line::before {
+        left: -3px;
+        top: -4px;
+      }
+
+      .circuit-line::after {
+        right: -4px;
+        bottom: -3px;
+      }
+
+      .circuit-line:nth-child(2n) {
+        border-right: 0;
+        border-left: 2px solid currentColor;
+      }
+
+      .circuit-line:nth-child(2n)::after {
+        right: auto;
+        left: -4px;
+      }
+
+      .circuit-line:nth-child(3n) {
+        transform: skewX(-18deg);
+      }
+
+      .circuit-line:nth-child(4n) {
+        transform: skewX(16deg);
+      }
+
       .admin-head {
-        padding: 30px 0 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        margin-bottom: 26px;
+        padding: 18px 0 0;
         border-bottom: 1px solid rgba(168, 182, 204, 0.22);
+        background:
+          linear-gradient(180deg, rgba(5, 8, 20, 0.94), rgba(5, 8, 20, 0.76)),
+          rgba(5, 8, 20, 0.86);
+        backdrop-filter: blur(18px);
       }
 
       .title-row {
@@ -136,21 +373,21 @@
 
       .tabs {
         display: flex;
-        gap: clamp(26px, 5vw, 58px);
+        gap: clamp(18px, 4vw, 48px);
         overflow-x: auto;
-        margin-top: 38px;
+        margin-top: 18px;
       }
 
       .tab {
         position: relative;
         flex: 0 0 auto;
-        padding: 0 0 22px;
+        padding: 0 0 16px;
         border: 0;
         background: transparent;
         color: var(--muted);
         cursor: pointer;
-        font-size: clamp(19px, 2.4vw, 32px);
-        font-weight: 520;
+        font-size: clamp(16px, 1.9vw, 24px);
+        font-weight: 760;
         white-space: nowrap;
       }
 
@@ -271,30 +508,24 @@
 
       .visual {
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         min-height: 360px;
         display: grid;
         align-content: center;
-        gap: 14px;
-        border: 1px solid var(--line-strong);
-        border-radius: 20px;
-        padding: 22px;
-        background:
-          linear-gradient(145deg, rgba(61, 231, 255, 0.09), rgba(209, 92, 255, 0.06)),
-          rgba(255, 255, 255, 0.03);
-        box-shadow: 0 24px 90px var(--shadow);
+        gap: 22px;
+        padding: clamp(8px, 2vw, 20px);
       }
 
       .visual::before {
         content: "";
         position: absolute;
-        inset: 0;
+        inset: -12px;
         pointer-events: none;
         background-image:
-          linear-gradient(90deg, rgba(61, 231, 255, 0.055) 1px, transparent 1px),
-          linear-gradient(rgba(61, 231, 255, 0.045) 1px, transparent 1px);
+          linear-gradient(90deg, rgba(61, 231, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(rgba(61, 231, 255, 0.035) 1px, transparent 1px);
         background-size: 34px 34px;
-        mask-image: radial-gradient(circle at 78% 42%, black, transparent 68%);
+        mask-image: radial-gradient(circle at 58% 46%, black, transparent 70%);
       }
 
       .visual > * {
@@ -304,7 +535,7 @@
 
       .viz-grid {
         display: grid;
-        gap: 12px;
+        gap: clamp(14px, 2.4vw, 26px);
       }
 
       .viz-grid.two {
@@ -326,14 +557,12 @@
       .viz-card,
       .viz-table,
       .viz-step {
-        border: 1px solid var(--line);
-        border-radius: 13px;
-        background: rgba(5, 8, 20, 0.58);
+        background: transparent;
       }
 
       .viz-card {
-        min-height: 112px;
-        padding: 14px;
+        min-height: 98px;
+        padding: 4px 2px;
       }
 
       .viz-card strong {
@@ -409,7 +638,7 @@
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 12px;
-        padding: 10px 12px;
+        padding: 11px 0;
         border-bottom: 1px solid rgba(83, 210, 255, 0.16);
       }
 
@@ -424,39 +653,59 @@
 
       .viz-steps {
         display: grid;
-        gap: 9px;
+        gap: 22px;
       }
 
       .viz-step {
         display: grid;
         grid-template-columns: auto 1fr;
-        gap: 10px;
+        gap: 18px;
         align-items: center;
-        min-height: 40px;
-        padding: 8px 10px;
+        min-height: 54px;
+        padding: 2px 0;
+        color: color-mix(in srgb, var(--text) 82%, var(--muted));
+        font-size: 15px;
+        font-weight: 720;
+        letter-spacing: 0;
       }
 
       .viz-badge {
-        width: 26px;
-        height: 26px;
+        width: 42px;
+        height: 42px;
         display: grid;
         place-items: center;
-        border: 1px solid currentColor;
+        border: 2px solid currentColor;
         border-radius: 999px;
         color: var(--cyan);
-        font-size: 12px;
-        font-weight: 900;
+        font-size: 18px;
+        font-weight: 950;
+        background:
+          radial-gradient(circle at 35% 28%, color-mix(in srgb, currentColor 24%, transparent), transparent 55%),
+          color-mix(in srgb, currentColor 9%, transparent);
+        box-shadow:
+          0 0 20px color-mix(in srgb, currentColor 34%, transparent),
+          inset 0 0 18px color-mix(in srgb, currentColor 12%, transparent);
+      }
+
+      .viz-step:nth-child(2n) .viz-badge {
+        color: var(--blue);
+      }
+
+      .viz-step:nth-child(3n) .viz-badge {
+        color: var(--magenta);
+      }
+
+      .viz-step:nth-child(5n) .viz-badge {
+        color: #13e6a3;
       }
 
       .viz-callout {
-        border: 1px solid var(--line);
-        border-radius: 13px;
-        padding: 14px;
+        border-left: 3px solid var(--cyan);
+        padding: 4px 0 4px 16px;
         color: var(--cyan);
         font-size: 14px;
         font-weight: 850;
         line-height: 1.45;
-        background: rgba(61, 231, 255, 0.055);
       }
 
       .viz-bars {
@@ -500,12 +749,258 @@
       .viz-road {
         display: grid;
         grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 10px;
+        gap: clamp(14px, 2vw, 24px);
         align-items: stretch;
       }
 
       .viz-road .viz-card {
         min-height: 170px;
+      }
+
+      .roi-total {
+        display: grid;
+        place-items: center;
+        min-height: 170px;
+        margin-bottom: 18px;
+        border: 1px solid color-mix(in srgb, var(--cyan) 56%, transparent);
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(61, 231, 255, 0.18), transparent 58%),
+          rgba(255, 255, 255, 0.035);
+        color: var(--text);
+        text-align: center;
+        box-shadow: 0 0 36px rgba(61, 231, 255, 0.16);
+      }
+
+      .roi-total strong {
+        display: block;
+        color: var(--cyan);
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 1;
+      }
+
+      .roi-total span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .roi-bars {
+        display: grid;
+        gap: 12px;
+      }
+
+      .roi-bar {
+        display: grid;
+        grid-template-columns: minmax(120px, 0.7fr) minmax(140px, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .roi-track {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.07);
+        overflow: hidden;
+      }
+
+      .roi-fill {
+        display: block;
+        width: var(--w);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
+      }
+
+      .roi-bar b {
+        color: var(--text);
+        font-size: 12px;
+      }
+
+      .roi-workbench {
+        display: grid;
+        grid-template-columns: minmax(290px, 0.9fr) minmax(0, 1.15fr);
+        gap: clamp(18px, 2.4vw, 32px);
+        align-items: start;
+      }
+
+      .roi-panel {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(135deg, rgba(61, 231, 255, 0.09), rgba(209, 92, 255, 0.05)),
+          rgba(5, 10, 24, 0.78);
+        box-shadow: var(--shadow);
+      }
+
+      .cover-hero.is-hidden {
+        display: none;
+      }
+
+      .roi-panel-inner {
+        position: relative;
+        z-index: 1;
+        padding: clamp(18px, 2.2vw, 28px);
+      }
+
+      .roi-panel h3 {
+        margin: 0;
+        color: var(--text);
+        font-size: clamp(18px, 2vw, 28px);
+      }
+
+      .roi-note {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .roi-scenarios {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .roi-scenario {
+        min-height: 42px;
+        border: 1px solid color-mix(in srgb, var(--cyan) 42%, transparent);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font: inherit;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+      }
+
+      .roi-scenario[aria-pressed="true"] {
+        border-color: color-mix(in srgb, var(--magenta) 70%, var(--cyan));
+        color: var(--text);
+        background: linear-gradient(135deg, rgba(61, 231, 255, 0.18), rgba(209, 92, 255, 0.18));
+        box-shadow: 0 0 22px rgba(61, 231, 255, 0.16);
+      }
+
+      .roi-controls {
+        display: grid;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .roi-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .roi-field label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .roi-field label output {
+        color: var(--cyan);
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .roi-field input[type="range"] {
+        width: 100%;
+        accent-color: var(--cyan);
+      }
+
+      .roi-field small {
+        display: block;
+        max-width: 58ch;
+        color: color-mix(in srgb, var(--muted) 88%, var(--cyan));
+        font-size: 12px;
+        line-height: 1.42;
+      }
+
+      .roi-kpis {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .roi-kpi {
+        min-height: 98px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .roi-kpi strong {
+        display: block;
+        color: var(--cyan);
+        font-size: clamp(22px, 3vw, 34px);
+        line-height: 1;
+      }
+
+      .roi-kpi span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .roi-driver-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .roi-driver {
+        min-height: 136px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .roi-driver strong {
+        display: block;
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      .roi-driver span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .roi-driver b {
+        display: block;
+        margin-top: 12px;
+        color: var(--cyan);
+        font-size: 18px;
+      }
+
+      .roi-assumptions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 28px;
       }
 
       .viz-target {
@@ -521,7 +1016,188 @@
         box-shadow: 0 0 34px rgba(209, 92, 255, 0.25);
       }
 
+      .viz-logo {
+        width: min(100%, 430px);
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        filter: drop-shadow(0 0 24px rgba(61, 231, 255, 0.22));
+      }
+
+      .ecosystem-map {
+        position: relative;
+        min-height: 440px;
+        display: grid;
+        grid-template-columns: minmax(170px, 1fr) minmax(200px, 0.92fr) minmax(170px, 1fr);
+        grid-template-rows: repeat(3, minmax(82px, 1fr)) minmax(78px, 0.8fr);
+        gap: 20px clamp(22px, 4vw, 44px);
+        align-items: center;
+      }
+
+      .ecosystem-map::before {
+        content: "";
+        position: absolute;
+        inset: 8% 23% 12%;
+        pointer-events: none;
+        background:
+          repeating-conic-gradient(from 4deg, rgba(61, 231, 255, 0.2) 0deg 1deg, transparent 1deg 18deg),
+          radial-gradient(circle, rgba(61, 231, 255, 0.18), transparent 63%);
+        filter: blur(0.5px);
+        mask-image: radial-gradient(circle, black, transparent 72%);
+      }
+
+      .ecosystem-hub {
+        position: relative;
+        z-index: 2;
+        width: clamp(180px, 18vw, 230px);
+        aspect-ratio: 1;
+        grid-column: 2;
+        grid-row: 1 / span 3;
+        place-self: center;
+        display: grid;
+        place-items: center;
+        border: 3px solid var(--cyan);
+        border-radius: 999px;
+        color: var(--text);
+        text-align: center;
+        font-size: clamp(18px, 1.8vw, 26px);
+        font-weight: 950;
+        line-height: 1.22;
+        background:
+          radial-gradient(circle at 64% 22%, rgba(61, 231, 255, 0.22), transparent 28%),
+          radial-gradient(circle at 32% 76%, rgba(209, 92, 255, 0.24), transparent 31%),
+          rgba(5, 8, 20, 0.72);
+        box-shadow:
+          0 0 22px rgba(61, 231, 255, 0.28),
+          0 0 44px rgba(209, 92, 255, 0.22),
+          inset 0 0 34px rgba(61, 231, 255, 0.12);
+      }
+
+      .ecosystem-hub::before {
+        content: "";
+        position: absolute;
+        inset: -10px;
+        border: 2px solid var(--magenta);
+        border-top-color: var(--cyan);
+        border-left-color: rgba(209, 92, 255, 0.7);
+        border-radius: inherit;
+        filter: drop-shadow(0 0 16px rgba(209, 92, 255, 0.48));
+      }
+
+      .ecosystem-node {
+        position: relative;
+        z-index: 3;
+        min-height: 86px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: center;
+        padding: 14px 16px;
+        border: 1px solid color-mix(in srgb, var(--node-color) 56%, transparent);
+        color: var(--node-color);
+        background:
+          linear-gradient(135deg, color-mix(in srgb, var(--node-color) 9%, transparent), transparent 64%),
+          rgba(5, 8, 20, 0.42);
+        box-shadow:
+          0 0 22px color-mix(in srgb, var(--node-color) 16%, transparent),
+          inset 0 0 18px color-mix(in srgb, var(--node-color) 8%, transparent);
+      }
+
+      .ecosystem-node strong {
+        display: block;
+        color: var(--text);
+        font-size: clamp(16px, 1.45vw, 23px);
+        font-weight: 950;
+        line-height: 1.12;
+        text-transform: uppercase;
+      }
+
+      .ecosystem-node span:last-child {
+        display: block;
+        margin-top: 4px;
+        color: color-mix(in srgb, var(--text) 78%, var(--muted));
+        font-size: clamp(14px, 1.15vw, 18px);
+        font-weight: 760;
+        line-height: 1.22;
+      }
+
+      .ecosystem-icon {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border: 2px solid currentColor;
+        color: currentColor;
+        font-size: 20px;
+        font-weight: 950;
+        box-shadow: 0 0 18px color-mix(in srgb, currentColor 34%, transparent);
+      }
+
+      .ecosystem-left {
+        grid-column: 1;
+      }
+
+      .ecosystem-right {
+        grid-column: 3;
+      }
+
+      .ecosystem-top {
+        grid-row: 1;
+      }
+
+      .ecosystem-mid {
+        grid-row: 2;
+      }
+
+      .ecosystem-low {
+        grid-row: 3;
+      }
+
+      .ecosystem-bottom {
+        grid-column: 2;
+        grid-row: 4;
+        width: min(100%, 260px);
+        place-self: center;
+      }
+
+      .ecosystem-link {
+        position: absolute;
+        z-index: 1;
+        left: var(--x);
+        top: var(--y);
+        width: var(--w);
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+        box-shadow: 0 0 12px rgba(61, 231, 255, 0.76);
+        transform: rotate(var(--r));
+        transform-origin: center;
+      }
+
+      .ecosystem-link::after {
+        content: "";
+        position: absolute;
+        right: -3px;
+        top: -3px;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--cyan);
+        box-shadow: 0 0 16px var(--cyan);
+      }
+
       @media (max-width: 900px) {
+        .cover-hero {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .circuit-field {
+          width: min(100%, 520px);
+          min-width: 0;
+          height: 310px;
+          margin-left: 0;
+        }
+
         .page-header,
         .section {
           grid-template-columns: 1fr;
@@ -540,6 +1216,39 @@
           flex-direction: column;
         }
 
+        .roi-workbench,
+        .roi-assumptions {
+          grid-template-columns: 1fr;
+        }
+
+        .roi-driver-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .ecosystem-map {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+          min-height: auto;
+        }
+
+        .ecosystem-hub,
+        .ecosystem-left,
+        .ecosystem-right,
+        .ecosystem-bottom {
+          grid-column: 1;
+          grid-row: auto;
+          width: min(100%, 360px);
+          justify-self: center;
+        }
+
+        .ecosystem-hub {
+          width: 220px;
+        }
+
+        .ecosystem-link {
+          display: none;
+        }
+
         .section:nth-of-type(even) .copy,
         .section:nth-of-type(even) .visual {
           order: initial;
@@ -552,6 +1261,11 @@
           padding-top: 22px;
         }
 
+        .cover-hero {
+          min-height: auto;
+          padding: 24px 18px;
+        }
+
         .topbar {
           align-items: flex-start;
           flex-direction: column;
@@ -559,6 +1273,26 @@
 
         .deck-links {
           justify-content: flex-start;
+        }
+
+        .cover-logo-row {
+          align-items: flex-start;
+          flex-direction: column;
+          margin-bottom: 28px;
+        }
+
+        .cover-pills {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .roi-kpis,
+        .roi-driver-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .roi-bar {
+          grid-template-columns: 1fr;
+          gap: 6px;
         }
       }
     </style>
@@ -570,8 +1304,10 @@
         <nav class="deck-links" aria-label="Deck links">
           <a class="button" href="./page.html">Sectioned Deck</a>
           <a class="button" href="./dark.html">Dark Deck</a>
+          <a class="button" href="?page=white-pages">White Pages</a>
           <a class="button" href="../exports/netsirv-sop-document-ecosystem-rebuilt-dark.pdf">Dark PDF</a>
           <a class="button" href="../exports/netsirv-sop-document-ecosystem-rebuilt-white.pdf">White PDF</a>
+          <a class="button badge-button" href="../exports/netsirv-ladder-roi-model-white.pdf">ROI PDF</a>
         </nav>
       </div>
 
@@ -587,8 +1323,38 @@
           <button class="tab" type="button" data-page="operations" aria-selected="false">Operations</button>
           <button class="tab" type="button" data-page="platform" aria-selected="false">Platform</button>
           <button class="tab" type="button" data-page="roadmap" aria-selected="false">Roadmap</button>
+          <button class="tab" type="button" data-page="roi" aria-selected="false">ROI Model</button>
         </nav>
       </header>
+
+      <section class="cover-hero" aria-labelledby="cover-title">
+        <div class="cover-copy">
+          <div class="cover-logo-row">
+            <img class="invoi-logo" src="./assets/invoi-logo-ai-infused-sop-cropped-wide.png" alt="invoi AI infused SOP" />
+            <div class="cover-net">NETSIRV</div>
+          </div>
+          <div class="cover-kicker">Expanded Executive Narrative</div>
+          <h1 id="cover-title" class="cover-title">Netsirv SOP & Document Management Ecosystem</h1>
+          <p class="cover-subtitle">A client decision deck for turning procedures, documents, training, mobile capture, AI and accounting into one connected operating layer.</p>
+          <div class="cover-pills" aria-label="Narrative themes">
+            <div class="cover-pill">SOP-first</div>
+            <div class="cover-pill">AI-assisted</div>
+            <div class="cover-pill">Audit-ready</div>
+            <div class="cover-pill">Accounting aware</div>
+          </div>
+          <p class="cover-callout">The front door is document management.<br />The strategic outcome is operational control.</p>
+        </div>
+        <div class="circuit-field" aria-hidden="true">
+          <span class="circuit-line" style="--top:8%;--right:4%;--width:62%;--height:18%;--color:var(--blue);--alpha:.72"></span>
+          <span class="circuit-line" style="--top:16%;--right:10%;--width:52%;--height:24%;--color:var(--cyan);--alpha:.9"></span>
+          <span class="circuit-line" style="--top:25%;--right:-2%;--width:74%;--height:20%;--color:var(--magenta);--alpha:.68"></span>
+          <span class="circuit-line" style="--top:35%;--right:16%;--width:58%;--height:15%;--color:var(--blue);--alpha:.78"></span>
+          <span class="circuit-line" style="--top:45%;--right:0%;--width:78%;--height:26%;--color:var(--cyan);--alpha:.82"></span>
+          <span class="circuit-line" style="--top:58%;--right:12%;--width:64%;--height:18%;--color:var(--magenta);--alpha:.75"></span>
+          <span class="circuit-line" style="--top:68%;--right:-4%;--width:70%;--height:16%;--color:var(--blue);--alpha:.7"></span>
+          <span class="circuit-line" style="--top:78%;--right:20%;--width:48%;--height:13%;--color:var(--cyan);--alpha:.86"></span>
+        </div>
+      </section>
 
       <main id="pages"></main>
     </div>
@@ -606,6 +1372,30 @@
             ["Why now", "Back-office complexity is growing faster than headcount should.", "Teams need systems that reduce repetitive coordination, preserve institutional knowledge, and make every process easier to execute consistently.", "See the opportunity", "03-why-this-matters-now.png", "Why this matters now"],
             ["The old model breaks", "Folders organize files. They do not run operations.", "Traditional document systems isolate information from workflow, relationships, approvals, accounting context and evidence.", "Compare the models", "04-traditional-document-management-falls-short.png", "Why traditional document management falls short"],
             ["One connected operating layer", "A unified ecosystem for SOPs, documents, people and workflow.", "Netsirv links content to the enterprise stack so information moves with work instead of sitting outside it.", "View the ecosystem", "05-netsirv-ecosystem-model.png", "The Netsirv ecosystem model"],
+          ],
+        },
+        {
+          id: "white-pages",
+          label: "White Pages",
+          title: "White papers for the operating layer.",
+          summary: "Executive-ready briefs that turn the visual story into decision material for leadership, operations, finance, IT and implementation teams.",
+          sections: [
+            ["Executive white paper", "The business case for SOP + document intelligence.", "Position the platform as an operating layer that reduces coordination waste, improves governance, preserves evidence and turns business records into usable decision context.", "Read the executive case", "whitepaper-executive.png", "Executive white paper"],
+            ["Governance brief", "Turn procedures into provable operational controls.", "Translate SOPs, training, approvals and field evidence into a defensible control model that shows who did what, under which procedure, with what supporting record.", "Review the governance model", "whitepaper-governance.png", "Governance white paper"],
+            ["AI document intelligence brief", "Make unstructured documents useful without surrendering control.", "Define how AI classification, extraction, confidence scoring and human review can accelerate document workflows while keeping operators accountable for trusted data.", "Explore AI document intelligence", "whitepaper-ai-documents.png", "AI document intelligence white paper"],
+            ["Finance and audit brief", "Connect operational evidence to the financial event.", "Show how invoices, service records, approvals, vendors, jobs, assets and GL context become one reviewable trail for accounting, audit, exception management and close discipline.", "See finance context", "whitepaper-finance-audit.png", "Finance and audit white paper"],
+            ["Pilot blueprint", "Validate the operating model before scaling it.", "Outline a focused pilot with one workflow, one team, measurable outcomes, integration checkpoints and a clear path from quick win to enterprise rollout.", "Plan the pilot", "whitepaper-pilot-blueprint.png", "Pilot blueprint white paper"],
+          ],
+        },
+        {
+          id: "roi",
+          label: "ROI",
+          title: "Workforce Intelligence & Ladder ROI model.",
+          summary: "A C-level ROI model for connecting recruiting, training, Ladder advancement, deployment, payroll and accounting into one measurable workforce performance system.",
+          sections: [
+            ["Drivers", "Six financial levers create the ROI case.", "Ladder connects employee lifecycle data to operational and financial outcomes: retention, recruiting ramp, Academy effectiveness, skills utilization, overtime leakage, administrative automation and internal advancement.", "Review ROI drivers", "roi-drivers.png", "ROI drivers"],
+            ["ROI chart", "An illustrative 1,000-employee model shows a $1.733M annual benefit pool.", "The model is not a promised outcome. It is a planning framework that converts baseline workforce data into measurable benefit categories for validation during implementation.", "Open ROI model", "roi-chart.png", "ROI chart"],
+            ["Variables & assumptions", "Assumptions are benchmark-informed, then replaced with customer baselines.", "The model uses conservative planning assumptions drawn from published workforce benchmarks and case-study categories, then recalculates using actual turnover, hiring, training, overtime, administrative and mobility data.", "Review assumptions", "roi-assumptions.png", "Variables and assumptions"],
           ],
         },
         {
@@ -669,6 +1459,229 @@
         return `<div class="viz-steps">${items.map((item, index) => `<div class="viz-step"><span class="viz-badge">${index + 1}</span><span>${item}</span></div>`).join("")}</div>`;
       }
 
+      function roiBars(rows) {
+        const max = Math.max(...rows.map(([, value]) => value));
+        return `<div class="roi-bars">${rows.map(([label, value]) => `<div class="roi-bar"><span>${label}</span><div class="roi-track"><span class="roi-fill" style="--w:${Math.max(10, Math.round((value / max) * 100))}%"></span></div><b>$${value.toLocaleString()}</b></div>`).join("")}</div>`;
+      }
+
+      const roiScenarioData = {
+        conservative: {
+          employees: 750,
+          baselineTurnover: 28,
+          targetTurnover: 24,
+          replacementCost: 6500,
+          annualHires: 180,
+          rampDays: 4,
+          valuePerDay: 225,
+          overtimeSavings: 150000,
+          adminHours: 3200,
+          adminCost: 38,
+          trainingSavings: 125000,
+          advancementSavings: 75000,
+        },
+        planned: {
+          employees: 1000,
+          baselineTurnover: 30,
+          targetTurnover: 24,
+          replacementCost: 7500,
+          annualHires: 300,
+          rampDays: 5,
+          valuePerDay: 250,
+          overtimeSavings: 300000,
+          adminHours: 5200,
+          adminCost: 40,
+          trainingSavings: 250000,
+          advancementSavings: 150000,
+        },
+        accelerated: {
+          employees: 1500,
+          baselineTurnover: 34,
+          targetTurnover: 24,
+          replacementCost: 8500,
+          annualHires: 450,
+          rampDays: 7,
+          valuePerDay: 300,
+          overtimeSavings: 525000,
+          adminHours: 8200,
+          adminCost: 46,
+          trainingSavings: 425000,
+          advancementSavings: 250000,
+        },
+      };
+
+      const roiControls = [
+        ["employees", "Employees", 250, 5000, 50, "number", "Set the population covered by the pilot or rollout so savings scale to the real workforce."],
+        ["baselineTurnover", "Baseline turnover", 5, 60, 1, "percent", "Enter current annual attrition before Ladder, Academy and role-fit improvements are applied."],
+        ["targetTurnover", "Ladder turnover target", 0, 50, 1, "percent", "Model the retention goal after better hiring, training, advancement and deployment controls."],
+        ["replacementCost", "Replacement cost", 1000, 25000, 500, "money", "Use the loaded cost to replace one employee, including recruiting, onboarding and lost productivity."],
+        ["annualHires", "Annual hires", 25, 1200, 25, "number", "Estimate how many new employees move through recruiting and Academy each year."],
+        ["rampDays", "Ramp days saved", 1, 20, 1, "days", "Show how many days Ladder can remove from time-to-productivity through clearer qualification paths."],
+        ["valuePerDay", "Productive value / day", 100, 1000, 25, "money", "Assign the daily operating value of getting a trained employee productive sooner."],
+        ["overtimeSavings", "Overtime optimization", 0, 1000000, 25000, "money", "Capture avoided overtime from assigning qualified people to the right work at the right time."],
+        ["adminHours", "Admin hours removed", 0, 20000, 250, "hours", "Estimate manual HR, operations, payroll and accounting hours removed by connected workflows."],
+        ["adminCost", "Admin loaded cost / hour", 20, 100, 5, "money", "Use a loaded hourly cost for the back-office time the platform can eliminate or redirect."],
+        ["trainingSavings", "Training + rework savings", 0, 1000000, 25000, "money", "Model avoided rework when training status, SOP readiness and job assignment are connected."],
+        ["advancementSavings", "Internal advancement value", 0, 750000, 25000, "money", "Value roles filled internally through Ladder instead of external recruiting and replacement churn."],
+      ];
+
+      const roiDriverCopy = [
+        ["turnover", "Reduced turnover", "Lower replacement cost and preserve operating knowledge.", "R"],
+        ["productivity", "Faster productivity", "Move new employees from hired to productive sooner.", "P"],
+        ["overtime", "Overtime optimization", "Deploy qualified labor where work demand is highest.", "O"],
+        ["admin", "Admin automation", "Remove duplicate entry across recruiting, Academy, payroll and accounting.", "A"],
+        ["training", "Training / rework", "Reduce rework by tying qualification to the work being assigned.", "T"],
+        ["advancement", "Internal advancement", "Fill more roles from a known bench before buying talent externally.", "L"],
+      ];
+
+      function formatMoney(value) {
+        return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
+      }
+
+      function formatCompactMoney(value) {
+        return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: value >= 1000000 ? 2 : 0 }).format(value);
+      }
+
+      function formatInputValue(value, kind) {
+        if (kind === "money") return formatMoney(value);
+        if (kind === "percent") return `${value}%`;
+        if (kind === "days") return `${value} days`;
+        if (kind === "hours") return `${Number(value).toLocaleString()} hrs`;
+        return Number(value).toLocaleString();
+      }
+
+      function roiFieldMarkup([key, label, min, max, step, kind, help]) {
+        const value = roiScenarioData.planned[key];
+        return `<div class="roi-field">
+          <label for="roi-${key}">${label}<output data-roi-output="${key}">${formatInputValue(value, kind)}</output></label>
+          <input id="roi-${key}" data-roi-input="${key}" data-kind="${kind}" type="range" min="${min}" max="${max}" step="${step}" value="${value}" />
+          <small>${help}</small>
+        </div>`;
+      }
+
+      function roiPageMarkup(page, index) {
+        return `<article id="${page.id}" class="page ${index === 0 ? "active" : ""}">
+          <header class="page-header">
+            <div>
+              <div class="page-kicker">NETSIRV / ${page.label}</div>
+              <h2>${page.title}</h2>
+            </div>
+            <aside class="page-summary"><p>${page.summary}</p></aside>
+          </header>
+          <section class="roi-workbench" aria-label="Interactive ROI model">
+            <div class="roi-panel">
+              <div class="roi-panel-inner">
+                <div class="eyebrow">Drivers</div>
+                <h3>Model the workforce levers</h3>
+                <p class="roi-note">Use the presets as a starting point, then tune the assumptions to match a customer baseline.</p>
+                <div class="roi-scenarios" aria-label="ROI scenarios">
+                  <button class="roi-scenario" type="button" data-roi-scenario="conservative" aria-pressed="false">Conservative</button>
+                  <button class="roi-scenario" type="button" data-roi-scenario="planned" aria-pressed="true">Planned</button>
+                  <button class="roi-scenario" type="button" data-roi-scenario="accelerated" aria-pressed="false">Accelerated</button>
+                </div>
+                <div class="roi-controls">${roiControls.map(roiFieldMarkup).join("")}</div>
+              </div>
+            </div>
+            <div class="roi-panel">
+              <div class="roi-panel-inner">
+                <div class="eyebrow">ROI chart</div>
+                <h3>Illustrative annual benefit pool</h3>
+                <div class="roi-kpis">
+                  <div class="roi-kpi"><strong data-roi-kpi="total">$1.73M</strong><span>Total annual benefit pool</span></div>
+                  <div class="roi-kpi"><strong data-roi-kpi="turnoverRate">6%</strong><span>Turnover variance modeled</span></div>
+                  <div class="roi-kpi"><strong data-roi-kpi="payback">Pilot</strong><span>Baseline before scale</span></div>
+                </div>
+                <div class="roi-total" style="margin-top:18px"><div><strong data-roi-total>$1.733M</strong><span>live modeled benefit</span></div></div>
+                <div data-roi-bars>${roiBars([["Reduced turnover", 450000], ["Faster productivity", 375000], ["Overtime optimization", 300000], ["Admin automation", 208000], ["Training / rework", 250000], ["Internal advancement", 150000]])}</div>
+              </div>
+            </div>
+          </section>
+          <section class="roi-assumptions" aria-label="ROI assumptions">
+            <div class="roi-panel">
+              <div class="roi-panel-inner">
+                <div class="eyebrow">Explanations</div>
+                <h3>How the variables work</h3>
+                <div class="viz-table" style="margin-top:18px">
+                  <div class="viz-row"><span>Retention</span><b>Employees x turnover improvement x replacement cost</b></div>
+                  <div class="viz-row"><span>Productivity</span><b>Annual hires x ramp days saved x productive value/day</b></div>
+                  <div class="viz-row"><span>Automation</span><b>Admin hours removed x loaded cost/hour</b></div>
+                  <div class="viz-row"><span>Other levers</span><b>Overtime, training/rework and advancement use validated customer baselines</b></div>
+                </div>
+              </div>
+            </div>
+            <div class="roi-panel">
+              <div class="roi-panel-inner">
+                <div class="eyebrow">Assumptions</div>
+                <h3>Benchmark-informed, customer-proven</h3>
+                <div class="viz-table" style="margin-top:18px">
+                  <div class="viz-row"><span>SHRM</span><b>Cost-per-hire and replacement-cost planning</b></div>
+                  <div class="viz-row"><span>Gallup</span><b>Engagement linkage to productivity and turnover</b></div>
+                  <div class="viz-row"><span>LinkedIn</span><b>Internal mobility, learning culture and retention patterns</b></div>
+                  <div class="viz-row"><span>Brandon Hall</span><b>Onboarding and training case-study impact</b></div>
+                  <div class="viz-row"><span>Customer baseline</span><b>Final source of truth before the PDF is delivered</b></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>`;
+      }
+
+      function calculateRoi(values) {
+        const turnoverRate = Math.max(0, values.baselineTurnover - values.targetTurnover);
+        const turnover = values.employees * (turnoverRate / 100) * values.replacementCost;
+        const productivity = values.annualHires * values.rampDays * values.valuePerDay;
+        const overtime = values.overtimeSavings;
+        const admin = values.adminHours * values.adminCost;
+        const training = values.trainingSavings;
+        const advancement = values.advancementSavings;
+        const rows = [
+          ["Reduced turnover", turnover],
+          ["Faster productivity", productivity],
+          ["Overtime optimization", overtime],
+          ["Admin automation", admin],
+          ["Training / rework", training],
+          ["Internal advancement", advancement],
+        ];
+        const total = rows.reduce((sum, [, value]) => sum + value, 0);
+        return { rows, total, turnoverRate };
+      }
+
+      function currentRoiValues() {
+        return Object.fromEntries(roiControls.map(([key]) => {
+          const input = document.querySelector(`[data-roi-input="${key}"]`);
+          return [key, Number(input?.value || roiScenarioData.planned[key])];
+        }));
+      }
+
+      function updateRoi() {
+        const values = currentRoiValues();
+        roiControls.forEach(([key, , , , , kind]) => {
+          const output = document.querySelector(`[data-roi-output="${key}"]`);
+          if (output) output.textContent = formatInputValue(values[key], kind);
+        });
+        const result = calculateRoi(values);
+        const total = document.querySelector("[data-roi-total]");
+        const totalKpi = document.querySelector('[data-roi-kpi="total"]');
+        const turnoverKpi = document.querySelector('[data-roi-kpi="turnoverRate"]');
+        const bars = document.querySelector("[data-roi-bars]");
+        if (total) total.textContent = formatCompactMoney(result.total);
+        if (totalKpi) totalKpi.textContent = formatCompactMoney(result.total);
+        if (turnoverKpi) turnoverKpi.textContent = `${result.turnoverRate}%`;
+        if (bars) bars.innerHTML = roiBars(result.rows);
+      }
+
+      function applyRoiScenario(name) {
+        const scenario = roiScenarioData[name];
+        if (!scenario) return;
+        Object.entries(scenario).forEach(([key, value]) => {
+          const input = document.querySelector(`[data-roi-input="${key}"]`);
+          if (input) input.value = value;
+        });
+        document.querySelectorAll("[data-roi-scenario]").forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.roiScenario === name));
+        });
+        updateRoi();
+      }
+
       function visualFor(image) {
         switch (image) {
           case "01-sop-document-management-ecosystem.png":
@@ -691,7 +1704,91 @@
               `<div class="viz-card"><strong>Netsirv Context Graph</strong>${table([["Active SOP", "v2.1"], ["Trained Users", "42"], ["BOL Evidence", "18"], ["Open Exceptions", "3"], ["GL Impact", "$12.4k"]])}</div>`,
             ]);
           case "05-netsirv-ecosystem-model.png":
-            return `<div class="viz-flow"><div>${grid("two", [card("Academy", "Training", "A", "var(--magenta)"), card("Mobile", "Capture", "M"), card("AI documents", "Repository & search", "AI", "var(--magenta)")])}</div><span class="viz-arrow">→</span><div class="viz-hub">SOP + DOCUMENT<br>CONTROL CENTER</div><span class="viz-arrow">→</span><div>${grid("two", [card("Procurement", "Workflow", "$", "#f7c948"), card("Vendors", "Contracts", "V"), card("Accounting", "Output", "GL", "#13e6a3"), card("Catalog", "Master data", "C")])}</div></div>`;
+            return `<div class="ecosystem-map">
+              <span class="ecosystem-link" style="--x:24%;--y:24%;--w:18%;--r:28deg"></span>
+              <span class="ecosystem-link" style="--x:23%;--y:47%;--w:20%;--r:0deg"></span>
+              <span class="ecosystem-link" style="--x:24%;--y:68%;--w:18%;--r:-28deg"></span>
+              <span class="ecosystem-link" style="--x:58%;--y:24%;--w:18%;--r:-28deg"></span>
+              <span class="ecosystem-link" style="--x:57%;--y:47%;--w:20%;--r:0deg"></span>
+              <span class="ecosystem-link" style="--x:58%;--y:68%;--w:18%;--r:28deg"></span>
+              <span class="ecosystem-link" style="--x:43%;--y:80%;--w:14%;--r:90deg"></span>
+              <div class="ecosystem-node ecosystem-left ecosystem-top" style="--node-color:var(--magenta)">
+                <span class="ecosystem-icon">A</span>
+                <span><strong>Academy</strong><span>Training</span></span>
+              </div>
+              <div class="ecosystem-node ecosystem-left ecosystem-mid" style="--node-color:var(--cyan)">
+                <span class="ecosystem-icon">M</span>
+                <span><strong>Mobile</strong><span>Capture</span></span>
+              </div>
+              <div class="ecosystem-node ecosystem-left ecosystem-low" style="--node-color:var(--magenta)">
+                <span class="ecosystem-icon">AI</span>
+                <span><strong>AI Document</strong><span>Repository & search</span></span>
+              </div>
+              <div class="ecosystem-hub">SOP + DOCUMENT<br>CONTROL CENTER</div>
+              <div class="ecosystem-node ecosystem-right ecosystem-top" style="--node-color:#f7c948">
+                <span class="ecosystem-icon">$</span>
+                <span><strong>Procurement</strong><span>Workflow</span></span>
+              </div>
+              <div class="ecosystem-node ecosystem-right ecosystem-mid" style="--node-color:var(--cyan)">
+                <span class="ecosystem-icon">V</span>
+                <span><strong>Vendor + Contracts</strong><span>Context</span></span>
+              </div>
+              <div class="ecosystem-node ecosystem-right ecosystem-low" style="--node-color:#13e6a3">
+                <span class="ecosystem-icon">GL</span>
+                <span><strong>Accounting</strong><span>Output</span></span>
+              </div>
+              <div class="ecosystem-node ecosystem-bottom" style="--node-color:var(--blue)">
+                <span class="ecosystem-icon">C</span>
+                <span><strong>Master</strong><span>Catalog / PIM</span></span>
+              </div>
+            </div>`;
+          case "whitepaper-executive.png":
+            return grid("two", [
+              `<div class="viz-card"><strong>Decision Thesis</strong>${steps(["Documents become operational data", "SOPs become enforceable controls", "Evidence stays attached to work", "Dashboards surface business risk"])}</div>`,
+              `<div class="viz-card"><strong>Leadership Outcomes</strong>${table([["Waste", "Less rework"], ["Control", "Clear ownership"], ["Audit", "Source evidence"], ["Scale", "Repeatable rollout"]])}</div>`,
+            ]) + `<div class="viz-callout">The white paper frames invoi as the system that connects how work is supposed to happen with proof that it did.</div>`;
+          case "whitepaper-governance.png":
+            return grid("five", [
+              card("Procedure", "Approved SOP", "S"),
+              card("Readiness", "Training + role proof", "T", "var(--magenta)"),
+              card("Action", "Task performed", "A", "var(--blue)"),
+              card("Evidence", "Record retained", "E"),
+              card("Review", "Audit trail", "R", "#13e6a3"),
+            ]) + `<div class="viz-callout">A governance model only works when the procedure, person, action and evidence are connected.</div>`;
+          case "whitepaper-ai-documents.png":
+            return grid("two", [
+              `<div>${steps(["Capture original record", "Classify document type", "Extract structured fields", "Score confidence", "Route human review"])}</div>`,
+              `<div class="viz-card"><strong>Trust Boundary</strong>${table([["AI", "Suggests"], ["Operator", "Verifies"], ["Workflow", "Routes"], ["Audit log", "Retains"]])}</div>`,
+            ]);
+          case "whitepaper-finance-audit.png":
+            return grid("two", [
+              `<div class="viz-card"><strong>Operational Evidence</strong>${table([["Invoice", "ABC HVAC"], ["Asset", "RTU-006"], ["SOP", "Maintenance"], ["Approval", "Manager"]])}</div>`,
+              `<div class="viz-card"><strong>Financial Context</strong>${table([["GL", "6300"], ["Expense", "$725"], ["Location", "Main Office"], ["Exception", "None"]])}</div>`,
+            ]) + `<div class="viz-callout">Finance gets the context behind the number, not just another detached document.</div>`;
+          case "whitepaper-pilot-blueprint.png":
+            return `<div class="viz-road">${[
+              ["Define", "One workflow", "1"],
+              ["Instrument", "Data + evidence", "2"],
+              ["Train", "Users + controls", "3"],
+              ["Measure", "Cycle time + accuracy", "4"],
+              ["Scale", "Repeatable pattern", "5"],
+            ].map(([title, text, label], index) => card(title, text, label, ["var(--cyan)", "var(--magenta)", "var(--blue)", "#f7c948", "#13e6a3"][index])).join("")}</div><div class="viz-callout">The pilot white page converts the platform story into a concrete implementation path.</div>`;
+          case "roi-drivers.png":
+            return grid("three", [
+              card("Retention", "Lower replacement cost and preserve institutional knowledge.", "R"),
+              card("Productivity ramp", "Reduce time from applicant to qualified productive employee.", "P", "var(--blue)"),
+              card("Academy", "Tie training to certification, performance and advancement.", "A", "var(--magenta)"),
+              card("Utilization", "Match available qualified labor to work demand.", "U", "#13e6a3"),
+              card("Automation", "Reduce handoffs across HR, operations, payroll and accounting.", "HR", "#f7c948"),
+              card("Advancement", "Fill more roles internally and build leadership bench strength.", "L"),
+            ]) + `<div class="viz-callout">The ROI case is strongest when workforce capability, work assignment, compensation and financial output use the same record.</div>`;
+          case "roi-chart.png":
+            return `<div class="roi-total"><div><strong>$1.733M</strong><span>illustrative annual benefit pool</span></div></div>${roiBars([["Reduced turnover", 450000], ["Faster productivity", 375000], ["Overtime optimization", 300000], ["Admin automation", 208000], ["Training/rework", 250000], ["Internal advancement", 150000]])}<div class="viz-callout">Model basis: 1,000 employees. Replace every assumption with customer baseline data during implementation.</div>`;
+          case "roi-assumptions.png":
+            return grid("two", [
+              `<div class="viz-card"><strong>Variables used</strong>${table([["Employees", "1,000"], ["Baseline turnover", "30%"], ["Target turnover", "24%"], ["Replacement cost", "$7,500"], ["Productive value/day", "$250"], ["Admin loaded cost", "$40/hr"]])}</div>`,
+              `<div class="viz-card"><strong>Benchmark sources</strong>${table([["SHRM", "Cost-per-hire and replacement-cost planning"], ["Gallup", "Engagement linkage to productivity and turnover"], ["LinkedIn", "Internal mobility and retention patterns"], ["Brandon Hall", "Onboarding and training case-study impact"], ["Customer baseline", "Final implementation source of truth"]])}</div>`,
+            ]) + `<div class="viz-callout">The assumptions are planning inputs, not guaranteed results. Realized ROI is measured against customer baselines.</div>`;
           case "06-universal-document-intelligence.png":
             return grid("two", [`<div>${steps(["Capture original", "Classify document type", "Extract key data", "Score confidence", "Review human-in-loop", "Route to workflow"])}</div>`, `<div class="viz-card"><strong>AI Extraction Review</strong>${table([["Vendor", "ABC HVAC"], ["Date", "08/16/26"], ["Work", "RTU repair"], ["Materials", "$140.20"], ["Total", "$725.00"]])}</div>`]);
           case "07-mobile-governed-records.png":
@@ -721,7 +1818,7 @@
           case "19-who-benefits.png":
             return grid("five", ["Employees", "Managers", "Finance", "IT", "Executives"].map((role) => card(role, "Connected work, clear evidence and better outcomes.", "○")));
           case "20-build-whats-next.png":
-            return grid("two", [`<div>${steps(["Start with a conversation", "Define your pilot", "Deliver quick wins", "Scale with confidence"])}</div>`, `<div class="viz-hub">Letivi + invoi<br>AI INFUSED SOP</div>`]) + `<div class="viz-callout">Work governed. Evidence connected. Outcomes delivered.</div>`;
+            return grid("two", [`<div>${steps(["Start with a conversation", "Define your pilot", "Deliver quick wins", "Scale with confidence"])}</div>`, `<img class="viz-logo" src="./assets/invoi-logo-ai-infused-sop-cropped-wide.png" alt="invoi AI infused SOP" />`]) + `<div class="viz-callout">Work governed. Evidence connected. Outcomes delivered.</div>`;
           default:
             return `<div class="viz-callout">Native section visual pending.</div>`;
         }
@@ -743,7 +1840,7 @@
       }
 
       document.getElementById("pages").innerHTML = pages
-        .map((page, index) => `<article id="${page.id}" class="page ${index === 0 ? "active" : ""}">
+        .map((page, index) => page.id === "roi" ? roiPageMarkup(page, index) : `<article id="${page.id}" class="page ${index === 0 ? "active" : ""}">
           <header class="page-header">
             <div>
               <div class="page-kicker">NETSIRV / ${page.label}</div>
@@ -757,10 +1854,12 @@
 
       const tabs = document.querySelectorAll(".tab");
       const articles = document.querySelectorAll(".page");
+      const coverHero = document.querySelector(".cover-hero");
 
       function showPage(id) {
         tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.page === id)));
         articles.forEach((article) => article.classList.toggle("active", article.id === id));
+        coverHero?.classList.toggle("is-hidden", id !== "front");
         const url = new URL(location);
         url.searchParams.set("page", id);
         history.replaceState(null, "", url);
@@ -768,6 +1867,9 @@
       }
 
       tabs.forEach((tab) => tab.addEventListener("click", () => showPage(tab.dataset.page)));
+      document.querySelectorAll("[data-roi-input]").forEach((input) => input.addEventListener("input", updateRoi));
+      document.querySelectorAll("[data-roi-scenario]").forEach((button) => button.addEventListener("click", () => applyRoiScenario(button.dataset.roiScenario)));
+      updateRoi();
 
       const initial = new URLSearchParams(location.search).get("page");
       if (initial && document.getElementById(initial)) showPage(initial);

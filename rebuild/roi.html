@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Netsirv Workforce Intelligence & Ladder ROI Model</title>
+    <style>
+      @page {
+        size: 8.5in 11in;
+        margin: 0;
+      }
+
+      :root {
+        --bg: #f5f8fc;
+        --text: #0d1b2e;
+        --muted: #53667d;
+        --cyan: #007a99;
+        --blue: #1d4ed8;
+        --purple: #7c3aed;
+        --green: #047857;
+        --yellow: #a16207;
+        --line: rgba(0, 119, 181, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .page {
+        position: relative;
+        isolation: isolate;
+        width: 8.5in;
+        height: 11in;
+        overflow: hidden;
+        page-break-after: always;
+        padding: 0.55in 0.52in;
+        background:
+          radial-gradient(circle at 77% 45%, rgba(38, 228, 255, 0.12), transparent 31%),
+          radial-gradient(circle at 88% 58%, rgba(168, 85, 247, 0.11), transparent 27%),
+          linear-gradient(135deg, #f5f8fc, #ffffff);
+      }
+
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        opacity: 0.62;
+        background-image:
+          linear-gradient(90deg, rgba(0, 122, 153, 0.06) 1px, transparent 1px),
+          linear-gradient(rgba(0, 122, 153, 0.045) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(circle at 84% 54%, black, transparent 58%);
+      }
+
+      .page::after {
+        content: "";
+        position: absolute;
+        right: -0.25in;
+        top: 0.6in;
+        z-index: 0;
+        width: 3.3in;
+        height: 9.4in;
+        opacity: 0.08;
+        background:
+          linear-gradient(135deg, transparent 7%, var(--blue) 7% 8%, transparent 8% 19%, var(--purple) 19% 20%, transparent 20% 31%, var(--cyan) 31% 32%, transparent 32%),
+          linear-gradient(45deg, transparent 6%, var(--cyan) 6% 7%, transparent 7% 21%, #be185d 21% 22%, transparent 22% 38%, var(--blue) 38% 39%, transparent 39%);
+        mask-image: radial-gradient(circle at 58% 50%, black, transparent 76%);
+      }
+
+      .page > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      .brand {
+        position: absolute;
+        top: 0.3in;
+        right: 0.42in;
+        z-index: 3;
+        color: var(--cyan);
+        font-size: 0.13in;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+
+      .footer {
+        position: absolute;
+        left: 0.58in;
+        bottom: 0.28in;
+        z-index: 3;
+        color: var(--cyan);
+        font-size: 0.105in;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .page-no {
+        position: absolute;
+        right: 0.45in;
+        bottom: 0.25in;
+        z-index: 3;
+        font-size: 0.22in;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 6.8in;
+        margin-top: 0.7in;
+        font-size: 0.52in;
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+      }
+
+      h2 {
+        font-size: 0.34in;
+        line-height: 1.08;
+        letter-spacing: -0.015em;
+      }
+
+      h3 {
+        font-size: 0.17in;
+        line-height: 1.18;
+      }
+
+      p {
+        color: var(--muted);
+        font-size: 0.13in;
+        line-height: 1.45;
+      }
+
+      .kicker {
+        color: var(--cyan);
+        font-size: 0.14in;
+        font-weight: 950;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .rule {
+        width: 0.72in;
+        height: 0.03in;
+        margin: 0.18in 0 0.18in;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--cyan), var(--purple));
+      }
+
+      .subtitle {
+        max-width: 6.8in;
+        margin-top: 0.22in;
+        color: #172945;
+        font-size: 0.17in;
+        line-height: 1.5;
+      }
+
+      .grid {
+        display: grid;
+        gap: 0.24in 0.34in;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .driver {
+        min-height: 1.12in;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        text-align: center;
+        padding-top: 0.13in;
+        border-top: 1px solid var(--line);
+      }
+
+      .driver p {
+        max-width: 2.55in;
+        margin-top: 0.06in;
+      }
+
+      .icon {
+        width: 0.5in;
+        height: 0.5in;
+        display: grid;
+        place-items: center;
+        margin-bottom: 0.12in;
+        border: 2px solid currentColor;
+        border-radius: 999px;
+        color: var(--cyan);
+        font-size: 0.18in;
+        font-weight: 950;
+        background: #e7fbff;
+      }
+
+      .callout {
+        margin-top: 0.32in;
+        padding: 0.03in 0 0.03in 0.18in;
+        border-left: 0.035in solid var(--cyan);
+        color: var(--cyan);
+        font-size: 0.16in;
+        font-weight: 850;
+        line-height: 1.35;
+      }
+
+      .total {
+        width: 2.2in;
+        height: 2.2in;
+        display: grid;
+        place-items: center;
+        margin: 0.28in auto 0.34in;
+        border: 0.04in solid var(--cyan);
+        border-radius: 999px;
+        background: #f4ebff;
+        text-align: center;
+      }
+
+      .total strong {
+        display: block;
+        color: var(--cyan);
+        font-size: 0.38in;
+        line-height: 1;
+      }
+
+      .total span {
+        display: block;
+        margin-top: 0.08in;
+        color: var(--muted);
+        font-size: 0.12in;
+        font-weight: 850;
+      }
+
+      .bar-list {
+        display: grid;
+        gap: 0.13in;
+      }
+
+      .bar-row {
+        display: grid;
+        grid-template-columns: 1.75in minmax(0, 1fr) 0.9in;
+        gap: 0.16in;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.12in;
+      }
+
+      .track {
+        height: 0.11in;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(0, 122, 153, 0.1);
+      }
+
+      .fill {
+        display: block;
+        width: var(--w);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+      }
+
+      .bar-row b {
+        color: var(--text);
+        text-align: right;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .table td,
+      .table th {
+        padding: 0.085in 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.12in;
+        text-align: left;
+      }
+
+      .table th {
+        color: var(--cyan);
+        font-weight: 950;
+      }
+
+      .table td:last-child,
+      .table th:last-child {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page">
+      <div class="brand">NETSIRV</div>
+      <div class="kicker">Executive ROI Model</div>
+      <h1>Workforce Intelligence & Ladder ROI Model</h1>
+      <p class="subtitle">Netsirv Ladder turns recruiting, Academy training, certification, advancement, scheduling, compensation, payroll and accounting into one measurable workforce performance system.</p>
+      <div class="grid grid-2" style="margin-top:.48in">
+        <div class="driver"><div class="icon">R</div><h3>Retention</h3><p>Reduce replacement cost and preserve operating knowledge.</p></div>
+        <div class="driver"><div class="icon" style="color:var(--blue);background:#edf3ff">P</div><h3>Productivity ramp</h3><p>Move faster from applicant to qualified productive employee.</p></div>
+        <div class="driver"><div class="icon" style="color:var(--purple);background:#f4ebff">A</div><h3>Academy</h3><p>Measure training by operational impact, not completion alone.</p></div>
+        <div class="driver"><div class="icon" style="color:var(--green);background:#e8fff5">L</div><h3>Labor utilization</h3><p>Deploy qualified labor where it creates the best return.</p></div>
+      </div>
+      <div class="callout">The economic objective is lower total cost to produce each unit of work with a more capable, better deployed workforce.</div>
+      <div class="footer">workforce intelligence</div>
+      <div class="page-no">1</div>
+    </section>
+
+    <section class="page">
+      <div class="brand">NETSIRV</div>
+      <h2>ROI drivers</h2>
+      <div class="rule"></div>
+      <p class="subtitle">The model organizes return into six benefit pools that can be measured against customer baselines.</p>
+      <div class="grid grid-3" style="margin-top:.34in">
+        <div class="driver"><div class="icon">1</div><h3>Reduced turnover</h3><p>Lower separation, recruiting, onboarding and productivity-loss expense.</p></div>
+        <div class="driver"><div class="icon" style="color:var(--blue);background:#edf3ff">2</div><h3>Faster productivity</h3><p>Shorten the path from hire to certified productive work.</p></div>
+        <div class="driver"><div class="icon" style="color:var(--purple);background:#f4ebff">3</div><h3>Training impact</h3><p>Connect Academy completion to quality, rework and advancement.</p></div>
+        <div class="driver"><div class="icon" style="color:var(--green);background:#e8fff5">4</div><h3>Overtime control</h3><p>Find qualified capacity before overtime is incurred.</p></div>
+        <div class="driver"><div class="icon" style="color:var(--yellow);background:#fff8df">5</div><h3>Administrative scale</h3><p>Reduce repetitive handoffs across HR, operations and payroll.</p></div>
+        <div class="driver"><div class="icon" style="color:var(--blue);background:#edf3ff">6</div><h3>Internal advancement</h3><p>Fill more roles from known, trained, advancement-ready employees.</p></div>
+      </div>
+      <div class="callout">Ladder is strongest when competency, deployment, compensation and financial output are measured from the same record.</div>
+      <div class="footer">drivers</div>
+      <div class="page-no">2</div>
+    </section>
+
+    <section class="page">
+      <div class="brand">NETSIRV</div>
+      <h2>Illustrative annual ROI pool</h2>
+      <div class="rule"></div>
+      <p class="subtitle">For a 1,000-employee organization, the model shows how benefit categories combine into a planning case.</p>
+      <div class="total"><div><strong>$1.733M</strong><span>illustrative annual benefit</span></div></div>
+      <div class="bar-list">
+        <div class="bar-row"><span>Reduced turnover</span><div class="track"><span class="fill" style="--w:100%"></span></div><b>$450,000</b></div>
+        <div class="bar-row"><span>Faster productivity</span><div class="track"><span class="fill" style="--w:83%"></span></div><b>$375,000</b></div>
+        <div class="bar-row"><span>Overtime optimization</span><div class="track"><span class="fill" style="--w:67%"></span></div><b>$300,000</b></div>
+        <div class="bar-row"><span>Training / rework</span><div class="track"><span class="fill" style="--w:56%"></span></div><b>$250,000</b></div>
+        <div class="bar-row"><span>Admin automation</span><div class="track"><span class="fill" style="--w:46%"></span></div><b>$208,000</b></div>
+        <div class="bar-row"><span>Internal advancement</span><div class="track"><span class="fill" style="--w:33%"></span></div><b>$150,000</b></div>
+      </div>
+      <div class="callout">These are illustrative planning assumptions, not promised results. Implementation replaces them with customer baseline data.</div>
+      <div class="footer">roi chart</div>
+      <div class="page-no">3</div>
+    </section>
+
+    <section class="page">
+      <div class="brand">NETSIRV</div>
+      <h2>Variables and benchmark assumptions</h2>
+      <div class="rule"></div>
+      <p class="subtitle">The first model uses published workforce benchmarks to frame the business case. The final model uses the customer's actual workforce data.</p>
+      <div class="grid grid-2" style="margin-top:.34in">
+        <div>
+          <h3>Illustrative variables</h3>
+          <table class="table">
+            <tr><td>Employees</td><td>1,000</td></tr>
+            <tr><td>Baseline turnover</td><td>30%</td></tr>
+            <tr><td>Ladder turnover target</td><td>24%</td></tr>
+            <tr><td>Replacement cost</td><td>$7,500</td></tr>
+            <tr><td>Annual hires</td><td>300</td></tr>
+            <tr><td>Productive value/day</td><td>$250</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>Benchmark evidence used</h3>
+          <table class="table">
+            <tr><td>SHRM</td><td>Cost-per-hire and replacement-cost planning</td></tr>
+            <tr><td>Gallup</td><td>Engagement linkage to profitability, productivity and turnover</td></tr>
+            <tr><td>LinkedIn</td><td>Internal mobility, learning culture and retention patterns</td></tr>
+            <tr><td>Brandon Hall</td><td>Onboarding and training case-study impact</td></tr>
+            <tr><td>Customer baseline</td><td>Final source of truth</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="callout">The ROI model is a measurement system: establish baseline, deploy Ladder, measure variance, then tune recruiting, Academy, scheduling and compensation decisions.</div>
+      <div class="footer">assumptions</div>
+      <div class="page-no">4</div>
+    </section>
+  </body>
+</html>
