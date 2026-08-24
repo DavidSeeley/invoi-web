@@ -781,18 +781,19 @@
         building: `<svg class="icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 58V12h25v46M37 25h15v33"/><path d="M20 22h8M20 34h8M20 46h8M44 35h4M44 46h4"/></svg>`,
       };
 
-      const slideNumbers = [1,2,3,5,6,7,8,9,10,12,13,14,15,17,18,19,20,21,22,24];
-
       function icon(name, color = "var(--cyan)") {
         return `<span style="color:${color}">${icons[name] || icons.document}</span>`;
       }
 
+      let renderedPage = 0;
+
       function frame(content, idx, section = "client story") {
+        const pageNumber = ++renderedPage;
         return `<section class="slide">
           <div class="brand">NETSIRV</div>
           ${content}
           <div class="footer">${section}</div>
-          <div class="page">${slideNumbers[idx]}</div>
+          <div class="page">${pageNumber}</div>
         </section>`;
       }
 
@@ -813,13 +814,8 @@
           <div class="grid grid-2" style="margin-top:.34in">
             <div class="panel accent-cyan"><h3>Old Model</h3><p class="kicker" style="margin-top:.08in">Document repository</p><div style="margin:.18in 0;color:var(--cyan)">${icon("folder")}</div><p>Files are uploaded, named, searched and sometimes forgotten. The system can store the SOP, but it cannot prove that the work was governed.</p><p style="margin-top:.2in;color:var(--cyan);font-weight:800">Common outcome: documents exist, but operations still rely on memory, email, manual entry and tribal knowledge.</p></div>
             <div class="panel accent-purple"><h3>Netsirv Model</h3><p class="kicker" style="margin-top:.08in">Operational intelligence layer</p><div style="margin:.18in 0;color:var(--purple)">${icon("brain")}</div><p>The SOP is connected to training, mobile actions, evidence, approvals, transactions and financial output. The document is no longer passive; it drives the process.</p><p style="margin-top:.2in;color:var(--cyan);font-weight:800">Better outcome: the organization can trace what happened, why it happened, who approved it and what evidence supports it.</p></div>
-          </div>`, 1),
-
-        frame(`<h2>Why this matters now</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Document chaos is not an IT inconvenience. It becomes an operations, compliance and finance problem.</p>
-          <p class="executive-note">The risk is not that a file is hard to find. The risk is that the business cannot prove which procedure governed the work, which person acted, what evidence was captured, and how the event reached finance.</p>
-          <div class="grid grid-2" style="margin-top:.32in">
-            ${["SOP drift|Employees may use outdated versions or informal workarounds.","Evidence gaps|Invoices, receipts, photos and BOLs are separated from the work they support.","Manual re-keying|Financial data is exported, typed and approved as disconnected documents.","Audit fragility|Hard to prove procedure, training, field execution and source evidence in one chain."].map((x,i)=>{const [a,b]=x.split("|"); return `<div class="card num-card"><div class="num">${i+1}</div><div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}
           </div>
+          <div class="brief-grid" style="margin-top:.28in">${["SOP drift|Outdated procedures and informal workarounds.","Evidence gaps|Invoices, photos and BOLs separated from work.","Manual re-keying|Disconnected financial data typed again.","Audit fragility|Hard to prove procedure, training and evidence."].map((x)=>{const[a,b]=x.split("|");return `<div class="brief-item"><h3>${a}</h3><p>${b}</p></div>`}).join("")}</div>
           <div class="callout">The cost is not only lost time. It is weak control over how work is performed, documented, approved and reported.</div>`, 2),
 
         frame(`<h2>Why traditional document management falls short</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">It stores content, but it rarely controls the work that content is supposed to govern.</p>
@@ -862,20 +858,9 @@
           <div class="grid grid-2" style="margin-top:.34in">
             ${["Procurement|Start controlled request","View SOP|Current procedure in hand","Scan invoice|Capture original evidence","Scan product|Confirm item and shipment","Receive shipment|Record operational event","Capture document|Attach proof to workflow"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="card num-card"><div class="num">${i+1}</div><div><h3>${a}</h3><p>${b}</p></div></div>`}).join("")}
           </div>
-          <div class="brief-grid" style="margin-top:.3in">
-            <div class="brief-item"><h3>Field simplicity</h3><p>Operators follow a guided sequence instead of interpreting policy from memory.</p></div>
-            <div class="brief-item"><h3>Back-office control</h3><p>Every scan, classification and exception enters the business record with context.</p></div>
-          </div>
+          <h3 style="margin-top:.28in;color:var(--cyan)">Governance gate</h3>
+          <div class="brief-grid" style="margin-top:.12in">${["SOP met|Procedure accepted","Training|Role readiness started","Assessment|Competency verified","Access|Workflow permission granted"].map((x,i)=>{const[a,b]=x.split("|");return `<div class="brief-item"><h3>${a}</h3><p>${b}</p></div>`}).join("")}</div>
           <div class="callout" style="max-width:8.5in;margin-left:auto;margin-right:auto">SOP, invoice, item, truck, service and GL classification are linked.</div>`, 6, "user experience"),
-
-        frame(`<h2>SOP + Academy creates a governance differentiator</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Access can be based on demonstrated competency, not just a permissions checkbox.</p>
-          <div class="grid grid-2" style="margin-top:.32in;align-items:start">
-            <div class="panel">
-              <div class="grid grid-2">${["SOP met","Training","Assessment","Access"].map((x,i)=>`<div class="card num-card"><div class="num">${i+1}</div><div><h3>${x}</h3><p>${["Procedure accepted","Role readiness started","Competency verified","Workflow permission granted"][i]}</p></div></div>`).join("")}</div>
-              <table class="table" style="margin-top:.25in"><tr><td>Scheduling</td><td class="status">ACTIVE</td></tr><tr><td>Orders</td><td class="status">ACTIVE</td></tr><tr><td>Procurement</td><td class="status">ACTIVE</td></tr><tr><td>HazMat</td><td class="warn">TRAINING</td></tr></table>
-            </div>
-            <div class="panel accent-cyan"><h3>Governance story for executives</h3><ul class="list"><li>The same SOP that governs the work can determine who is allowed to perform a business module.</li><li>The system can prove the user was trained before the workflow became available.</li><li>This creates a clear control narrative for operations, HR, compliance and audit.</li></ul></div>
-          </div>`, 7, "user experience"),
 
         frame(`<h2>Documents become relationship-aware business objects</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">The document becomes more valuable when it carries business context with it.</p>
           <div class="grid grid-2" style="margin-top:.28in;grid-template-columns:1.15fr .85fr;align-items:start">
@@ -973,21 +958,19 @@
           <div class="callout">Each phase is useful on day one and builds toward a fully connected operational platform.</div>`, 15, "roadmap"),
 
         frame(`<h2>Pilot program blueprint</h2><p class="subtitle" style="margin-top:.08in">Small scope. Clear outcomes. Low risk.</p>
-          <div class="grid grid-2" style="margin-top:.34in">
+          <div class="grid" style="grid-template-columns:1.05fr .82fr .5fr;margin-top:.32in;align-items:start">
             <div class="panel"><table class="table"><tr><td>Scope</td><td>One process, one location</td></tr><tr><td>Duration</td><td>8 - 12 weeks</td></tr><tr><td>Participants</td><td>10 - 12 users</td></tr><tr><td>Deliverables</td><td>Workflow, data, reporting</td></tr><tr><td>Success Criteria</td><td>Adoption, accuracy, time savings</td></tr></table></div>
-            <div class="panel accent-cyan"><h3>Pilot Outcomes</h3><ul class="list"><li>Validated process</li><li>Trained users</li><li>Connected data</li><li>Measurable results</li><li>Plan to scale</li></ul><div style="margin-top:.25in;color:var(--purple)">${icon("target","var(--purple)")}</div></div>
-          </div>`, 16, "roadmap"),
-
-        frame(`<h2>Expected outcomes</h2><div class="section-rule"></div><p class="subtitle" style="margin-top:.16in">Measurable improvements across the organization.</p>
-          <p class="executive-note">A focused pilot should prove value in cycle time, data quality, exception visibility and audit readiness before the program scales across departments.</p>
-          <div class="outcome-grid">${[
+            <div class="panel accent-cyan"><h3>Pilot Outcomes</h3><ul class="list"><li>Validated process</li><li>Trained users</li><li>Connected data</li><li>Measurable results</li><li>Plan to scale</li></ul></div>
+            <div style="color:var(--purple);padding-top:.16in;text-align:left;justify-self:start">${icon("target","var(--purple)")}</div>
+          </div>
+          <div class="outcome-grid" style="margin-top:.28in">${[
             ["30 - 50%","Reduction in manual data entry","graph"],
             ["20 - 40%","Faster invoice processing","bolt"],
             ["25 - 60%","Fewer exceptions & rework","shield"],
             ["100%","Audit-ready evidence chain","audit"],
             ["Stronger","Compliance & governance","building"]
           ].map(([a,b,ic])=>`<div class="outcome">${icon(ic)}<div class="big-number">${a}</div><p style="margin-top:.08in">${b}</p></div>`).join("")}</div>
-          <div class="callout">Better data. Better decisions. Better outcomes.</div>`, 17, "roadmap"),
+          <div class="callout">A focused pilot should prove value in cycle time, data quality, exception visibility and audit readiness before scaling.</div>`, 16, "roadmap"),
 
         frame(`<h2>Who benefits</h2><p class="subtitle" style="margin-top:.08in">Every role wins when the system is connected.</p>
           <div class="grid grid-5" style="display:grid;grid-template-columns:repeat(5,1fr);gap:.15in;margin-top:.38in">${[

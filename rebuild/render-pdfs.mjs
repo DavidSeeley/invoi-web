@@ -4,7 +4,8 @@ import { pathToFileURL } from "node:url";
 
 const { chromium } = playwright;
 const root = path.resolve(new URL("..", import.meta.url).pathname);
-const html = pathToFileURL(path.join(root, "rebuild/deck.html")).toString();
+const deckHtml = pathToFileURL(path.join(root, "rebuild/deck.html")).toString();
+const roiHtml = pathToFileURL(path.join(root, "rebuild/roi.html")).toString();
 const exportsDir = path.join(root, "exports");
 
 const browser = await chromium.launch({ channel: "chrome" });
@@ -14,7 +15,19 @@ const page = await browser.newPage({
 });
 
 async function exportPdf(theme, filename) {
-  const url = theme === "light" ? `${html}?theme=light` : html;
+  const url = theme === "light" ? `${deckHtml}?theme=light` : deckHtml;
+  await page.goto(url, { waitUntil: "networkidle" });
+  await page.pdf({
+    path: path.join(exportsDir, filename),
+    printBackground: true,
+    width: "8.5in",
+    height: "11in",
+    margin: { top: "0", right: "0", bottom: "0", left: "0" },
+    preferCSSPageSize: true,
+  });
+}
+
+async function exportStaticPdf(url, filename) {
   await page.goto(url, { waitUntil: "networkidle" });
   await page.pdf({
     path: path.join(exportsDir, filename),
@@ -28,5 +41,6 @@ async function exportPdf(theme, filename) {
 
 await exportPdf("dark", "netsirv-sop-document-ecosystem-rebuilt-dark.pdf");
 await exportPdf("light", "netsirv-sop-document-ecosystem-rebuilt-white.pdf");
+await exportStaticPdf(roiHtml, "netsirv-ladder-roi-model-white.pdf");
 
 await browser.close();

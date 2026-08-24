@@ -104,6 +104,15 @@
         color: var(--cyan);
       }
 
+      .badge-button {
+        border-color: color-mix(in srgb, var(--magenta) 70%, var(--cyan));
+        color: var(--cyan);
+        background:
+          linear-gradient(135deg, rgba(61, 231, 255, 0.1), rgba(209, 92, 255, 0.12)),
+          rgba(255, 255, 255, 0.04);
+        box-shadow: 0 0 24px rgba(61, 231, 255, 0.1);
+      }
+
       .cover-hero {
         position: relative;
         isolation: isolate;
@@ -384,6 +393,26 @@
 
       .tab[aria-selected="true"] {
         color: var(--cyan);
+      }
+
+      .tab-badge {
+        color: color-mix(in srgb, var(--cyan) 84%, var(--text));
+      }
+
+      .tab-badge span {
+        display: inline-grid;
+        place-items: center;
+        min-width: 28px;
+        min-height: 20px;
+        margin-left: 8px;
+        padding: 0 7px;
+        border: 1px solid color-mix(in srgb, var(--magenta) 70%, var(--cyan));
+        border-radius: 999px;
+        color: var(--magenta);
+        font-size: 10px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        vertical-align: middle;
       }
 
       .tab[aria-selected="true"]::after {
@@ -748,6 +777,70 @@
         min-height: 170px;
       }
 
+      .roi-total {
+        display: grid;
+        place-items: center;
+        min-height: 170px;
+        margin-bottom: 18px;
+        border: 1px solid color-mix(in srgb, var(--cyan) 56%, transparent);
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(61, 231, 255, 0.18), transparent 58%),
+          rgba(255, 255, 255, 0.035);
+        color: var(--text);
+        text-align: center;
+        box-shadow: 0 0 36px rgba(61, 231, 255, 0.16);
+      }
+
+      .roi-total strong {
+        display: block;
+        color: var(--cyan);
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 1;
+      }
+
+      .roi-total span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .roi-bars {
+        display: grid;
+        gap: 12px;
+      }
+
+      .roi-bar {
+        display: grid;
+        grid-template-columns: minmax(120px, 0.7fr) minmax(140px, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .roi-track {
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.07);
+        overflow: hidden;
+      }
+
+      .roi-fill {
+        display: block;
+        width: var(--w);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
+      }
+
+      .roi-bar b {
+        color: var(--text);
+        font-size: 12px;
+      }
+
       .viz-target {
         width: 118px;
         height: 118px;
@@ -1032,6 +1125,7 @@
           <a class="button" href="./dark.html">Dark Deck</a>
           <a class="button" href="../exports/netsirv-sop-document-ecosystem-rebuilt-dark.pdf">Dark PDF</a>
           <a class="button" href="../exports/netsirv-sop-document-ecosystem-rebuilt-white.pdf">White PDF</a>
+          <a class="button badge-button" href="../exports/netsirv-ladder-roi-model-white.pdf">ROI PDF</a>
         </nav>
       </div>
 
@@ -1045,6 +1139,7 @@
         <nav class="tabs" aria-label="Website tabs">
           <button class="tab" type="button" data-page="front" aria-selected="true">Front Pages</button>
           <button class="tab" type="button" data-page="white-pages" aria-selected="false">White Pages</button>
+          <button class="tab tab-badge" type="button" data-page="roi" aria-selected="false">ROI <span>PDF</span></button>
           <button class="tab" type="button" data-page="operations" aria-selected="false">Operations</button>
           <button class="tab" type="button" data-page="platform" aria-selected="false">Platform</button>
           <button class="tab" type="button" data-page="roadmap" aria-selected="false">Roadmap</button>
@@ -1112,6 +1207,17 @@
           ],
         },
         {
+          id: "roi",
+          label: "ROI",
+          title: "Workforce Intelligence & Ladder ROI model.",
+          summary: "A C-level ROI model for connecting recruiting, training, Ladder advancement, deployment, payroll and accounting into one measurable workforce performance system.",
+          sections: [
+            ["Drivers", "Six financial levers create the ROI case.", "Ladder connects employee lifecycle data to operational and financial outcomes: retention, recruiting ramp, Academy effectiveness, skills utilization, overtime leakage, administrative automation and internal advancement.", "Review ROI drivers", "roi-drivers.png", "ROI drivers"],
+            ["ROI chart", "An illustrative 1,000-employee model shows a $1.733M annual benefit pool.", "The model is not a promised outcome. It is a planning framework that converts baseline workforce data into measurable benefit categories for validation during implementation.", "Open ROI model", "roi-chart.png", "ROI chart"],
+            ["Variables & assumptions", "Assumptions are benchmark-informed, then replaced with customer baselines.", "The model uses conservative planning assumptions drawn from published workforce benchmarks and case-study categories, then recalculates using actual turnover, hiring, training, overtime, administrative and mobility data.", "Review assumptions", "roi-assumptions.png", "Variables and assumptions"],
+          ],
+        },
+        {
           id: "operations",
           label: "Operations",
           title: "Turn daily work into governed records.",
@@ -1170,6 +1276,11 @@
 
       function steps(items) {
         return `<div class="viz-steps">${items.map((item, index) => `<div class="viz-step"><span class="viz-badge">${index + 1}</span><span>${item}</span></div>`).join("")}</div>`;
+      }
+
+      function roiBars(rows) {
+        const max = Math.max(...rows.map(([, value]) => value));
+        return `<div class="roi-bars">${rows.map(([label, value]) => `<div class="roi-bar"><span>${label}</span><div class="roi-track"><span class="roi-fill" style="--w:${Math.max(10, Math.round((value / max) * 100))}%"></span></div><b>$${value.toLocaleString()}</b></div>`).join("")}</div>`;
       }
 
       function visualFor(image) {
@@ -1263,6 +1374,22 @@
               ["Measure", "Cycle time + accuracy", "4"],
               ["Scale", "Repeatable pattern", "5"],
             ].map(([title, text, label], index) => card(title, text, label, ["var(--cyan)", "var(--magenta)", "var(--blue)", "#f7c948", "#13e6a3"][index])).join("")}</div><div class="viz-callout">The pilot white page converts the platform story into a concrete implementation path.</div>`;
+          case "roi-drivers.png":
+            return grid("three", [
+              card("Retention", "Lower replacement cost and preserve institutional knowledge.", "R"),
+              card("Productivity ramp", "Reduce time from applicant to qualified productive employee.", "P", "var(--blue)"),
+              card("Academy", "Tie training to certification, performance and advancement.", "A", "var(--magenta)"),
+              card("Utilization", "Match available qualified labor to work demand.", "U", "#13e6a3"),
+              card("Automation", "Reduce handoffs across HR, operations, payroll and accounting.", "HR", "#f7c948"),
+              card("Advancement", "Fill more roles internally and build leadership bench strength.", "L"),
+            ]) + `<div class="viz-callout">The ROI case is strongest when workforce capability, work assignment, compensation and financial output use the same record.</div>`;
+          case "roi-chart.png":
+            return `<div class="roi-total"><div><strong>$1.733M</strong><span>illustrative annual benefit pool</span></div></div>${roiBars([["Reduced turnover", 450000], ["Faster productivity", 375000], ["Overtime optimization", 300000], ["Admin automation", 208000], ["Training/rework", 250000], ["Internal advancement", 150000]])}<div class="viz-callout">Model basis: 1,000 employees. Replace every assumption with customer baseline data during implementation.</div>`;
+          case "roi-assumptions.png":
+            return grid("two", [
+              `<div class="viz-card"><strong>Variables used</strong>${table([["Employees", "1,000"], ["Baseline turnover", "30%"], ["Target turnover", "24%"], ["Replacement cost", "$7,500"], ["Productive value/day", "$250"], ["Admin loaded cost", "$40/hr"]])}</div>`,
+              `<div class="viz-card"><strong>Benchmark sources</strong>${table([["SHRM", "Cost-per-hire and replacement-cost planning"], ["Gallup", "Engagement linkage to productivity and turnover"], ["LinkedIn", "Internal mobility and retention patterns"], ["Brandon Hall", "Onboarding and training case-study impact"], ["Customer baseline", "Final implementation source of truth"]])}</div>`,
+            ]) + `<div class="viz-callout">The assumptions are planning inputs, not guaranteed results. Realized ROI is measured against customer baselines.</div>`;
           case "06-universal-document-intelligence.png":
             return grid("two", [`<div>${steps(["Capture original", "Classify document type", "Extract key data", "Score confidence", "Review human-in-loop", "Route to workflow"])}</div>`, `<div class="viz-card"><strong>AI Extraction Review</strong>${table([["Vendor", "ABC HVAC"], ["Date", "08/16/26"], ["Work", "RTU repair"], ["Materials", "$140.20"], ["Total", "$725.00"]])}</div>`]);
           case "07-mobile-governed-records.png":
