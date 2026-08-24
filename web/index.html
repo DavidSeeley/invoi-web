@@ -395,26 +395,6 @@
         color: var(--cyan);
       }
 
-      .tab-badge {
-        color: color-mix(in srgb, var(--cyan) 84%, var(--text));
-      }
-
-      .tab-badge span {
-        display: inline-grid;
-        place-items: center;
-        min-width: 28px;
-        min-height: 20px;
-        margin-left: 8px;
-        padding: 0 7px;
-        border: 1px solid color-mix(in srgb, var(--magenta) 70%, var(--cyan));
-        border-radius: 999px;
-        color: var(--magenta);
-        font-size: 10px;
-        font-weight: 950;
-        letter-spacing: 0.08em;
-        vertical-align: middle;
-      }
-
       .tab[aria-selected="true"]::after {
         content: "";
         position: absolute;
@@ -841,6 +821,180 @@
         font-size: 12px;
       }
 
+      .roi-workbench {
+        display: grid;
+        grid-template-columns: minmax(290px, 0.9fr) minmax(0, 1.15fr);
+        gap: clamp(18px, 2.4vw, 32px);
+        align-items: start;
+      }
+
+      .roi-panel {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(135deg, rgba(61, 231, 255, 0.09), rgba(209, 92, 255, 0.05)),
+          rgba(5, 10, 24, 0.78);
+        box-shadow: var(--shadow);
+      }
+
+      .cover-hero.is-hidden {
+        display: none;
+      }
+
+      .roi-panel-inner {
+        position: relative;
+        z-index: 1;
+        padding: clamp(18px, 2.2vw, 28px);
+      }
+
+      .roi-panel h3 {
+        margin: 0;
+        color: var(--text);
+        font-size: clamp(18px, 2vw, 28px);
+      }
+
+      .roi-note {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .roi-scenarios {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .roi-scenario {
+        min-height: 42px;
+        border: 1px solid color-mix(in srgb, var(--cyan) 42%, transparent);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font: inherit;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+      }
+
+      .roi-scenario[aria-pressed="true"] {
+        border-color: color-mix(in srgb, var(--magenta) 70%, var(--cyan));
+        color: var(--text);
+        background: linear-gradient(135deg, rgba(61, 231, 255, 0.18), rgba(209, 92, 255, 0.18));
+        box-shadow: 0 0 22px rgba(61, 231, 255, 0.16);
+      }
+
+      .roi-controls {
+        display: grid;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .roi-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .roi-field label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .roi-field label output {
+        color: var(--cyan);
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .roi-field input[type="range"] {
+        width: 100%;
+        accent-color: var(--cyan);
+      }
+
+      .roi-kpis {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .roi-kpi {
+        min-height: 98px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .roi-kpi strong {
+        display: block;
+        color: var(--cyan);
+        font-size: clamp(22px, 3vw, 34px);
+        line-height: 1;
+      }
+
+      .roi-kpi span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .roi-driver-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .roi-driver {
+        min-height: 136px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .roi-driver strong {
+        display: block;
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      .roi-driver span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .roi-driver b {
+        display: block;
+        margin-top: 12px;
+        color: var(--cyan);
+        font-size: 18px;
+      }
+
+      .roi-assumptions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 28px;
+      }
+
       .viz-target {
         width: 118px;
         height: 118px;
@@ -1054,6 +1208,15 @@
           flex-direction: column;
         }
 
+        .roi-workbench,
+        .roi-assumptions {
+          grid-template-columns: 1fr;
+        }
+
+        .roi-driver-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .ecosystem-map {
           grid-template-columns: 1fr;
           grid-template-rows: auto;
@@ -1113,6 +1276,16 @@
         .cover-pills {
           grid-template-columns: 1fr 1fr;
         }
+
+        .roi-kpis,
+        .roi-driver-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .roi-bar {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
       }
     </style>
   </head>
@@ -1123,6 +1296,8 @@
         <nav class="deck-links" aria-label="Deck links">
           <a class="button" href="./page.html">Sectioned Deck</a>
           <a class="button" href="./dark.html">Dark Deck</a>
+          <a class="button" href="?page=white-pages">White Pages</a>
+          <a class="button badge-button" href="?page=roi">ROI Model</a>
           <a class="button" href="../exports/netsirv-sop-document-ecosystem-rebuilt-dark.pdf">Dark PDF</a>
           <a class="button" href="../exports/netsirv-sop-document-ecosystem-rebuilt-white.pdf">White PDF</a>
           <a class="button badge-button" href="../exports/netsirv-ladder-roi-model-white.pdf">ROI PDF</a>
@@ -1138,8 +1313,6 @@
         </div>
         <nav class="tabs" aria-label="Website tabs">
           <button class="tab" type="button" data-page="front" aria-selected="true">Front Pages</button>
-          <button class="tab" type="button" data-page="white-pages" aria-selected="false">White Pages</button>
-          <button class="tab tab-badge" type="button" data-page="roi" aria-selected="false">ROI <span>PDF</span></button>
           <button class="tab" type="button" data-page="operations" aria-selected="false">Operations</button>
           <button class="tab" type="button" data-page="platform" aria-selected="false">Platform</button>
           <button class="tab" type="button" data-page="roadmap" aria-selected="false">Roadmap</button>
@@ -1281,6 +1454,223 @@
       function roiBars(rows) {
         const max = Math.max(...rows.map(([, value]) => value));
         return `<div class="roi-bars">${rows.map(([label, value]) => `<div class="roi-bar"><span>${label}</span><div class="roi-track"><span class="roi-fill" style="--w:${Math.max(10, Math.round((value / max) * 100))}%"></span></div><b>$${value.toLocaleString()}</b></div>`).join("")}</div>`;
+      }
+
+      const roiScenarioData = {
+        conservative: {
+          employees: 750,
+          baselineTurnover: 28,
+          targetTurnover: 24,
+          replacementCost: 6500,
+          annualHires: 180,
+          rampDays: 4,
+          valuePerDay: 225,
+          overtimeSavings: 150000,
+          adminHours: 3200,
+          adminCost: 38,
+          trainingSavings: 125000,
+          advancementSavings: 75000,
+        },
+        planned: {
+          employees: 1000,
+          baselineTurnover: 30,
+          targetTurnover: 24,
+          replacementCost: 7500,
+          annualHires: 300,
+          rampDays: 5,
+          valuePerDay: 250,
+          overtimeSavings: 300000,
+          adminHours: 5200,
+          adminCost: 40,
+          trainingSavings: 250000,
+          advancementSavings: 150000,
+        },
+        accelerated: {
+          employees: 1500,
+          baselineTurnover: 34,
+          targetTurnover: 24,
+          replacementCost: 8500,
+          annualHires: 450,
+          rampDays: 7,
+          valuePerDay: 300,
+          overtimeSavings: 525000,
+          adminHours: 8200,
+          adminCost: 46,
+          trainingSavings: 425000,
+          advancementSavings: 250000,
+        },
+      };
+
+      const roiControls = [
+        ["employees", "Employees", 250, 5000, 50, "number"],
+        ["baselineTurnover", "Baseline turnover", 5, 60, 1, "percent"],
+        ["targetTurnover", "Ladder turnover target", 0, 50, 1, "percent"],
+        ["replacementCost", "Replacement cost", 1000, 25000, 500, "money"],
+        ["annualHires", "Annual hires", 25, 1200, 25, "number"],
+        ["rampDays", "Ramp days saved", 1, 20, 1, "days"],
+        ["valuePerDay", "Productive value / day", 100, 1000, 25, "money"],
+        ["overtimeSavings", "Overtime optimization", 0, 1000000, 25000, "money"],
+        ["adminHours", "Admin hours removed", 0, 20000, 250, "hours"],
+        ["adminCost", "Admin loaded cost / hour", 20, 100, 5, "money"],
+        ["trainingSavings", "Training + rework savings", 0, 1000000, 25000, "money"],
+        ["advancementSavings", "Internal advancement value", 0, 750000, 25000, "money"],
+      ];
+
+      const roiDriverCopy = [
+        ["turnover", "Reduced turnover", "Lower replacement cost and preserve operating knowledge.", "R"],
+        ["productivity", "Faster productivity", "Move new employees from hired to productive sooner.", "P"],
+        ["overtime", "Overtime optimization", "Deploy qualified labor where work demand is highest.", "O"],
+        ["admin", "Admin automation", "Remove duplicate entry across recruiting, Academy, payroll and accounting.", "A"],
+        ["training", "Training / rework", "Reduce rework by tying qualification to the work being assigned.", "T"],
+        ["advancement", "Internal advancement", "Fill more roles from a known bench before buying talent externally.", "L"],
+      ];
+
+      function formatMoney(value) {
+        return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
+      }
+
+      function formatCompactMoney(value) {
+        return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: value >= 1000000 ? 2 : 0 }).format(value);
+      }
+
+      function formatInputValue(value, kind) {
+        if (kind === "money") return formatMoney(value);
+        if (kind === "percent") return `${value}%`;
+        if (kind === "days") return `${value} days`;
+        if (kind === "hours") return `${Number(value).toLocaleString()} hrs`;
+        return Number(value).toLocaleString();
+      }
+
+      function roiFieldMarkup([key, label, min, max, step, kind]) {
+        const value = roiScenarioData.planned[key];
+        return `<div class="roi-field">
+          <label for="roi-${key}">${label}<output data-roi-output="${key}">${formatInputValue(value, kind)}</output></label>
+          <input id="roi-${key}" data-roi-input="${key}" data-kind="${kind}" type="range" min="${min}" max="${max}" step="${step}" value="${value}" />
+        </div>`;
+      }
+
+      function roiPageMarkup(page, index) {
+        return `<article id="${page.id}" class="page ${index === 0 ? "active" : ""}">
+          <header class="page-header">
+            <div>
+              <div class="page-kicker">NETSIRV / ${page.label}</div>
+              <h2>${page.title}</h2>
+            </div>
+            <aside class="page-summary"><p>${page.summary}</p></aside>
+          </header>
+          <section class="roi-workbench" aria-label="Interactive ROI model">
+            <div class="roi-panel">
+              <div class="roi-panel-inner">
+                <div class="eyebrow">Drivers</div>
+                <h3>Model the workforce levers</h3>
+                <p class="roi-note">Use the presets as a starting point, then tune the assumptions to match a customer baseline.</p>
+                <div class="roi-scenarios" aria-label="ROI scenarios">
+                  <button class="roi-scenario" type="button" data-roi-scenario="conservative" aria-pressed="false">Conservative</button>
+                  <button class="roi-scenario" type="button" data-roi-scenario="planned" aria-pressed="true">Planned</button>
+                  <button class="roi-scenario" type="button" data-roi-scenario="accelerated" aria-pressed="false">Accelerated</button>
+                </div>
+                <div class="roi-controls">${roiControls.map(roiFieldMarkup).join("")}</div>
+              </div>
+            </div>
+            <div class="roi-panel">
+              <div class="roi-panel-inner">
+                <div class="eyebrow">ROI chart</div>
+                <h3>Illustrative annual benefit pool</h3>
+                <div class="roi-kpis">
+                  <div class="roi-kpi"><strong data-roi-kpi="total">$1.73M</strong><span>Total annual benefit pool</span></div>
+                  <div class="roi-kpi"><strong data-roi-kpi="turnoverRate">6%</strong><span>Turnover variance modeled</span></div>
+                  <div class="roi-kpi"><strong data-roi-kpi="payback">Pilot</strong><span>Baseline before scale</span></div>
+                </div>
+                <div class="roi-total" style="margin-top:18px"><div><strong data-roi-total>$1.733M</strong><span>live modeled benefit</span></div></div>
+                <div data-roi-bars>${roiBars([["Reduced turnover", 450000], ["Faster productivity", 375000], ["Overtime optimization", 300000], ["Admin automation", 208000], ["Training / rework", 250000], ["Internal advancement", 150000]])}</div>
+              </div>
+            </div>
+          </section>
+          <section class="roi-assumptions" aria-label="ROI assumptions">
+            <div class="roi-panel">
+              <div class="roi-panel-inner">
+                <div class="eyebrow">Explanations</div>
+                <h3>How the variables work</h3>
+                <div class="viz-table" style="margin-top:18px">
+                  <div class="viz-row"><span>Retention</span><b>Employees x turnover improvement x replacement cost</b></div>
+                  <div class="viz-row"><span>Productivity</span><b>Annual hires x ramp days saved x productive value/day</b></div>
+                  <div class="viz-row"><span>Automation</span><b>Admin hours removed x loaded cost/hour</b></div>
+                  <div class="viz-row"><span>Other levers</span><b>Overtime, training/rework and advancement use validated customer baselines</b></div>
+                </div>
+              </div>
+            </div>
+            <div class="roi-panel">
+              <div class="roi-panel-inner">
+                <div class="eyebrow">Assumptions</div>
+                <h3>Benchmark-informed, customer-proven</h3>
+                <div class="viz-table" style="margin-top:18px">
+                  <div class="viz-row"><span>SHRM</span><b>Cost-per-hire and replacement-cost planning</b></div>
+                  <div class="viz-row"><span>Gallup</span><b>Engagement linkage to productivity and turnover</b></div>
+                  <div class="viz-row"><span>LinkedIn</span><b>Internal mobility, learning culture and retention patterns</b></div>
+                  <div class="viz-row"><span>Brandon Hall</span><b>Onboarding and training case-study impact</b></div>
+                  <div class="viz-row"><span>Customer baseline</span><b>Final source of truth before the PDF is delivered</b></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>`;
+      }
+
+      function calculateRoi(values) {
+        const turnoverRate = Math.max(0, values.baselineTurnover - values.targetTurnover);
+        const turnover = values.employees * (turnoverRate / 100) * values.replacementCost;
+        const productivity = values.annualHires * values.rampDays * values.valuePerDay;
+        const overtime = values.overtimeSavings;
+        const admin = values.adminHours * values.adminCost;
+        const training = values.trainingSavings;
+        const advancement = values.advancementSavings;
+        const rows = [
+          ["Reduced turnover", turnover],
+          ["Faster productivity", productivity],
+          ["Overtime optimization", overtime],
+          ["Admin automation", admin],
+          ["Training / rework", training],
+          ["Internal advancement", advancement],
+        ];
+        const total = rows.reduce((sum, [, value]) => sum + value, 0);
+        return { rows, total, turnoverRate };
+      }
+
+      function currentRoiValues() {
+        return Object.fromEntries(roiControls.map(([key]) => {
+          const input = document.querySelector(`[data-roi-input="${key}"]`);
+          return [key, Number(input?.value || roiScenarioData.planned[key])];
+        }));
+      }
+
+      function updateRoi() {
+        const values = currentRoiValues();
+        roiControls.forEach(([key, , , , , kind]) => {
+          const output = document.querySelector(`[data-roi-output="${key}"]`);
+          if (output) output.textContent = formatInputValue(values[key], kind);
+        });
+        const result = calculateRoi(values);
+        const total = document.querySelector("[data-roi-total]");
+        const totalKpi = document.querySelector('[data-roi-kpi="total"]');
+        const turnoverKpi = document.querySelector('[data-roi-kpi="turnoverRate"]');
+        const bars = document.querySelector("[data-roi-bars]");
+        if (total) total.textContent = formatCompactMoney(result.total);
+        if (totalKpi) totalKpi.textContent = formatCompactMoney(result.total);
+        if (turnoverKpi) turnoverKpi.textContent = `${result.turnoverRate}%`;
+        if (bars) bars.innerHTML = roiBars(result.rows);
+      }
+
+      function applyRoiScenario(name) {
+        const scenario = roiScenarioData[name];
+        if (!scenario) return;
+        Object.entries(scenario).forEach(([key, value]) => {
+          const input = document.querySelector(`[data-roi-input="${key}"]`);
+          if (input) input.value = value;
+        });
+        document.querySelectorAll("[data-roi-scenario]").forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.roiScenario === name));
+        });
+        updateRoi();
       }
 
       function visualFor(image) {
@@ -1441,7 +1831,7 @@
       }
 
       document.getElementById("pages").innerHTML = pages
-        .map((page, index) => `<article id="${page.id}" class="page ${index === 0 ? "active" : ""}">
+        .map((page, index) => page.id === "roi" ? roiPageMarkup(page, index) : `<article id="${page.id}" class="page ${index === 0 ? "active" : ""}">
           <header class="page-header">
             <div>
               <div class="page-kicker">NETSIRV / ${page.label}</div>
@@ -1455,10 +1845,12 @@
 
       const tabs = document.querySelectorAll(".tab");
       const articles = document.querySelectorAll(".page");
+      const coverHero = document.querySelector(".cover-hero");
 
       function showPage(id) {
         tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.page === id)));
         articles.forEach((article) => article.classList.toggle("active", article.id === id));
+        coverHero?.classList.toggle("is-hidden", id !== "front");
         const url = new URL(location);
         url.searchParams.set("page", id);
         history.replaceState(null, "", url);
@@ -1466,6 +1858,9 @@
       }
 
       tabs.forEach((tab) => tab.addEventListener("click", () => showPage(tab.dataset.page)));
+      document.querySelectorAll("[data-roi-input]").forEach((input) => input.addEventListener("input", updateRoi));
+      document.querySelectorAll("[data-roi-scenario]").forEach((button) => button.addEventListener("click", () => applyRoiScenario(button.dataset.roiScenario)));
+      updateRoi();
 
       const initial = new URLSearchParams(location.search).get("page");
       if (initial && document.getElementById(initial)) showPage(initial);
