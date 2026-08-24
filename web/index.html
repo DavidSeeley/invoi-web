@@ -922,6 +922,14 @@
         accent-color: var(--cyan);
       }
 
+      .roi-field small {
+        display: block;
+        max-width: 58ch;
+        color: color-mix(in srgb, var(--muted) 88%, var(--cyan));
+        font-size: 12px;
+        line-height: 1.42;
+      }
+
       .roi-kpis {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1502,18 +1510,18 @@
       };
 
       const roiControls = [
-        ["employees", "Employees", 250, 5000, 50, "number"],
-        ["baselineTurnover", "Baseline turnover", 5, 60, 1, "percent"],
-        ["targetTurnover", "Ladder turnover target", 0, 50, 1, "percent"],
-        ["replacementCost", "Replacement cost", 1000, 25000, 500, "money"],
-        ["annualHires", "Annual hires", 25, 1200, 25, "number"],
-        ["rampDays", "Ramp days saved", 1, 20, 1, "days"],
-        ["valuePerDay", "Productive value / day", 100, 1000, 25, "money"],
-        ["overtimeSavings", "Overtime optimization", 0, 1000000, 25000, "money"],
-        ["adminHours", "Admin hours removed", 0, 20000, 250, "hours"],
-        ["adminCost", "Admin loaded cost / hour", 20, 100, 5, "money"],
-        ["trainingSavings", "Training + rework savings", 0, 1000000, 25000, "money"],
-        ["advancementSavings", "Internal advancement value", 0, 750000, 25000, "money"],
+        ["employees", "Employees", 250, 5000, 50, "number", "Set the population covered by the pilot or rollout so savings scale to the real workforce."],
+        ["baselineTurnover", "Baseline turnover", 5, 60, 1, "percent", "Enter current annual attrition before Ladder, Academy and role-fit improvements are applied."],
+        ["targetTurnover", "Ladder turnover target", 0, 50, 1, "percent", "Model the retention goal after better hiring, training, advancement and deployment controls."],
+        ["replacementCost", "Replacement cost", 1000, 25000, 500, "money", "Use the loaded cost to replace one employee, including recruiting, onboarding and lost productivity."],
+        ["annualHires", "Annual hires", 25, 1200, 25, "number", "Estimate how many new employees move through recruiting and Academy each year."],
+        ["rampDays", "Ramp days saved", 1, 20, 1, "days", "Show how many days Ladder can remove from time-to-productivity through clearer qualification paths."],
+        ["valuePerDay", "Productive value / day", 100, 1000, 25, "money", "Assign the daily operating value of getting a trained employee productive sooner."],
+        ["overtimeSavings", "Overtime optimization", 0, 1000000, 25000, "money", "Capture avoided overtime from assigning qualified people to the right work at the right time."],
+        ["adminHours", "Admin hours removed", 0, 20000, 250, "hours", "Estimate manual HR, operations, payroll and accounting hours removed by connected workflows."],
+        ["adminCost", "Admin loaded cost / hour", 20, 100, 5, "money", "Use a loaded hourly cost for the back-office time the platform can eliminate or redirect."],
+        ["trainingSavings", "Training + rework savings", 0, 1000000, 25000, "money", "Model avoided rework when training status, SOP readiness and job assignment are connected."],
+        ["advancementSavings", "Internal advancement value", 0, 750000, 25000, "money", "Value roles filled internally through Ladder instead of external recruiting and replacement churn."],
       ];
 
       const roiDriverCopy = [
@@ -1541,11 +1549,12 @@
         return Number(value).toLocaleString();
       }
 
-      function roiFieldMarkup([key, label, min, max, step, kind]) {
+      function roiFieldMarkup([key, label, min, max, step, kind, help]) {
         const value = roiScenarioData.planned[key];
         return `<div class="roi-field">
           <label for="roi-${key}">${label}<output data-roi-output="${key}">${formatInputValue(value, kind)}</output></label>
           <input id="roi-${key}" data-roi-input="${key}" data-kind="${kind}" type="range" min="${min}" max="${max}" step="${step}" value="${value}" />
+          <small>${help}</small>
         </div>`;
       }
 
